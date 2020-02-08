@@ -5,9 +5,7 @@ import {movies, promoMovie} from "./mocks";
 
 ReactDOM.render(
     <App
-      promoName={promoMovie.name}
-      promoGenre={promoMovie.genre}
-      promoDate={promoMovie.date}
+      promoMovie={promoMovie}
       movies={movies}
     />,
     document.querySelector(`#root`)

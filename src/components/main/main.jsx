@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Main = ({promoName, promoGenre, promoDate, movies}) => {
+const Main = ({promoMovie, movies}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -35,10 +35,10 @@ const Main = ({promoName, promoGenre, promoDate, movies}) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoName}</h2>
+              <h2 className="movie-card__title">{promoMovie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoGenre}</span>
-                <span className="movie-card__year">{promoDate}</span>
+                <span className="movie-card__genre">{promoMovie.genre}</span>
+                <span className="movie-card__year">{promoMovie.date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -135,9 +135,11 @@ const Main = ({promoName, promoGenre, promoDate, movies}) => {
 };
 
 Main.propTypes = {
-  promoName: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoDate: PropTypes.number.isRequired,
+  promoMovie: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    date: PropTypes.number.isRequired
+  }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
