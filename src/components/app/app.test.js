@@ -8,11 +8,12 @@ const promoMovie = {
   genre: `Drama`,
   date: 2014
 };
+const movieTitleClickHandler = () => {};
 
 it(`App should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <App promoMovie={promoMovie} movies={movies} />)
+        <App promoMovie={promoMovie} movies={movies} movieTitleClickHandler={movieTitleClickHandler} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });
