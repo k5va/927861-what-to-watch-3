@@ -1,9 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 const Main = ({promoMovie, movies, movieTitleClickHandler}) => {
   return (
-    <React.Fragment>
+    <>
       <section className="movie-card">
         <div className="movie-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -130,7 +127,7 @@ const Main = ({promoMovie, movies, movieTitleClickHandler}) => {
           </div>
         </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
