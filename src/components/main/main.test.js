@@ -1,4 +1,3 @@
-import renderer from "react-test-renderer";
 import Main from "./main";
 
 const movies = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
