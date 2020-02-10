@@ -1,5 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 
 const App = ({promoMovie, movies, movieTitleClickHandler}) => {
