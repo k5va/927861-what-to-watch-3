@@ -1,12 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Main from "../main/main.jsx";
+import Main from "../main/main";
 
-const App = ({promoMovie, movies}) => {
+const App = ({promoMovie, movies, movieTitleClickHandler}) => {
   return (
     <Main
       promoMovie={promoMovie}
       movies={movies}
+      movieTitleClickHandler={movieTitleClickHandler}
     />
   );
 };
@@ -17,7 +16,8 @@ App.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired
   }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
+  movies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movieTitleClickHandler: PropTypes.func.isRequired
 };
 
 
