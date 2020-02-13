@@ -6,7 +6,7 @@ const movie = {
 };
 
 const handleTitleClick = () => {};
-const handleHover = () => { };
+const handleHover = () => {};
 
 it(`MovieCard should render correctly`, () => {
   const renderedTree = renderer
