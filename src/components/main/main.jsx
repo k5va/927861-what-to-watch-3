@@ -1,4 +1,6 @@
-const Main = ({promoMovie, movies, onMovieTitleClick}) => {
+import {MoviesList} from "../../components";
+
+const Main = ({promoMovie, movies}) => {
   return (
     <>
       <section className="movie-card">
@@ -94,19 +96,7 @@ const Main = ({promoMovie, movies, onMovieTitleClick}) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movies.map((movie) => (
-              <article key={movie} className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                    alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-                </div>
-                <h3 className="small-movie-card__title" onClick={onMovieTitleClick}>
-                  <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
-                </h3>
-              </article>
-            ))}
-          </div>
+          <MoviesList movies={movies} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -137,8 +127,10 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired
   }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onMovieTitleClick: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default Main;
