@@ -9,13 +9,13 @@ const promoMovie = {
 };
 
 it(`Should movies title be clicked`, () => {
-  const movieTitleClickHandler = jest.fn();
+  const handleMovieTitleClick = jest.fn();
   const mainScreen = shallow(
-      <Main promoMovie={promoMovie} movies={movies} movieTitleClickHandler={movieTitleClickHandler} />
+      <Main promoMovie={promoMovie} movies={movies} onMovieTitleClick={handleMovieTitleClick} />
   );
 
   const movieTitles = mainScreen.find(`.small-movie-card__title`);
   movieTitles.forEach((title) => title.props().onClick());
 
-  expect(movieTitleClickHandler.mock.calls.length).toBe(movies.length);
+  expect(handleMovieTitleClick.mock.calls.length).toBe(movies.length);
 });

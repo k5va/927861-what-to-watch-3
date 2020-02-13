@@ -1,11 +1,11 @@
 import Main from "../main/main";
 
-const App = ({promoMovie, movies, movieTitleClickHandler}) => {
+const App = ({promoMovie, movies, onMovieTitleClick}) => {
   return (
     <Main
       promoMovie={promoMovie}
       movies={movies}
-      movieTitleClickHandler={movieTitleClickHandler}
+      onMovieTitleClick={onMovieTitleClick}
     />
   );
 };
@@ -17,7 +17,7 @@ App.propTypes = {
     date: PropTypes.number.isRequired
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movieTitleClickHandler: PropTypes.func.isRequired
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 

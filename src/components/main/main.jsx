@@ -1,4 +1,4 @@
-const Main = ({promoMovie, movies, movieTitleClickHandler}) => {
+const Main = ({promoMovie, movies, onMovieTitleClick}) => {
   return (
     <>
       <section className="movie-card">
@@ -101,7 +101,7 @@ const Main = ({promoMovie, movies, movieTitleClickHandler}) => {
                   <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
                     alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
                 </div>
-                <h3 className="small-movie-card__title" onClick={movieTitleClickHandler}>
+                <h3 className="small-movie-card__title" onClick={onMovieTitleClick}>
                   <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
                 </h3>
               </article>
@@ -138,7 +138,7 @@ Main.propTypes = {
     date: PropTypes.number.isRequired
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movieTitleClickHandler: PropTypes.func.isRequired
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
