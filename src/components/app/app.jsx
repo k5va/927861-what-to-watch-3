@@ -5,6 +5,7 @@ const App = ({promoMovie, movies}) => {
     <Main
       promoMovie={promoMovie}
       movies={movies}
+      onMovieTitleClick={() => {}}
     />
   );
 };

@@ -1,6 +1,6 @@
 import {MoviesList} from "../../components";
 
-const Main = ({promoMovie, movies}) => {
+const Main = ({promoMovie, movies, onMovieTitleClick}) => {
   return (
     <>
       <section className="movie-card">
@@ -96,7 +96,7 @@ const Main = ({promoMovie, movies}) => {
             </li>
           </ul>
 
-          <MoviesList movies={movies} />
+          <MoviesList movies={movies} onMovieTitleClick={onMovieTitleClick} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -130,7 +130,8 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
-  })).isRequired
+  })).isRequired,
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
