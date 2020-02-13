@@ -4,7 +4,7 @@ const MovieCard = ({movie, onHover, onTitleClick}) => {
     <article
       key={title}
       className="small-movie-card catalog__movies-card"
-      onHover={() => onHover(movie)}
+      onMouseOver={() => onHover(movie)}
     >
       <div className="small-movie-card__image">
         <img src={src} alt={title} width="280" height="175" />

@@ -6,7 +6,7 @@ exports[`MoviesList should render correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onHover={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -32,7 +32,7 @@ exports[`MoviesList should render correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onHover={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -58,7 +58,7 @@ exports[`MoviesList should render correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onHover={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"

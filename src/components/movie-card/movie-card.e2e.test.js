@@ -22,7 +22,7 @@ it(`Card hover passes movie object to callback`, () => {
   );
 
   const movieCard = screen.find(`.small-movie-card`);
-  movieCard.simulate(`hover`, mockEvent);
+  movieCard.simulate(`mouseover`, mockEvent);
 
   expect(handleHover).toHaveBeenCalledTimes(HANDLE_HOVER_CALL_COUNT);
   expect(handleHover.mock.calls[0][0]).toMatchObject(movie);
