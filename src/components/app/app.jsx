@@ -1,11 +1,10 @@
-import Main from "../main/main";
+import {Main} from "../../components";
 
-const App = ({promoMovie, movies, onMovieTitleClick}) => {
+const App = ({promoMovie, movies}) => {
   return (
     <Main
       promoMovie={promoMovie}
       movies={movies}
-      onMovieTitleClick={onMovieTitleClick}
     />
   );
 };
@@ -16,8 +15,10 @@ App.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired
   }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onMovieTitleClick: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired
+  })).isRequired
 };
 
 
