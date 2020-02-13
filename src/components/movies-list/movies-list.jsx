@@ -8,7 +8,7 @@ class MoviesList extends React.PureComponent {
       activeCard: null
     };
 
-    this._handleMovieTitleClick = this._handleMovieCardHover.bind(this);
+    this._handleMovieCardHover = this._handleMovieCardHover.bind(this);
   }
 
   render() {
