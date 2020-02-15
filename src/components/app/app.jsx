@@ -1,12 +1,22 @@
-import {Main} from "../../components";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Main, MovieDetails} from "../../components";
 
 const App = ({promoMovie, movies}) => {
   return (
-    <Main
-      promoMovie={promoMovie}
-      movies={movies}
-      onMovieTitleClick={() => {}}
-    />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Main
+            promoMovie={promoMovie}
+            movies={movies}
+            onMovieTitleClick={() => {}}
+          />
+        </Route>
+        <Route exact path="/dev-movie-details">
+          <MovieDetails />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
