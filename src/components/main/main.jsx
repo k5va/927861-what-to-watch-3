@@ -1,11 +1,12 @@
 import {MoviesList} from "../../components";
 
 const Main = ({promoMovie, movies, onMovieTitleClick}) => {
+  const {title, genre, year, cover, poster} = promoMovie;
   return (
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={poster} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -29,15 +30,14 @@ const Main = ({promoMovie, movies, onMovieTitleClick}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={cover} alt={title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoMovie.name}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoMovie.genre}</span>
-                <span className="movie-card__year">{promoMovie.date}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{year}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -123,13 +123,15 @@ const Main = ({promoMovie, movies, onMovieTitleClick}) => {
 
 Main.propTypes = {
   promoMovie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired
+    year: PropTypes.number.isRequired,
+    cover: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
+    cover: PropTypes.string.isRequired
   })).isRequired,
   onMovieTitleClick: PropTypes.func.isRequired
 };
