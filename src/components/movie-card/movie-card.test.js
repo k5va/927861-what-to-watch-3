@@ -16,13 +16,13 @@ const movie = {
   }
 };
 
-const handleTitleClick = () => {};
+const handleMovieClick = () => {};
 const handleHover = () => {};
 
 it(`MovieCard should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MovieCard movie={movie} onHover={handleHover} onTitleClick={handleTitleClick} />)
+        <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });

@@ -63,12 +63,12 @@ const promoMovie = {
   }
 };
 
-const handleMovieTitleClick = () => {};
+const handleMovieClick = () => {};
 
 it(`Main should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <Main promoMovie={promoMovie} movies={movies} onMovieTitleClick={handleMovieTitleClick} />)
+        <Main promoMovie={promoMovie} movies={movies} onMovieClick={handleMovieClick} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });

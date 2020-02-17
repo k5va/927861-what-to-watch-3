@@ -39,7 +39,7 @@ class App extends React.PureComponent {
       <Main
         promoMovie={promoMovie}
         movies={movies}
-        onMovieTitleClick={(movie) => {
+        onMovieClick={(movie) => {
           this.setState({selectedMovie: movie});
         }}
       />

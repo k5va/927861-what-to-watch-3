@@ -69,12 +69,12 @@ const mockEvent = {
 };
 
 it(`Should movies title be clicked`, () => {
-  const handleMovieTitleClick = jest.fn();
+  const handleMovieClick = jest.fn();
   const mainScreen = mount(
-      <Main promoMovie={promoMovie} movies={movies} onMovieTitleClick={handleMovieTitleClick} />
+      <Main promoMovie={promoMovie} movies={movies} onMovieClick={handleMovieClick} />
   );
 
   const movieTitles = mainScreen.find(`.small-movie-card__link`);
   movieTitles.forEach((title) => title.simulate(`click`, mockEvent));
-  expect(handleMovieTitleClick.mock.calls.length).toBe(movies.length);
+  expect(handleMovieClick.mock.calls.length).toBe(movies.length);
 });

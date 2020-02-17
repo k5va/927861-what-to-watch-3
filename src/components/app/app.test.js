@@ -62,12 +62,12 @@ const promoMovie = {
     level: `Very good`
   }
 };
-const handleMovieTitleClick = () => {};
+const handleMovieClick = () => {};
 
 it(`App should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <App promoMovie={promoMovie} movies={movies} onMovieTitleClick={handleMovieTitleClick} />)
+        <App promoMovie={promoMovie} movies={movies} onMovieClick={handleMovieClick} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });

@@ -23,13 +23,13 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const handleTitleClick = () => {};
+const handleMovieClick = () => {};
 
 it(`Card hover passes movie object to callback`, () => {
   const handleHover = jest.fn();
 
   const screen = shallow(
-      <MovieCard movie={movie} onHover={handleHover} onTitleClick={handleTitleClick} />
+      <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />
   );
 
   const movieCard = screen.find(`.small-movie-card`);

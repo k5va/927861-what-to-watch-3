@@ -47,12 +47,12 @@ const movies = [
     }
   }
 ];
-const handleMovieTitleClick = () => {};
+const handleMovieClick = () => {};
 
 it(`MoviesList should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MoviesList movies={movies} onMovieTitleClick={handleMovieTitleClick} />)
+        <MoviesList movies={movies} onMovieClick={handleMovieClick} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });
