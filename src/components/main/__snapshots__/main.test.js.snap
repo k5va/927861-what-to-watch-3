@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
+        alt="Die hard"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -69,9 +69,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Die hard"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Die hard
           </h2>
           <p
             className="movie-card__meta"
@@ -94,7 +94,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2014
+              2019
             </span>
           </p>
           <div
@@ -265,9 +265,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Movie 1"
+              alt="Die hard 1"
               height="175"
-              src="pic 1"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -279,7 +279,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Movie 1
+              Die hard 1
             </a>
           </h3>
         </article>
@@ -291,9 +291,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Movie 2"
+              alt="Die hard 2"
               height="175"
-              src="pic 2"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -305,7 +305,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Movie 2
+              Die hard 2
             </a>
           </h3>
         </article>
@@ -317,9 +317,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Movie 3"
+              alt="Die hard 3"
               height="175"
-              src="pic 3"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -331,7 +331,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Movie 3
+              Die hard 3
             </a>
           </h3>
         </article>

@@ -2,23 +2,67 @@ import Main from "./main";
 
 const movies = [
   {
-    title: `Movie 1`,
-    src: `pic 1`
+    title: `Die hard 1`,
+    genre: `Drama`,
+    year: 2019,
+    cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    description: `Bla Bla Bla`,
+    director: `Wes Andreson`,
+    actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    rating: {
+      score: 8.9,
+      count: 240,
+      level: `Very good`
+    }
   },
   {
-    title: `Movie 2`,
-    src: `pic 2`
+    title: `Die hard 2`,
+    genre: `Drama`,
+    year: 2019,
+    cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    description: `Bla Bla Bla`,
+    director: `Wes Andreson`,
+    actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    rating: {
+      score: 8.9,
+      count: 240,
+      level: `Very good`
+    }
   },
   {
-    title: `Movie 3`,
-    src: `pic 3`
+    title: `Die hard 3`,
+    genre: `Drama`,
+    year: 2019,
+    cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    description: `Bla Bla Bla`,
+    director: `Wes Andreson`,
+    actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    rating: {
+      score: 8.9,
+      count: 240,
+      level: `Very good`
+    }
   }
 ];
 const promoMovie = {
-  name: `The Grand Budapest Hotel`,
+  title: `Die hard`,
   genre: `Drama`,
-  date: 2014
+  year: 2019,
+  cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  poster: `img/bg-the-grand-budapest-hotel.jpg`,
+  description: `Bla Bla Bla`,
+  director: `Wes Andreson`,
+  actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  rating: {
+    score: 8.9,
+    count: 240,
+    level: `Very good`
+  }
 };
+
 const handleMovieTitleClick = () => {};
 
 it(`Main should render correctly`, () => {

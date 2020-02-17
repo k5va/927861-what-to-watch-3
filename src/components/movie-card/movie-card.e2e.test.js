@@ -4,8 +4,19 @@ import MovieCard from "./movie-card";
 const HANDLE_HOVER_CALL_COUNT = 1;
 
 const movie = {
-  title: `Movie 1`,
-  src: `pic 1`
+  title: `Die hard`,
+  genre: `Drama`,
+  year: 2019,
+  cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  poster: `img/bg-the-grand-budapest-hotel.jpg`,
+  description: `Bla Bla Bla`,
+  director: `Wes Andreson`,
+  actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  rating: {
+    score: 8.9,
+    count: 240,
+    level: `Very good`
+  }
 };
 
 const mockEvent = {
