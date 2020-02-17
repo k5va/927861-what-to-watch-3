@@ -10,11 +10,12 @@ exports[`MoviesList should render correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Movie 1"
+        alt="Die hard 1"
         height="175"
-        src="pic 1"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -26,7 +27,7 @@ exports[`MoviesList should render correctly 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Movie 1
+        Die hard 1
       </a>
     </h3>
   </article>
@@ -36,11 +37,12 @@ exports[`MoviesList should render correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Movie 2"
+        alt="Die hard 2"
         height="175"
-        src="pic 2"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -52,7 +54,7 @@ exports[`MoviesList should render correctly 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Movie 2
+        Die hard 2
       </a>
     </h3>
   </article>
@@ -62,11 +64,12 @@ exports[`MoviesList should render correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Movie 3"
+        alt="Die hard 3"
         height="175"
-        src="pic 3"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -78,7 +81,7 @@ exports[`MoviesList should render correctly 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Movie 3
+        Die hard 3
       </a>
     </h3>
   </article>

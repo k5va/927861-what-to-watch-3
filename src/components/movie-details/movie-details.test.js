@@ -1,4 +1,4 @@
-import MovieCard from "./movie-card";
+import MovieDetails from "./movie-details";
 
 const movie = {
   title: `Die hard`,
@@ -16,13 +16,10 @@ const movie = {
   }
 };
 
-const handleMovieClick = () => {};
-const handleHover = () => {};
-
-it(`MovieCard should render correctly`, () => {
+it(`MovieDetails should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />)
+        <MovieDetails movie={movie} />)
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });

@@ -1,13 +1,13 @@
-const MovieCard = ({movie, onHover, onTitleClick}) => {
-  const {title, src} = movie;
+const MovieCard = ({movie, onHover, onClick}) => {
+  const {title, cover} = movie;
   return (
     <article
       key={title}
       className="small-movie-card catalog__movies-card"
       onMouseOver={() => onHover(movie)}
     >
-      <div className="small-movie-card__image">
-        <img src={src} alt={title} width="280" height="175" />
+      <div className="small-movie-card__image" onClick={() => onClick(movie)}>
+        <img src={cover} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
         <a
@@ -15,7 +15,7 @@ const MovieCard = ({movie, onHover, onTitleClick}) => {
           href="movie-page.html"
           onClick={(evt) => {
             evt.preventDefault();
-            onTitleClick(movie);
+            onClick(movie);
           }}
         >
           {title}
@@ -28,9 +28,9 @@ const MovieCard = ({movie, onHover, onTitleClick}) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
+    cover: PropTypes.string.isRequired
   }).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired
 };
 

@@ -1,26 +1,62 @@
-import {Main} from "../../components";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Main, MovieDetails} from "../../components";
 
-const App = ({promoMovie, movies}) => {
-  return (
-    <Main
-      promoMovie={promoMovie}
-      movies={movies}
-      onMovieTitleClick={() => {}}
-    />
-  );
-};
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedMovie: null
+    };
+  }
+
+  render() {
+    const {promoMovie} = this.props;
+
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-movie-details">
+            <MovieDetails movie={promoMovie}/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+
+  _renderApp() {
+    const {promoMovie, movies} = this.props;
+    const {selectedMovie} = this.state;
+
+    if (selectedMovie) {
+      return <MovieDetails movie={this.state.selectedMovie} />;
+    }
+
+    return (
+      <Main
+        promoMovie={promoMovie}
+        movies={movies}
+        onMovieClick={(movie) => {
+          this.setState({selectedMovie: movie});
+        }}
+      />
+    );
+  }
+}
 
 App.propTypes = {
   promoMovie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired
+    year: PropTypes.number.isRequired
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
+    poster: PropTypes.string.isRequired
   })).isRequired
 };
-
 
 export default App;
