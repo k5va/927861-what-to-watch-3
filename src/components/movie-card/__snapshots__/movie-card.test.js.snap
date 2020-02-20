@@ -4,15 +4,15 @@ exports[`MovieCard should render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Die hard"
+    <video
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
     />
   </div>
