@@ -1,5 +1,7 @@
 import {VideoPlayer} from "@components";
 
+const VIDEO_PLAY_DELAY = 1000;
+
 class MovieCard extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -7,6 +9,8 @@ class MovieCard extends React.PureComponent {
     this.state = {
       isPlaying: false
     };
+
+    this._isHovered = false;
   }
 
   render() {
@@ -19,10 +23,8 @@ class MovieCard extends React.PureComponent {
         className="small-movie-card catalog__movies-card"
         onMouseOver={() => onHover(movie)}
         onClick={() => onClick(movie)}
-        onMouseEnter={() => setTimeout(() => {
-          this.setState({isPlaying: true});
-        }, 1000)}
-        onMouseLeave={() => this.setState({isPlaying: false})}
+        onMouseEnter={() => this._handleMouseEnter()}
+        onMouseLeave={() => this._handleMouseLeave()}
       >
         <div className="small-movie-card__image">
           <VideoPlayer
@@ -42,6 +44,20 @@ class MovieCard extends React.PureComponent {
         </h3>
       </article>
     );
+  }
+
+  _handleMouseEnter() {
+    this._isHovered = true;
+    setTimeout(() => {
+      if (this._isHovered) {
+        this.setState({isPlaying: true});
+      }
+    }, VIDEO_PLAY_DELAY);
+  }
+
+  _handleMouseLeave() {
+    this._isHovered = false;
+    this.setState({isPlaying: false});
   }
 }
 
