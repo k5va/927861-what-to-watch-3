@@ -1,4 +1,4 @@
-import MoviesList from "./movies-list";
+import {MoviesList} from "@components";
 
 const movies = [
   {

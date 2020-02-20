@@ -1,4 +1,4 @@
-import {MovieCard} from "../../components";
+import {MovieCard} from "@components";
 
 class MoviesList extends React.PureComponent {
   constructor(props) {

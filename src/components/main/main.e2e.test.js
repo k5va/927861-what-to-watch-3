@@ -1,5 +1,5 @@
 import {mount} from "enzyme";
-import Main from "./main.jsx";
+import {Main} from "@components";
 
 const movies = [
   {

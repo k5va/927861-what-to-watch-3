@@ -1,5 +1,5 @@
 import {shallow} from "enzyme";
-import MovieCard from "./movie-card";
+import {MovieCard} from "@components";
 
 const HANDLE_HOVER_CALL_COUNT = 1;
 const HANDLE_CLICK_CALL_COUNT = 2;

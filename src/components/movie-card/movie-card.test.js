@@ -1,4 +1,4 @@
-import MovieCard from "./movie-card";
+import {MovieCard} from "@components";
 
 const movie = {
   title: `Die hard`,

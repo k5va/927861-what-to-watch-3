@@ -1,4 +1,4 @@
-import MovieDetails from "./movie-details";
+import {MovieDetails} from "@components";
 
 const movie = {
   title: `Die hard`,
