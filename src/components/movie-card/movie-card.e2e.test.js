@@ -1,4 +1,3 @@
-import {shallow} from "enzyme";
 import {MovieCard} from "@components";
 import {generateId} from "@utils";
 
