@@ -1,7 +1,9 @@
+import {convertScoreToText} from "@utils";
+
 const MovieDetails = (props) => {
   const {movie} = props;
   const {title, genre, year, cover, poster, rating, description, director, actors} = movie;
-  const {score: ratingScore, count: ratingCount, level: ratingLevel} = rating;
+  const {score: ratingScore, count: ratingCount} = rating;
 
   return (
     <>
@@ -81,7 +83,7 @@ const MovieDetails = (props) => {
             <div className="movie-rating">
               <div className="movie-rating__score">{ratingScore}</div>
               <p className="movie-rating__meta">
-                <span className="movie-rating__level">{ratingLevel}</span>
+                <span className="movie-rating__level">{convertScoreToText(ratingScore)}</span>
                 <span className="movie-rating__count">{ratingCount} ratings</span>
               </p>
             </div>
@@ -171,8 +173,7 @@ MovieDetails.propTypes = {
     actors: PropTypes.arrayOf(PropTypes.string).isRequired,
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
-      count: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired
+      count: PropTypes.number.isRequired
     }).isRequired
   }).isRequired
 };

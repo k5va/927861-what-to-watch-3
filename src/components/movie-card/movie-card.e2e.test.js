@@ -16,8 +16,7 @@ const movie = {
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   rating: {
     score: 8.9,
-    count: 240,
-    level: `Very good`
+    count: 240
   }
 };
 
