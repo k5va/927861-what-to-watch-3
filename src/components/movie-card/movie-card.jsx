@@ -4,18 +4,16 @@ const MovieCard = ({movie, onHover, onClick}) => {
     <article
       className="small-movie-card catalog__movies-card"
       onMouseOver={() => onHover(movie)}
+      onClick={() => onClick(movie)}
     >
-      <div className="small-movie-card__image" onClick={() => onClick(movie)}>
+      <div className="small-movie-card__image">
         <img src={cover} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onClick(movie);
-          }}
+          onClick={(evt) => evt.preventDefault()}
         >
           {title}
         </a>

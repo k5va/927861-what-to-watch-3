@@ -2,7 +2,7 @@ import {MovieCard} from "@components";
 import {generateId} from "@utils";
 
 const HANDLE_HOVER_CALL_COUNT = 1;
-const HANDLE_CLICK_CALL_COUNT = 2;
+const HANDLE_CLICK_CALL_COUNT = 1;
 
 const movie = {
   id: generateId(),
@@ -48,12 +48,9 @@ it(`Movie title or image click passes movie object to callback`, () => {
       <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />
   );
 
-  const movieImage = screen.find(`.small-movie-card__image`);
+  const movieImage = screen.find(`.small-movie-card`);
   movieImage.simulate(`click`, mockEvent);
-  const movieTitle = screen.find(`.small-movie-card__link`);
-  movieTitle.simulate(`click`, mockEvent);
 
   expect(handleMovieClick).toHaveBeenCalledTimes(HANDLE_CLICK_CALL_COUNT);
   expect(handleMovieClick.mock.calls[0][0]).toMatchObject(movie);
-  expect(handleMovieClick.mock.calls[1][0]).toMatchObject(movie);
 });

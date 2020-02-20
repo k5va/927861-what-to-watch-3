@@ -259,11 +259,11 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
             <img
               alt="Die hard 1"
@@ -286,11 +286,11 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
             <img
               alt="Die hard 2"
@@ -313,11 +313,11 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
             <img
               alt="Die hard 3"
