@@ -16,6 +16,7 @@ class VideoPlayer extends React.PureComponent {
 
     video.src = src;
     video.poster = poster;
+    video.muted = true;
     video.oncanplaythrough = () => this.setState({isLoading: false});
     video.onplay = () => this.setState({isPlaying: true});
     video.onpause = () => this.setState({isPlaying: false});
@@ -36,7 +37,7 @@ class VideoPlayer extends React.PureComponent {
 
   render() {
     return (
-      <video muted width="280" height="175" ref={this._videoRef} />
+      <video width="280" height="175" ref={this._videoRef} />
     );
   }
 
