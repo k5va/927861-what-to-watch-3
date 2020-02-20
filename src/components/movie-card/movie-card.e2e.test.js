@@ -1,10 +1,12 @@
 import {shallow} from "enzyme";
 import {MovieCard} from "@components";
+import {generateId} from "@utils";
 
 const HANDLE_HOVER_CALL_COUNT = 1;
 const HANDLE_CLICK_CALL_COUNT = 2;
 
 const movie = {
+  id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,

@@ -1,5 +1,8 @@
+import {generateId} from "@utils";
+
 export const movies = [
   {
+    id: generateId(),
     title: `Die hard`,
     genre: `Drama`,
     year: 2019,
@@ -20,6 +23,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 2`,
     genre: `Drama`,
     year: 2019,
@@ -40,6 +44,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 3`,
     genre: `Drama`,
     year: 2019,
@@ -60,6 +65,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 4`,
     genre: `Drama`,
     year: 2019,
@@ -80,6 +86,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 5`,
     genre: `Drama`,
     year: 2019,
@@ -100,6 +107,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 6`,
     genre: `Drama`,
     year: 2019,
@@ -120,6 +128,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 7`,
     genre: `Drama`,
     year: 2019,
@@ -140,6 +149,7 @@ export const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 8`,
     genre: `Drama`,
     year: 2019,

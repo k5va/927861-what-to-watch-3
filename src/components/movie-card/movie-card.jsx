@@ -2,7 +2,6 @@ const MovieCard = ({movie, onHover, onClick}) => {
   const {title, cover} = movie;
   return (
     <article
-      key={title}
       className="small-movie-card catalog__movies-card"
       onMouseOver={() => onHover(movie)}
     >

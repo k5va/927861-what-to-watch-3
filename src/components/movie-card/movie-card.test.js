@@ -1,6 +1,8 @@
 import {MovieCard} from "@components";
+import {generateId} from "@utils";
 
 const movie = {
+  id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,

@@ -1,8 +1,10 @@
 import {mount} from "enzyme";
 import {Main} from "@components";
+import {generateId} from "@utils";
 
 const movies = [
   {
+    id: generateId(),
     title: `Die hard 1`,
     genre: `Drama`,
     year: 2019,
@@ -18,6 +20,7 @@ const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 2`,
     genre: `Drama`,
     year: 2019,
@@ -33,6 +36,7 @@ const movies = [
     }
   },
   {
+    id: generateId(),
     title: `Die hard 3`,
     genre: `Drama`,
     year: 2019,
@@ -49,6 +53,7 @@ const movies = [
   }
 ];
 const promoMovie = {
+  id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,

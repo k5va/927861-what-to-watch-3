@@ -1,4 +1,7 @@
+import {generateId} from "@utils";
+
 export const promoMovie = {
+  id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,
