@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails} from "../../components";
+import {Main, MovieDetails} from "@components";
 
 class App extends React.PureComponent {
   constructor(props) {

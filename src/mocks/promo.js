@@ -1,4 +1,7 @@
+import {generateId} from "@utils";
+
 export const promoMovie = {
+  id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,
@@ -14,7 +17,6 @@ export const promoMovie = {
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   rating: {
     score: 8.9,
-    count: 240,
-    level: `Very good`
+    count: 240
   }
 };

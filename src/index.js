@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import {App} from "./components";
+import {App} from "@components";
 import {movies, promoMovie} from "./mocks";
 
 ReactDOM.render(

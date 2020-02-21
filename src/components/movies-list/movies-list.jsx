@@ -1,4 +1,4 @@
-import {MovieCard} from "../../components";
+import {MovieCard} from "@components";
 
 class MoviesList extends React.PureComponent {
   constructor(props) {
@@ -16,8 +16,8 @@ class MoviesList extends React.PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {movies.map((movie, i) => <MovieCard
-          key={movie.title + i}
+        {movies.map((movie) => <MovieCard
+          key={movie.id}
           movie={movie}
           onHover={this._handleMovieCardHover}
           onClick={onMovieClick}
@@ -34,6 +34,7 @@ class MoviesList extends React.PureComponent {
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired
       })

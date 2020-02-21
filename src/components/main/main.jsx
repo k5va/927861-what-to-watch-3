@@ -1,4 +1,4 @@
-import {MoviesList} from "../../components";
+import {MoviesList} from "@components";
 
 const Main = ({promoMovie, movies, onMovieClick}) => {
   const {title, genre, year, cover, poster} = promoMovie;
