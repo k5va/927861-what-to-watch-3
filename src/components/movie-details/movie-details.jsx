@@ -1,6 +1,7 @@
 import {Tabs, Tab, MoviesList} from "@components";
-import {convertScoreToText} from "@utils";
-import {movies} from "@mocks";
+import {convertScoreToText, getSimilarMovies} from "@utils";
+
+const MAX_SIMILAR_MOVIES_NUMBER = 4;
 
 const MovieDetails = (props) => {
   const {movie} = props;
@@ -68,7 +69,7 @@ const MovieDetails = (props) => {
               alt={title} width="218" height="327" />
           </div>
 
-          <Tabs tabs={[`Overview`, `Details`, `Reviews`]}>
+          <Tabs tabs={MovieDetails.TAB_NAMES}>
             <Tab>
               <div className="movie-rating">
                 <div className="movie-rating__score">{ratingScore}</div>
@@ -93,7 +94,9 @@ const MovieDetails = (props) => {
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Starring</strong>
                     <span className="movie-card__details-value">
-                      {actors.map((actor) => <>{actor}, <br/></>)}
+                      {actors.map((actor, i) => (
+                        <span key={actor + i}>{i === actors.length - 1 ? actor : `${actor},`} <br/></span>)
+                      )}
                     </span>
                   </p>
                 </div>
@@ -139,7 +142,7 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList movies={movies.slice(0, 4)} onMovieClick={() => {}} />
+        <MoviesList movies={getSimilarMovies(movie, MAX_SIMILAR_MOVIES_NUMBER)} onMovieClick={() => {}} />
       </section>
       <footer className="page-footer">
         <div className="logo">
@@ -158,6 +161,8 @@ const MovieDetails = (props) => {
     </>
   );
 };
+
+MovieDetails.TAB_NAMES = [`Overview`, `Details`, `Reviews`];
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({

@@ -27,21 +27,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -72,21 +72,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -117,21 +117,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -162,21 +162,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -207,21 +207,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -274,21 +274,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]
@@ -319,21 +319,21 @@ export const movies = [
         id: generateId(),
         text: `Bla Bla Bla`,
         author: `John Doe`,
-        date: Date.now,
+        date: new Date(),
         rating: 9.0
       },
       {
         id: generateId(),
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
-        date: Date.now,
+        date: new Date(),
         rating: 2.0
       },
       {
         id: generateId(),
         text: `Bark Bark Bark`,
         author: `Pluto`,
-        date: Date.now,
+        date: new Date(),
         rating: 5.0
       },
     ]

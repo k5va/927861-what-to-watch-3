@@ -1,7 +1,5 @@
 import {VideoPlayer} from "@components";
 
-const VIDEO_PLAY_DELAY = 1000;
-
 class MovieCard extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -52,7 +50,7 @@ class MovieCard extends React.PureComponent {
       if (this._isHovered) {
         this.setState({isPlaying: true});
       }
-    }, VIDEO_PLAY_DELAY);
+    }, MovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
@@ -60,6 +58,8 @@ class MovieCard extends React.PureComponent {
     this.setState({isPlaying: false});
   }
 }
+
+MovieCard.VIDEO_PLAY_DELAY = 1000;
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
