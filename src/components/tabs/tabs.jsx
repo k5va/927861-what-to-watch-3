@@ -39,7 +39,10 @@ Tabs.DEFAULT_ACTIVE_TAB = 0;
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node.isRequired
+  ]).isRequired
 };
 
 
