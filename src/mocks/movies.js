@@ -6,6 +6,7 @@ export const movies = [
     title: `Die hard`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -20,13 +21,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 2`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -41,13 +66,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 3`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -62,13 +111,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 4`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -83,13 +156,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 5`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -104,13 +201,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 6`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -132,6 +253,7 @@ export const movies = [
     title: `Die hard 7`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -146,13 +268,37 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   },
   {
     id: generateId(),
     title: `Die hard 8`,
     genre: `Drama`,
     year: 2019,
+    duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/bg-the-grand-budapest-hotel.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -167,6 +313,29 @@ export const movies = [
     rating: {
       score: 8.9,
       count: 240
-    }
+    },
+    reviews: [
+      {
+        id: generateId(),
+        text: `Bla Bla Bla`,
+        author: `John Doe`,
+        date: Date.now,
+        rating: 9.0
+      },
+      {
+        id: generateId(),
+        text: `Foo Foo Foo`,
+        author: `Duffy Duck`,
+        date: Date.now,
+        rating: 2.0
+      },
+      {
+        id: generateId(),
+        text: `Bark Bark Bark`,
+        author: `Pluto`,
+        date: Date.now,
+        rating: 5.0
+      },
+    ]
   }
 ];
