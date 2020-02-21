@@ -1,8 +1,11 @@
+import {Tabs, Tab, MoviesList} from "@components";
 import {convertScoreToText} from "@utils";
+import {movies} from "@mocks";
 
 const MovieDetails = (props) => {
   const {movie} = props;
-  const {title, genre, year, cover, poster, rating, description, director, actors} = movie;
+  const {title, genre, year, cover, poster, rating,
+    description, director, actors, reviews, duration} = movie;
   const {score: ratingScore, count: ratingCount} = rating;
 
   return (
@@ -65,35 +68,70 @@ const MovieDetails = (props) => {
               alt={title} width="218" height="327" />
           </div>
 
-          <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list">
-                <li className="movie-nav__item movie-nav__item--active">
-                  <a href="#" className="movie-nav__link">Overview</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Details</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Reviews</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div className="movie-rating">
-              <div className="movie-rating__score">{ratingScore}</div>
-              <p className="movie-rating__meta">
-                <span className="movie-rating__level">{convertScoreToText(ratingScore)}</span>
-                <span className="movie-rating__count">{ratingCount} ratings</span>
-              </p>
-            </div>
-
-            <div className="movie-card__text">
-              <p>{description}</p>
-              <p className="movie-card__director"><strong>Director: {director}</strong></p>
-              <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
-            </div>
-          </div>
+          <Tabs tabs={[`Overview`, `Details`, `Reviews`]}>
+            <Tab>
+              <div className="movie-rating">
+                <div className="movie-rating__score">{ratingScore}</div>
+                <p className="movie-rating__meta">
+                  <span className="movie-rating__level">{convertScoreToText(ratingScore)}</span>
+                  <span className="movie-rating__count">{ratingCount} ratings</span>
+                </p>
+              </div>
+              <div className="movie-card__text">
+                <p>{description}</p>
+                <p className="movie-card__director"><strong>Director: {director}</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
+              </div>
+            </Tab>
+            <Tab>
+              <div className="movie-card__text movie-card__row">
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Director</strong>
+                    <span className="movie-card__details-value">{director}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Starring</strong>
+                    <span className="movie-card__details-value">
+                      {actors.map((actor) => <>{actor}, <br/></>)}
+                    </span>
+                  </p>
+                </div>
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Run Time</strong>
+                    <span className="movie-card__details-value">{duration}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Genre</strong>
+                    <span className="movie-card__details-value">{genre}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Released</strong>
+                    <span className="movie-card__details-value">{year}</span>
+                  </p>
+                </div>
+              </div>
+            </Tab>
+            <Tab>
+              <div className="movie-card__reviews movie-card__row">
+                <div className="movie-card__reviews-col">
+                  {reviews.map((review) => (
+                    <div className="review" key={review.id}>
+                      <blockquote className="review__quote">
+                        <p className="review__text">{review.text}</p>
+                        <footer className="review__details">
+                          <cite className="review__author">{review.author}</cite>
+                          <time className="review__date" dateTime={review.date}>{review.date}</time>
+                        </footer>
+                      </blockquote>
+                      <div className="review__rating">{review.rating}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Tab>
+          </Tabs>
         </div>
       </div>
     </section>
@@ -101,47 +139,7 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-
-        <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">
-                  Fantastic Beasts: The Crimes of Grindelwald
-              </a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-            </h3>
-          </article>
-        </div>
+        <MoviesList movies={movies.slice(0, 4)} onMovieClick={() => {}} />
       </section>
       <footer className="page-footer">
         <div className="logo">
@@ -166,6 +164,7 @@ MovieDetails.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
+    duration: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -174,7 +173,14 @@ MovieDetails.propTypes = {
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired
-    }).isRequired
+    }).isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+      rating: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired
 };
 
