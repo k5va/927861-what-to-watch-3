@@ -27,7 +27,7 @@ exports[`MoviesList should render correctly 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Die hard 1
+        Die hard
       </a>
     </h3>
   </article>

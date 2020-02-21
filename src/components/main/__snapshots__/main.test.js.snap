@@ -280,7 +280,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Die hard 1
+              Die hard
             </a>
           </h3>
         </article>
