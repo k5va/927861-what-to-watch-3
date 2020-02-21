@@ -1,11 +1,9 @@
-const DEFAULT_ACTIVE_TAB = 0;
-
 class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: DEFAULT_ACTIVE_TAB
+      activeTab: Tabs.DEFAULT_ACTIVE_TAB
     };
   }
 
@@ -36,6 +34,8 @@ class Tabs extends React.PureComponent {
     );
   }
 }
+
+Tabs.DEFAULT_ACTIVE_TAB = 0;
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
