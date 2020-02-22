@@ -1,15 +1,9 @@
-class Tabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
+import {withActiveTab} from "@hocs";
 
-    this.state = {
-      activeTab: Tabs.DEFAULT_ACTIVE_TAB
-    };
-  }
+class Tabs extends React.PureComponent {
 
   render() {
-    const {children, tabs} = this.props;
-    const {activeTab} = this.state;
+    const {children, tabs, activeTab, onActiveTabChange} = this.props;
 
     return (
       <div className="movie-card__desc">
@@ -21,7 +15,7 @@ class Tabs extends React.PureComponent {
                 className={`movie-nav__item ${i === activeTab ? `movie-nav__item--active` : ``}`}
                 onClick={(evt) => {
                   evt.preventDefault();
-                  this.setState({activeTab: i});
+                  onActiveTabChange(i);
                 }}
               >
                 <a href="#" className="movie-nav__link">{tab}</a>
@@ -35,10 +29,10 @@ class Tabs extends React.PureComponent {
   }
 }
 
-Tabs.DEFAULT_ACTIVE_TAB = 0;
-
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activeTab: PropTypes.number.isRequired,
+  onActiveTabChange: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node.isRequired
@@ -46,4 +40,4 @@ Tabs.propTypes = {
 };
 
 
-export default Tabs;
+export default withActiveTab(Tabs);

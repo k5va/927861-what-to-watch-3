@@ -1,8 +1,4 @@
-const Tab = (props) => {
-  const {children} = props;
-
-  return children;
-};
+const Tab = (props) => props.children;
 
 Tab.propTypes = {
   children: PropTypes.oneOfType([
