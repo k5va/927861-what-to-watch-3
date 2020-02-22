@@ -1,6 +1,7 @@
 const Tab = (props) => props.children;
 
 Tab.propTypes = {
+  name: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node.isRequired

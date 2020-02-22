@@ -69,8 +69,8 @@ const MovieDetails = (props) => {
               alt={title} width="218" height="327" />
           </div>
 
-          <Tabs tabs={MovieDetails.TAB_NAMES}>
-            <Tab>
+          <Tabs>
+            <Tab name="Overview">
               <div className="movie-rating">
                 <div className="movie-rating__score">{ratingScore}</div>
                 <p className="movie-rating__meta">
@@ -84,7 +84,7 @@ const MovieDetails = (props) => {
                 <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
               </div>
             </Tab>
-            <Tab>
+            <Tab name="Details">
               <div className="movie-card__text movie-card__row">
                 <div className="movie-card__text-col">
                   <p className="movie-card__details-item">
@@ -116,7 +116,7 @@ const MovieDetails = (props) => {
                 </div>
               </div>
             </Tab>
-            <Tab>
+            <Tab name="Reviews">
               <div className="movie-card__reviews movie-card__row">
                 <div className="movie-card__reviews-col">
                   {reviews.map((review) => (
