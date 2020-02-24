@@ -1,4 +1,4 @@
-import {MovieCard} from "@components";
+import {MovieCard} from "./movie-card";
 import {generateId} from "@utils";
 
 const HANDLE_HOVER_CALL_COUNT = 1;

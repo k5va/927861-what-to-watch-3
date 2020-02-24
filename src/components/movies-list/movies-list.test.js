@@ -1,5 +1,8 @@
-import {MoviesList} from "@components";
+import {MoviesList} from "./movies-list";
 import {generateId} from "@utils";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "../../reducer";
 
 const movies = [
   {
@@ -141,14 +144,18 @@ const movies = [
 
 const handleMovieClick = () => {};
 
+const store = createStore(reducer);
+
 it(`MoviesList should render correctly`, () => {
-  const renderedTree = renderer
+  const wrapper = renderer
     .create(
-        <MoviesList movies={movies} onMovieClick={handleMovieClick} />,
+        <Provider store={store}>
+          <MoviesList movies={movies} onMovieClick={handleMovieClick} />
+        </Provider>,
         {
           createNodeMock: () => ({})
         }
     )
     .toJSON();
-  expect(renderedTree).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

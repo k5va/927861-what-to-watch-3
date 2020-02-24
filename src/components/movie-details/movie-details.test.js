@@ -1,5 +1,9 @@
 import {MovieDetails} from "@components";
 import {generateId} from "@utils";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "../../reducer";
+
 
 const movie = {
   id: generateId(),
@@ -47,10 +51,14 @@ const movie = {
   ]
 };
 
+const store = createStore(reducer);
+
 it(`MovieDetails should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MovieDetails movie={movie} />,
+        <Provider store={store}>
+          <MovieDetails movie={movie} />
+        </Provider>,
         {
           createNodeMock: () => ({})
         })
