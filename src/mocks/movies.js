@@ -49,7 +49,7 @@ export const movies = [
   {
     id: generateId(),
     title: `Die hard 2`,
-    genre: `Drama`,
+    genre: `Comedy`,
     year: 2019,
     duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -94,7 +94,7 @@ export const movies = [
   {
     id: generateId(),
     title: `Die hard 3`,
-    genre: `Drama`,
+    genre: `Action`,
     year: 2019,
     duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -139,7 +139,7 @@ export const movies = [
   {
     id: generateId(),
     title: `Die hard 4`,
-    genre: `Drama`,
+    genre: `Thriller`,
     year: 2019,
     duration: 123,
     cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
