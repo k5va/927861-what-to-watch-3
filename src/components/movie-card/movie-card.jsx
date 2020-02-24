@@ -1,6 +1,6 @@
 import {VideoPlayer} from "@components";
-
-const VIDEO_PLAY_DELAY = 1000;
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer";
 
 class MovieCard extends React.PureComponent {
   constructor(props) {
@@ -52,7 +52,7 @@ class MovieCard extends React.PureComponent {
       if (this._isHovered) {
         this.setState({isPlaying: true});
       }
-    }, VIDEO_PLAY_DELAY);
+    }, MovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
@@ -60,6 +60,8 @@ class MovieCard extends React.PureComponent {
     this.setState({isPlaying: false});
   }
 }
+
+MovieCard.VIDEO_PLAY_DELAY = 1000;
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -71,4 +73,14 @@ MovieCard.propTypes = {
   onHover: PropTypes.func.isRequired
 };
 
-export default MovieCard;
+const mapStateToProps = () => ({
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick(movie) {
+    dispatch(ActionCreator.selectMovie(movie));
+  }
+});
+
+export {MovieCard};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

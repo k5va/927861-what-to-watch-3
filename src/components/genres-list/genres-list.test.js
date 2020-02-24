@@ -1,8 +1,5 @@
-import {MoviesList} from "./movies-list";
+import {GenresList} from "./genres-list";
 import {generateId} from "@utils";
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import {reducer} from "../../reducer";
 
 const movies = [
   {
@@ -142,16 +139,14 @@ const movies = [
   }
 ];
 
-const handleMovieClick = () => {};
+const selectedGenre = `Drama`;
 
-const store = createStore(reducer);
+const onGenreSelect = () => { };
 
-it(`MoviesList should render correctly`, () => {
+it(`GenresList should render correctly`, () => {
   const wrapper = renderer
     .create(
-        <Provider store={store}>
-          <MoviesList movies={movies} onMovieClick={handleMovieClick} />
-        </Provider>,
+        <GenresList movies={movies} selectedGenre={selectedGenre} onGenreSelect={onGenreSelect} />,
         {
           createNodeMock: () => ({})
         }
