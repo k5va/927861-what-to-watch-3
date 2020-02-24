@@ -1,14 +1,8 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails} from "@components";
+import {connect} from "react-redux";
 
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedMovie: null
-    };
-  }
 
   render() {
     const {promoMovie} = this.props;
@@ -28,20 +22,15 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    const {promoMovie, movies} = this.props;
-    const {selectedMovie} = this.state;
+    const {promoMovie, selectedMovie} = this.props;
 
     if (selectedMovie) {
-      return <MovieDetails movie={this.state.selectedMovie} />;
+      return <MovieDetails movie={selectedMovie} />;
     }
 
     return (
       <Main
         promoMovie={promoMovie}
-        movies={movies}
-        onMovieClick={(movie) => {
-          this.setState({selectedMovie: movie});
-        }}
       />
     );
   }
@@ -49,14 +38,25 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   promoMovie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired
   }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
+  selectedMovie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  })).isRequired
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired
+  })
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  selectedMovie: state.selectedMovie
+});
+
+const mapDispatchToProps = () => ({
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

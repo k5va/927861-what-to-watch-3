@@ -1,4 +1,5 @@
 import {MovieCard} from "@components";
+import {connect} from "react-redux";
 
 class MoviesList extends React.PureComponent {
   constructor(props) {
@@ -12,7 +13,7 @@ class MoviesList extends React.PureComponent {
   }
 
   render() {
-    const {movies, onMovieClick} = this.props;
+    const {movies} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -20,7 +21,6 @@ class MoviesList extends React.PureComponent {
           key={movie.id}
           movie={movie}
           onHover={this._handleMovieCardHover}
-          onClick={onMovieClick}
         />)}
       </div>
     );
@@ -38,8 +38,15 @@ MoviesList.propTypes = {
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired
       })
-  ).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  ).isRequired
 };
 
-export default MoviesList;
+const mapStateToProps = (state) => ({
+  movies: state.filteredMovies
+});
+
+const mapDispatchToProps = () => ({
+});
+
+export {MoviesList};
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
