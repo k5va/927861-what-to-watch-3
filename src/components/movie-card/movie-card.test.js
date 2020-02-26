@@ -1,5 +1,8 @@
-import MovieCard from "./movie-card";
+import {MovieCard} from "@components";
 import {generateId} from "@utils";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "@store";
 
 const movie = {
   id: generateId(),
@@ -24,13 +27,16 @@ const movie = {
   }
 };
 
-const handleMovieClick = () => {};
 const handleHover = () => {};
+
+const store = createStore(reducer);
 
 it(`MovieCard should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />,
+        <Provider store={store}>
+          <MovieCard movie={movie} onHover={handleHover} />
+        </Provider>,
         {
           createNodeMock: () => ({})
         }
