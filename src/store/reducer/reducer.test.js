@@ -62,13 +62,11 @@ it(`Reducer should change genre`, () => {
   const initialState = {
     selectedGenre: Genre.ALL,
     movies,
-    filteredMovies: [...movies],
     selectedMovie: null
   };
   const targetState = {
     selectedGenre: `Comedy`,
     movies,
-    filteredMovies: [...movies],
     selectedMovie: null
   };
 
@@ -76,35 +74,15 @@ it(`Reducer should change genre`, () => {
     .toEqual(targetState);
 });
 
-it(`Reducer should filter movies by genre`, () => {
-  const initialState = {
-    selectedGenre: `Comedy`,
-    movies,
-    filteredMovies: [...movies],
-    selectedMovie: null
-  };
-  const targetState = {
-    selectedGenre: `Comedy`,
-    movies,
-    filteredMovies: movies.filter(({genre}) => genre === `Comedy`),
-    selectedMovie: null
-  };
-
-  expect(reducer(initialState, ActionCreator.filterMoviesByGenre()))
-    .toEqual(targetState);
-});
-
 it(`Reducer should select movie`, () => {
   const initialState = {
     selectedGenre: Genre.ALL,
     movies,
-    filteredMovies: [...movies],
     selectedMovie: null
   };
   const targetState = {
     selectedGenre: Genre.ALL,
     movies,
-    filteredMovies: [...movies],
     selectedMovie: movies[0]
   };
 
