@@ -59,7 +59,6 @@ const mockEvent = {
 const store = createStore(reducer);
 
 it(`Should movies title be clicked`, () => {
-  // TODO: is it correct way for testing?
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const mainScreen = mount(
       <Provider store={store}>

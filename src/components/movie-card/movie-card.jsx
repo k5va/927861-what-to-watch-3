@@ -1,6 +1,4 @@
 import {VideoPlayer} from "@components";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer";
 
 class MovieCard extends React.PureComponent {
   constructor(props) {
@@ -73,14 +71,4 @@ MovieCard.propTypes = {
   onHover: PropTypes.func.isRequired
 };
 
-const mapStateToProps = () => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onClick(movie) {
-    dispatch(ActionCreator.selectMovie(movie));
-  }
-});
-
-export {MovieCard};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+export default MovieCard;

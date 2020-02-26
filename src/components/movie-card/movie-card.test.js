@@ -1,4 +1,4 @@
-import {MovieCard} from "./movie-card";
+import MovieCard from "./movie-card";
 import {generateId} from "@utils";
 
 const movie = {

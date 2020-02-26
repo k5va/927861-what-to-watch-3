@@ -1,4 +1,4 @@
-import {App} from "./app";
+import {App} from "@components";
 import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
@@ -51,7 +51,6 @@ const promoMovie = {
 };
 
 const selectedMovie = promoMovie;
-// TODO: is it correct to use redux in tests?
 const store = createStore(reducer);
 
 it(`App should render correctly`, () => {

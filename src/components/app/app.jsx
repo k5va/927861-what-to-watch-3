@@ -1,6 +1,5 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails} from "@components";
-import {connect} from "react-redux";
 
 class App extends React.PureComponent {
 
@@ -51,12 +50,4 @@ App.propTypes = {
   })
 };
 
-const mapStateToProps = (state) => ({
-  selectedMovie: state.selectedMovie
-});
-
-const mapDispatchToProps = () => ({
-});
-
-export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

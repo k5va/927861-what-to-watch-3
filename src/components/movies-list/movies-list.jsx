@@ -1,5 +1,4 @@
 import {MovieCard} from "@components";
-import {connect} from "react-redux";
 
 class MoviesList extends React.PureComponent {
   constructor(props) {
@@ -41,12 +40,4 @@ MoviesList.propTypes = {
   ).isRequired
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.filteredMovies
-});
-
-const mapDispatchToProps = () => ({
-});
-
-export {MoviesList};
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
+export default MoviesList;
