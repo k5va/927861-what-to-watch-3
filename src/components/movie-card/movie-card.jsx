@@ -44,9 +44,15 @@ class MovieCard extends React.PureComponent {
     );
   }
 
+  componentWillUnmount() {
+    if (this._timerId) {
+      clearTimeout(this._timerId);
+    }
+  }
+
   _handleMouseEnter() {
     this._isHovered = true;
-    setTimeout(() => {
+    this._timerId = setTimeout(() => {
       if (this._isHovered) {
         this.setState({isPlaying: true});
       }
