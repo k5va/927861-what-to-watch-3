@@ -7,7 +7,7 @@ const MovieDetails = (props) => {
   const {movie} = props;
   const {title, genre, year, cover, poster, rating,
     description, director, actors, reviews, duration} = movie;
-  const {score: ratingScore, count: ratingCount} = rating;
+  const {score, count: ratingCount} = rating;
 
   return (
     <>
@@ -72,9 +72,9 @@ const MovieDetails = (props) => {
           <Tabs>
             <Tab name="Overview">
               <div className="movie-rating">
-                <div className="movie-rating__score">{ratingScore}</div>
+                <div className="movie-rating__score">{score}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{convertScoreToText(ratingScore)}</span>
+                  <span className="movie-rating__level">{convertScoreToText(score)}</span>
                   <span className="movie-rating__count">{ratingCount} ratings</span>
                 </p>
               </div>
