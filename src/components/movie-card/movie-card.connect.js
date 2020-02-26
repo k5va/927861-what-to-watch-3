@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "@store";
 import MovieCard from "./movie-card";
 
 const mapStateToProps = () => ({

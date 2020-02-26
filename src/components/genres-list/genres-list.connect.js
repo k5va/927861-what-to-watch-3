@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "@store";
 import GenresList from "./genres-list";
 
 const mapStateToProps = (state) => ({

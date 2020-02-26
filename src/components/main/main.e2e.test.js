@@ -2,7 +2,7 @@ import {Main} from "@components";
 import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "../../reducer";
+import {reducer, ActionCreator} from "@store";
 
 const MOVIES_IN_STORE_COUNT = 8;
 
