@@ -1,7 +1,5 @@
 import {Tabs, Tab, MoviesList} from "@components";
-import {convertScoreToText, getSimilarMovies} from "@utils";
-
-const MAX_SIMILAR_MOVIES_NUMBER = 4;
+import {convertScoreToText} from "@utils";
 
 const MovieDetails = (props) => {
   const {movie} = props;
@@ -142,7 +140,7 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList movies={getSimilarMovies(movie, MAX_SIMILAR_MOVIES_NUMBER)} onMovieClick={() => {}} />
+        <MoviesList />
       </section>
       <footer className="page-footer">
         <div className="logo">
