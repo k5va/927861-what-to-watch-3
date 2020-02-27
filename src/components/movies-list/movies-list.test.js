@@ -1,8 +1,8 @@
-import {MoviesList} from "./movies-list";
+import {MoviesList} from "@components";
 import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "../../reducer";
+import {reducer} from "@store";
 
 const movies = [
   {

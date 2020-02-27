@@ -1,5 +1,8 @@
-import {MovieCard} from "./movie-card";
+import {MovieCard} from "@components";
 import {generateId} from "@utils";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer, ActionCreator} from "@store";
 
 const HANDLE_HOVER_CALL_COUNT = 1;
 const HANDLE_CLICK_CALL_COUNT = 1;
@@ -31,12 +34,15 @@ const mockEvent = {
   preventDefault() {},
 };
 
+const store = createStore(reducer);
+
 it(`Card hover passes movie object to callback`, () => {
   const handleHover = jest.fn();
-  const handleMovieClick = () => {};
 
-  const screen = shallow(
-      <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />
+  const screen = mount(
+      <Provider store={store}>
+        <MovieCard movie={movie} onHover={handleHover} />
+      </Provider>
   );
 
   const movieCard = screen.find(`.small-movie-card`);
@@ -46,17 +52,19 @@ it(`Card hover passes movie object to callback`, () => {
   expect(handleHover.mock.calls[0][0]).toMatchObject(movie);
 });
 
-it(`Movie title or image click passes movie object to callback`, () => {
+it(`Movie click passes movie object to callback`, () => {
   const handleHover = () => {};
-  const handleMovieClick = jest.fn();
+  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
 
-  const screen = shallow(
-      <MovieCard movie={movie} onHover={handleHover} onClick={handleMovieClick} />
+  const screen = mount(
+      <Provider store={store}>
+        <MovieCard movie={movie} onHover={handleHover} />
+      </Provider>
   );
 
   const movieImage = screen.find(`.small-movie-card`);
   movieImage.simulate(`click`, mockEvent);
 
-  expect(handleMovieClick).toHaveBeenCalledTimes(HANDLE_CLICK_CALL_COUNT);
-  expect(handleMovieClick.mock.calls[0][0]).toMatchObject(movie);
+  expect(ActionCreator.selectMovie).toHaveBeenCalledTimes(HANDLE_CLICK_CALL_COUNT);
+  expect(ActionCreator.selectMovie.mock.calls[0][0]).toMatchObject(movie);
 });

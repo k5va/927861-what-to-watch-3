@@ -1,4 +1,4 @@
-import {GenresList} from "./genres-list";
+import GenresList from "./genres-list";
 import {generateId} from "@utils";
 
 const movies = [

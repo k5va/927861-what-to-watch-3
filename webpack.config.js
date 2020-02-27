@@ -32,6 +32,7 @@ module.exports = {
       "@consts": path.resolve(__dirname, `./src/consts/`),
       "@hocs": path.resolve(__dirname, `./src/hocs/`),
       "@utils": path.resolve(__dirname, `./src/utils/`),
+      "@store": path.resolve(__dirname, `./src/store/`),
       "@mocks": path.resolve(__dirname, `./src/mocks/`)
     }
   },

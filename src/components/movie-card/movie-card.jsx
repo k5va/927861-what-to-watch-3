@@ -1,6 +1,4 @@
 import {VideoPlayer} from "@components";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer";
 
 class MovieCard extends React.PureComponent {
   constructor(props) {
@@ -46,9 +44,15 @@ class MovieCard extends React.PureComponent {
     );
   }
 
+  componentWillUnmount() {
+    if (this._timerId) {
+      clearTimeout(this._timerId);
+    }
+  }
+
   _handleMouseEnter() {
     this._isHovered = true;
-    setTimeout(() => {
+    this._timerId = setTimeout(() => {
       if (this._isHovered) {
         this.setState({isPlaying: true});
       }
@@ -73,14 +77,4 @@ MovieCard.propTypes = {
   onHover: PropTypes.func.isRequired
 };
 
-const mapStateToProps = () => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onClick(movie) {
-    dispatch(ActionCreator.selectMovie(movie));
-  }
-});
-
-export {MovieCard};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+export default MovieCard;

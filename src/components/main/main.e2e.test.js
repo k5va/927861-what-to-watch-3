@@ -2,7 +2,7 @@ import {Main} from "@components";
 import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "../../reducer";
+import {reducer, ActionCreator} from "@store";
 
 const MOVIES_IN_STORE_COUNT = 8;
 
@@ -59,7 +59,6 @@ const mockEvent = {
 const store = createStore(reducer);
 
 it(`Should movies title be clicked`, () => {
-  // TODO: is it correct way for testing?
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const mainScreen = mount(
       <Provider store={store}>
