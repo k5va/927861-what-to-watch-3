@@ -7,3 +7,4 @@ export {default as VideoPlayer} from "./video-player/video-player";
 export {default as Tabs} from "./tabs/tabs";
 export {default as Tab} from "./tab/tab";
 export {default as GenresList} from "./genres-list/genres-list.connect";
+export {default as ShowMore} from "./show-more/show-more.connect";
