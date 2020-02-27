@@ -10,4 +10,9 @@ const ShowMore = (props) => {
   );
 };
 
+ShowMore.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
 export default ShowMore;
