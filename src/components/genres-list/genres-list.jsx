@@ -1,9 +1,7 @@
 import {Genre} from "@consts";
-import {getUniqueGenres} from "@utils";
 
 const GenresList = (props) => {
-  const {movies, selectedGenre, onGenreSelect} = props;
-  const genres = getUniqueGenres(movies);
+  const {genres, selectedGenre, onGenreSelect} = props;
 
   const handleGenreClick = (evt, genre) => {
     evt.preventDefault();
@@ -34,12 +32,7 @@ const GenresList = (props) => {
 };
 
 GenresList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
-      })
-  ).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedGenre: PropTypes.string.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };

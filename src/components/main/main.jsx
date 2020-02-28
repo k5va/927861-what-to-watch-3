@@ -1,4 +1,4 @@
-import {MoviesList, GenresList} from "@components";
+import {MoviesList, GenresList, ShowMore} from "@components";
 
 const Main = ({promoMovie}) => {
   const {title, genre, year, cover, poster} = promoMovie;
@@ -65,10 +65,7 @@ const Main = ({promoMovie}) => {
 
           <GenresList />
           <MoviesList />
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMore />
         </section>
 
         <footer className="page-footer">
