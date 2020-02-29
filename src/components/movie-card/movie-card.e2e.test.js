@@ -4,7 +4,6 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer, ActionCreator} from "@store";
 
-const HANDLE_HOVER_CALL_COUNT = 1;
 const HANDLE_CLICK_CALL_COUNT = 1;
 
 const movie = {
