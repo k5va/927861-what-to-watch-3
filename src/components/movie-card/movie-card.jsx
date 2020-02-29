@@ -1,18 +1,10 @@
 import {VideoPlayer} from "@components";
+import {withActiveState} from "@hocs";
 
 class MovieCard extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlaying: false
-    };
-  }
-
   render() {
-    const {movie, onClick} = this.props;
+    const {movie, onClick, isActive} = this.props;
     const {title, cover, src} = movie;
-    const {isPlaying} = this.state;
 
     return (
       <article
@@ -25,7 +17,7 @@ class MovieCard extends React.PureComponent {
           <VideoPlayer
             src={src}
             poster={cover}
-            isPlaying={isPlaying}
+            isPlaying={isActive}
           />
         </div>
         <h3 className="small-movie-card__title">
@@ -41,19 +33,24 @@ class MovieCard extends React.PureComponent {
     );
   }
 
+  // TODO: How to make this component functional with componentWillUnmount?
   componentWillUnmount() {
     this._clearTimer();
   }
 
   _handleMouseEnter() {
+    const {onActiveChange} = this.props;
+
     this._timerId = setTimeout(() => {
-      this.setState({isPlaying: true});
+      onActiveChange(true);
     }, MovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
+    const {onActiveChange} = this.props;
+
     this._clearTimer();
-    this.setState({isPlaying: false});
+    onActiveChange(false);
   }
 
   _clearTimer() {
@@ -71,7 +68,9 @@ MovieCard.propTypes = {
     cover: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onActiveChange: PropTypes.func.isRequired
 };
 
-export default MovieCard;
+export default withActiveState(MovieCard);
