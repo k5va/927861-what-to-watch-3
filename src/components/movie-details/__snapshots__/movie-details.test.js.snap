@@ -274,7 +274,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -301,7 +300,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -328,7 +326,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -355,7 +352,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -382,7 +378,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -409,7 +404,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -436,7 +430,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -463,7 +456,6 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
