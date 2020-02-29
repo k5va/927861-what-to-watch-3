@@ -4,7 +4,7 @@ import GenresList from "./genres-list";
 import getUniqueGenres from "./selectors/get-unique-genres";
 
 const mapStateToProps = ({movies, selectedGenre}) => ({
-  genres: getUniqueGenres(movies),
+  genres: getUniqueGenres(movies), // TODO: How to prevent GenresList from extra rerendering?
   selectedGenre
 });
 
