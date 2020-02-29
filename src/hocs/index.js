@@ -1,1 +1,1 @@
-export {default as withActiveTab} from "./with-active-tab/with-active-tab";
+export {default as withActiveItem} from "./with-active-item/with-active-item";

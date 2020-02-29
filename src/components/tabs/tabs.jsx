@@ -1,7 +1,7 @@
-import {withActiveTab} from "@hocs";
+import {withActiveItem} from "@hocs";
 
 const Tabs = (props) => {
-  const {children, activeTab, onActiveTabChange} = props;
+  const {children, activeItem, onActiveItemChange} = props;
   return (
     <div className="movie-card__desc">
       <nav className="movie-nav movie-card__nav">
@@ -9,10 +9,10 @@ const Tabs = (props) => {
           {children.map((tab, i) => (
             <li
               key={tab.props.name + i}
-              className={`movie-nav__item ${i === activeTab ? `movie-nav__item--active` : ``}`}
+              className={`movie-nav__item ${i === activeItem ? `movie-nav__item--active` : ``}`}
               onClick={(evt) => {
                 evt.preventDefault();
-                onActiveTabChange(i);
+                onActiveItemChange(i);
               }}
             >
               <a href="#" className="movie-nav__link">{tab.props.name}</a>
@@ -20,14 +20,14 @@ const Tabs = (props) => {
           ))}
         </ul>
       </nav>
-      {children[activeTab]}
+      {children[activeItem]}
     </div>
   );
 };
 
 Tabs.propTypes = {
-  activeTab: PropTypes.number.isRequired,
-  onActiveTabChange: PropTypes.func.isRequired,
+  activeItem: PropTypes.number.isRequired,
+  onActiveItemChange: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node.isRequired
@@ -35,4 +35,4 @@ Tabs.propTypes = {
 };
 
 
-export default withActiveTab(Tabs);
+export default withActiveItem(Tabs);
