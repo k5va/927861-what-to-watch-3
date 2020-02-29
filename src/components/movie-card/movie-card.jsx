@@ -13,13 +13,11 @@ class MovieCard extends React.PureComponent {
         onMouseEnter={() => this._handleMouseEnter()}
         onMouseLeave={() => this._handleMouseLeave()}
       >
-        <div className="small-movie-card__image">
-          <VideoPlayer
-            src={src}
-            poster={cover}
-            isPlaying={isActive}
-          />
-        </div>
+        <VideoPlayer
+          src={src}
+          poster={cover}
+          isPlaying={isActive}
+        />
         <h3 className="small-movie-card__title">
           <a
             className="small-movie-card__link"

@@ -1,6 +1,10 @@
 import {withVideo} from "@hocs";
 
-const VideoPlayer = (props) => props.children;
+const VideoPlayer = (props) => (
+  <div className="small-movie-card__image">
+    {props.children}
+  </div>
+);
 
 VideoPlayer.propTypes = {
   children: PropTypes.oneOfType([
