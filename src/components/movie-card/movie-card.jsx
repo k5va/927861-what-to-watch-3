@@ -7,8 +7,6 @@ class MovieCard extends React.PureComponent {
     this.state = {
       isPlaying: false
     };
-
-    this._isHovered = false;
   }
 
   render() {
@@ -45,23 +43,24 @@ class MovieCard extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    if (this._timerId) {
-      clearTimeout(this._timerId);
-    }
+    this._clearTimer();
   }
 
   _handleMouseEnter() {
-    this._isHovered = true;
     this._timerId = setTimeout(() => {
-      if (this._isHovered) {
-        this.setState({isPlaying: true});
-      }
+      this.setState({isPlaying: true});
     }, MovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
-    this._isHovered = false;
+    this._clearTimer();
     this.setState({isPlaying: false});
+  }
+
+  _clearTimer() {
+    if (this._timerId) {
+      clearTimeout(this._timerId);
+    }
   }
 }
 
