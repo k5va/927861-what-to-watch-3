@@ -1,19 +1,17 @@
 import {MovieCard} from "@components";
 
-class MoviesList extends React.PureComponent {
-  render() {
-    const {movies} = this.props;
+const MoviesList = (props) => {
+  const {movies} = props;
 
-    return (
-      <div className="catalog__movies-list">
-        {movies.map((movie) => <MovieCard
-          key={movie.id}
-          movie={movie}
-        />)}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie) => <MovieCard
+        key={movie.id}
+        movie={movie}
+      />)}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
