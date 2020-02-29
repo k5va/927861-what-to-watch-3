@@ -10,14 +10,13 @@ class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {movie, onHover, onClick} = this.props;
+    const {movie, onClick} = this.props;
     const {title, cover, src} = movie;
     const {isPlaying} = this.state;
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseOver={() => onHover(movie)}
         onClick={() => onClick(movie)}
         onMouseEnter={() => this._handleMouseEnter()}
         onMouseLeave={() => this._handleMouseLeave()}
@@ -72,8 +71,7 @@ MovieCard.propTypes = {
     cover: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
-  onHover: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default MovieCard;

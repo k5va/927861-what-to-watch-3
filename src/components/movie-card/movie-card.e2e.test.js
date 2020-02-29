@@ -36,29 +36,12 @@ const mockEvent = {
 
 const store = createStore(reducer);
 
-it(`Card hover passes movie object to callback`, () => {
-  const handleHover = jest.fn();
-
-  const screen = mount(
-      <Provider store={store}>
-        <MovieCard movie={movie} onHover={handleHover} />
-      </Provider>
-  );
-
-  const movieCard = screen.find(`.small-movie-card`);
-  movieCard.simulate(`mouseover`, mockEvent);
-
-  expect(handleHover).toHaveBeenCalledTimes(HANDLE_HOVER_CALL_COUNT);
-  expect(handleHover.mock.calls[0][0]).toMatchObject(movie);
-});
-
 it(`Movie click passes movie object to callback`, () => {
-  const handleHover = () => {};
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
 
   const screen = mount(
       <Provider store={store}>
-        <MovieCard movie={movie} onHover={handleHover} />
+        <MovieCard movie={movie} />
       </Provider>
   );
 
