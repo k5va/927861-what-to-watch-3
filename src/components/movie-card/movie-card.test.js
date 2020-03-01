@@ -27,15 +27,13 @@ const movie = {
   }
 };
 
-const handleHover = () => {};
-
 const store = createStore(reducer);
 
 it(`MovieCard should render correctly`, () => {
   const renderedTree = renderer
     .create(
         <Provider store={store}>
-          <MovieCard movie={movie} onHover={handleHover} />
+          <MovieCard movie={movie} />
         </Provider>,
         {
           createNodeMock: () => ({})

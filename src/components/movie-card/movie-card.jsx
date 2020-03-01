@@ -1,36 +1,23 @@
 import {VideoPlayer} from "@components";
+import {withActiveState} from "@hocs";
 
 class MovieCard extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlaying: false
-    };
-
-    this._isHovered = false;
-  }
-
   render() {
-    const {movie, onHover, onClick} = this.props;
+    const {movie, onClick, isActive} = this.props;
     const {title, cover, src} = movie;
-    const {isPlaying} = this.state;
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseOver={() => onHover(movie)}
         onClick={() => onClick(movie)}
         onMouseEnter={() => this._handleMouseEnter()}
         onMouseLeave={() => this._handleMouseLeave()}
       >
-        <div className="small-movie-card__image">
-          <VideoPlayer
-            src={src}
-            poster={cover}
-            isPlaying={isPlaying}
-          />
-        </div>
+        <VideoPlayer
+          src={src}
+          poster={cover}
+          isPlaying={isActive}
+        />
         <h3 className="small-movie-card__title">
           <a
             className="small-movie-card__link"
@@ -44,24 +31,30 @@ class MovieCard extends React.PureComponent {
     );
   }
 
+  // TODO: How to make this component functional with componentWillUnmount?
   componentWillUnmount() {
-    if (this._timerId) {
-      clearTimeout(this._timerId);
-    }
+    this._clearTimer();
   }
 
   _handleMouseEnter() {
-    this._isHovered = true;
+    const {onActiveChange} = this.props;
+
     this._timerId = setTimeout(() => {
-      if (this._isHovered) {
-        this.setState({isPlaying: true});
-      }
+      onActiveChange(true);
     }, MovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
-    this._isHovered = false;
-    this.setState({isPlaying: false});
+    const {onActiveChange} = this.props;
+
+    this._clearTimer();
+    onActiveChange(false);
+  }
+
+  _clearTimer() {
+    if (this._timerId) {
+      clearTimeout(this._timerId);
+    }
   }
 }
 
@@ -74,7 +67,8 @@ MovieCard.propTypes = {
     src: PropTypes.string.isRequired
   }).isRequired,
   onClick: PropTypes.func.isRequired,
-  onHover: PropTypes.func.isRequired
+  isActive: PropTypes.bool.isRequired,
+  onActiveChange: PropTypes.func.isRequired
 };
 
-export default MovieCard;
+export default withActiveState(MovieCard);

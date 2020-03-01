@@ -1,34 +1,17 @@
 import {MovieCard} from "@components";
 
-class MoviesList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const MoviesList = (props) => {
+  const {movies} = props;
 
-    this.state = {
-      activeCard: null
-    };
-
-    this._handleMovieCardHover = this._handleMovieCardHover.bind(this);
-  }
-
-  render() {
-    const {movies} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.map((movie) => <MovieCard
-          key={movie.id}
-          movie={movie}
-          onHover={this._handleMovieCardHover}
-        />)}
-      </div>
-    );
-  }
-
-  _handleMovieCardHover(movie) {
-    this.setState({activeCard: movie});
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie) => <MovieCard
+        key={movie.id}
+        movie={movie}
+      />)}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
