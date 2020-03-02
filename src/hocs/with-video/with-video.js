@@ -1,16 +1,19 @@
 export default (Component) => {
-  class WithVideo extends React.PureComponent {
+  class WithVideo extends React.Component {
     constructor(props) {
       super(props);
       const {isPlaying} = this.props;
 
       this.state = {
-        progress: 0,
-        isLoading: true,
-        isPlaying
+        time: 0,
+        isLoading: true
       };
 
+      this._isPlaying = isPlaying;
       this._videoRef = React.createRef();
+
+      this._handlePlay = this._handlePlay.bind(this);
+      this._handleFullScreen = this._handleFullScreen.bind(this);
     }
 
     componentDidMount() {
@@ -21,10 +24,16 @@ export default (Component) => {
       video.poster = poster;
       video.muted = true;
       video.oncanplaythrough = () => this.setState({isLoading: false});
-      video.onplay = () => this.setState({isPlaying: true});
-      video.onpause = () => this.setState({isPlaying: false});
-      video.onload = () => this.setState({isPlaying: false});
-      video.ontimeupdate = () => this.setState({progress: Math.floor(video.currentTime)});
+      video.onplay = () => {
+        this._isPlaying = true;
+      };
+      video.onpause = () => {
+        this._isPlaying = false;
+      };
+      video.onload = () => {
+        this._isPlaying = false;
+      };
+      video.ontimeupdate = () => this.setState({time: Math.floor(video.currentTime)});
     }
 
     componentWillUnmount() {
@@ -38,19 +47,42 @@ export default (Component) => {
       video.poster = ``;
     }
 
-    componentDidUpdate() {
-      const video = this._videoRef.current;
-      const {isPlaying} = this.props;
-
-      video[isPlaying ? `play` : `load`]();
+    componentDidUpdate(prevProps) {
+      if (prevProps.isPlaying !== this.props.isPlaying) {
+        this._handlePlay();
+      }
     }
 
     render() {
+      const {time} = this.state;
+      const {title, duration} = this.props;
+
       return (
-        <Component {...this.props}>
-          <video width="280" height="175" ref={this._videoRef} />
-        </Component>
+        <Component {...this.props}
+          videoRef={this._videoRef}
+          time={time}
+          title={title}
+          progress={Math.floor(100 * time / duration)}
+          onPlay={this._handlePlay}
+          onExit={this._handleExit}
+          onFullScreen={this._handleFullScreen}
+        />
       );
+    }
+
+    _handlePlay() {
+      const video = this._videoRef.current;
+      video[this._isPlaying ? `pause` : `play`]();
+    }
+
+    _handleFullScreen() {
+      const video = this._videoRef.current;
+
+      video.requestFullscreen();
+    }
+
+    _handleExit() {
+      // TODO: implement
     }
   }
 

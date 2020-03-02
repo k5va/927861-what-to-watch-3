@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails} from "@components";
+import {Main, MovieDetails, VideoPlayerFull} from "@components";
 
 class App extends React.PureComponent {
 
@@ -14,6 +14,15 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/dev-movie-details">
             <MovieDetails movie={promoMovie}/>
+          </Route>
+          <Route exact path="/dev-player">
+            <VideoPlayerFull
+              isPlaying={false}
+              title={`Die hard`}
+              src={`https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`}
+              duration={32}
+              poster={`img/bg-the-grand-budapest-hotel.jpg`}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
