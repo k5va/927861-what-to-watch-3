@@ -34,6 +34,10 @@ export default (Component) => {
         this._isPlaying = false;
       };
       video.ontimeupdate = () => this.setState({time: Math.floor(video.currentTime)});
+
+      if (this._isPlaying) {
+        video.play();
+      }
     }
 
     componentWillUnmount() {
