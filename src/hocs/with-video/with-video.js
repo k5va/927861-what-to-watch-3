@@ -55,16 +55,16 @@ export default (Component) => {
 
     render() {
       const {time} = this.state;
-      const {title, duration} = this.props;
+      const {title, onExit} = this.props;
 
       return (
         <Component {...this.props}
           videoRef={this._videoRef}
           time={time}
           title={title}
-          progress={Math.floor(100 * time / duration)}
+          progress={this._calculateProgress()}
           onPlay={this._handlePlay}
-          onExit={this._handleExit}
+          onExit={onExit}
           onFullScreen={this._handleFullScreen}
         />
       );
@@ -81,15 +81,21 @@ export default (Component) => {
       video.requestFullscreen();
     }
 
-    _handleExit() {
-      // TODO: implement
+    _calculateProgress() {
+      const {time} = this.state;
+      const {duration} = this.props;
+
+      return Math.floor(100 * time / duration);
     }
   }
 
   WithVideo.propTypes = {
+    title: PropTypes.string,
+    duration: PropTypes.number,
     src: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    isPlaying: PropTypes.bool.isRequired
+    isPlaying: PropTypes.bool.isRequired,
+    onExit: PropTypes.func
   };
 
   return WithVideo;
