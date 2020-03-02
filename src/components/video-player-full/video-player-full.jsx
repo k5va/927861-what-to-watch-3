@@ -32,8 +32,17 @@ const VideoPlayerFull = (props) => {
         </div>
       </div>
     </div>
-
   );
+};
+
+VideoPlayerFull.propTypes = {
+  videoRef: PropTypes.shape({current: PropTypes.instanceOf(HTMLMediaElement)}).isRequired,
+  title: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+  progress: PropTypes.number.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onFullScreen: PropTypes.func.isRequired,
+  onExit: PropTypes.func.isRequired
 };
 
 export default withVideo(VideoPlayerFull);
