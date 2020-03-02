@@ -1,8 +1,9 @@
 import {connect} from "react-redux";
 import App from "./app";
 
-const mapStateToProps = (state) => ({
-  selectedMovie: state.selectedMovie
+const mapStateToProps = ({gameScreen, selectedMovie}) => ({
+  gameScreen,
+  selectedMovie
 });
 
 const mapDispatchToProps = () => ({
