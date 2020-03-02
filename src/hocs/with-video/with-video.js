@@ -102,5 +102,9 @@ export default (Component) => {
     onExit: PropTypes.func
   };
 
+  WithVideo.defaultProps = {
+    isPlaying: true
+  };
+
   return WithVideo;
 };

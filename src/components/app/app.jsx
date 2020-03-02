@@ -29,7 +29,7 @@ class App extends React.PureComponent {
       case GameScreen.MOVIE_DETAILS:
         return <MovieDetails />;
       case GameScreen.VIDEO_PLAYER:
-        return <VideoPlayerFull isPlaying={false} />;
+        return <VideoPlayerFull />;
       case GameScreen.MAIN:
       default:
         return <Main />;
