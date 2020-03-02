@@ -1,6 +1,6 @@
 import {MoviesList, GenresList, ShowMore} from "@components";
 
-const Main = ({promoMovie}) => {
+const Main = ({promoMovie, onPlayMovie}) => {
   const {title, genre, year, cover, poster} = promoMovie;
   return (
     <>
@@ -41,7 +41,7 @@ const Main = ({promoMovie}) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -93,7 +93,8 @@ Main.propTypes = {
     year: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  onPlayMovie: PropTypes.func.isRequired
 };
 
 export default Main;
