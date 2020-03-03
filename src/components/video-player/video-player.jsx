@@ -7,7 +7,7 @@ const VideoPlayer = (props) => (
 );
 
 VideoPlayer.propTypes = {
-
+  videoRef: PropTypes.shape({current: PropTypes.instanceOf(HTMLMediaElement)}).isRequired
 };
 
 export default withVideo(VideoPlayer);
