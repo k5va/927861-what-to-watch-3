@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Main from "./main";
-import {ActionCreator } from "@store";
+import {ActionCreator} from "@store";
 import {GameScreen} from "@consts";
 
 const mapStateToProps = ({promoMovie}) => ({
