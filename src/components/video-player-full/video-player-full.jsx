@@ -1,7 +1,7 @@
 import {withVideo} from "@hocs";
 
 const VideoPlayerFull = (props) => {
-  const {videoRef, onPlay, onExit, onFullScreen, progress, time, title} = props;
+  const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
 
   return (
     <div className="player">
@@ -18,9 +18,9 @@ const VideoPlayerFull = (props) => {
         <div className="player__controls-row">
           <button type="button" className="player__play" onClick={onPlay}>
             <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
+              <use xlinkHref={isPlaying ? `#pause` : `#play-s`}></use>
             </svg>
-            <span>Play</span>
+            <span>{isPlaying ? `Pause` : `Play`}</span>
           </button>
           <div className="player__name">{title}</div>
           <button type="button" className="player__full-screen" onClick={onFullScreen}>
@@ -40,6 +40,7 @@ VideoPlayerFull.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
   progress: PropTypes.number.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onPlay: PropTypes.func.isRequired,
   onFullScreen: PropTypes.func.isRequired,
   onExit: PropTypes.func.isRequired
