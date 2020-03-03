@@ -6,10 +6,10 @@ export default (Component) => {
 
       this.state = {
         time: 0,
-        isLoading: true
+        isLoading: true,
+        isPlaying
       };
 
-      this._isPlaying = isPlaying;
       this._videoRef = React.createRef();
 
       this._handlePlay = this._handlePlay.bind(this);
@@ -17,7 +17,7 @@ export default (Component) => {
     }
 
     componentDidMount() {
-      const {src, poster} = this.props;
+      const {src, poster, isPlaying} = this.props;
       const video = this._videoRef.current;
 
       video.src = src;
@@ -25,17 +25,17 @@ export default (Component) => {
       video.muted = true;
       video.oncanplaythrough = () => this.setState({isLoading: false});
       video.onplay = () => {
-        this._isPlaying = true;
+        this.setState({isPlaying: true});
       };
       video.onpause = () => {
-        this._isPlaying = false;
+        this.setState({isPlaying: false});
       };
       video.onload = () => {
-        this._isPlaying = false;
+        this.setState({isPlaying: false});
       };
       video.ontimeupdate = () => this.setState({time: Math.floor(video.currentTime)});
 
-      if (this._isPlaying) {
+      if (isPlaying) {
         video.play();
       }
     }
@@ -58,7 +58,7 @@ export default (Component) => {
     }
 
     render() {
-      const {time} = this.state;
+      const {time, isPlaying} = this.state;
       const {title, onExit} = this.props;
 
       return (
@@ -67,6 +67,7 @@ export default (Component) => {
           time={time}
           title={title}
           progress={this._calculateProgress()}
+          isPlaying={isPlaying}
           onPlay={this._handlePlay}
           onExit={onExit}
           onFullScreen={this._handleFullScreen}
@@ -76,7 +77,7 @@ export default (Component) => {
 
     _handlePlay() {
       const video = this._videoRef.current;
-      video[this._isPlaying ? `pause` : `play`]();
+      video[this.state.isPlaying ? `pause` : `play`]();
     }
 
     _handleFullScreen() {
