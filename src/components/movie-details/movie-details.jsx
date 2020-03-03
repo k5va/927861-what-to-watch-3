@@ -2,7 +2,7 @@ import {Tabs, Tab, MoviesList} from "@components";
 import {convertScoreToText} from "@utils";
 
 const MovieDetails = (props) => {
-  const {movie} = props;
+  const {movie, onPlayMovie} = props;
   const {title, genre, year, cover, poster, rating,
     description, director, actors, reviews, duration} = movie;
   const {score, count: ratingCount} = rating;
@@ -42,7 +42,7 @@ const MovieDetails = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
+              <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -184,7 +184,8 @@ MovieDetails.propTypes = {
       date: PropTypes.instanceOf(Date).isRequired,
       rating: PropTypes.number.isRequired,
     })).isRequired,
-  }).isRequired
+  }).isRequired,
+  onPlayMovie: PropTypes.func.isRequired
 };
 
 export default MovieDetails;

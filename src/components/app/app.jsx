@@ -1,11 +1,10 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails} from "@components";
+import {Main, MovieDetails, VideoPlayerFull} from "@components";
+import {GameScreen} from "@consts";
 
 class App extends React.PureComponent {
 
   render() {
-    const {promoMovie} = this.props;
-
     return (
       <BrowserRouter>
         <Switch>
@@ -13,7 +12,10 @@ class App extends React.PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-movie-details">
-            <MovieDetails movie={promoMovie}/>
+            <MovieDetails />
+          </Route>
+          <Route exact path="/dev-player">
+            <VideoPlayerFull />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -21,27 +23,22 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    const {promoMovie, selectedMovie} = this.props;
+    const {gameScreen} = this.props;
 
-    if (selectedMovie) {
-      return <MovieDetails movie={selectedMovie} />;
+    switch (gameScreen) {
+      case GameScreen.MOVIE_DETAILS:
+        return <MovieDetails />;
+      case GameScreen.VIDEO_PLAYER:
+        return <VideoPlayerFull />;
+      case GameScreen.MAIN:
+      default:
+        return <Main />;
     }
-
-    return (
-      <Main
-        promoMovie={promoMovie}
-      />
-    );
   }
 }
 
 App.propTypes = {
-  promoMovie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  }).isRequired,
+  gameScreen: PropTypes.string.isRequired,
   selectedMovie: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

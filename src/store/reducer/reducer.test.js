@@ -62,12 +62,14 @@ it(`Reducer should change genre`, () => {
   const initialState = {
     selectedGenre: Genre.ALL,
     movies,
-    selectedMovie: null
+    selectedMovie: null,
+    history: []
   };
   const targetState = {
     selectedGenre: `Comedy`,
     movies,
-    selectedMovie: null
+    selectedMovie: null,
+    history: [ActionCreator.changeGenre(`Comedy`)]
   };
 
   expect(reducer(initialState, ActionCreator.changeGenre(`Comedy`)))
@@ -78,12 +80,14 @@ it(`Reducer should select movie`, () => {
   const initialState = {
     selectedGenre: Genre.ALL,
     movies,
-    selectedMovie: null
+    selectedMovie: null,
+    history: []
   };
   const targetState = {
     selectedGenre: Genre.ALL,
     movies,
-    selectedMovie: movies[0]
+    selectedMovie: movies[0],
+    history: [ActionCreator.selectMovie(movies[0])]
   };
 
   expect(reducer(initialState, ActionCreator.selectMovie(movies[0])))
