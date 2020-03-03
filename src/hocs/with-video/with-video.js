@@ -52,8 +52,11 @@ export default (Component) => {
     }
 
     componentDidUpdate(prevProps) {
-      if (prevProps.isPlaying !== this.props.isPlaying) {
-        this._handlePlay();
+      const {isPlaying} = this.props;
+
+      if (prevProps.isPlaying !== isPlaying) {
+        const video = this._videoRef.current;
+        video[isPlaying ? `play` : `load`]();
       }
     }
 
