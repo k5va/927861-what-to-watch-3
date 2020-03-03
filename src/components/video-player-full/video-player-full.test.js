@@ -12,7 +12,7 @@ it(`VideoPlayerFull should render correctly`, () => {
           <VideoPlayerFull isPlaying={true} />
         </Provider>,
         {
-          createNodeMock: () => ({})
+          createNodeMock: () => ({play: () => {}}) // mocking video ref
         }
     )
     .toJSON();
