@@ -1,10 +1,15 @@
-import ActionCreator from "../actions/action-creator";
+import {ActionCreator} from "@store";
 import {Movie} from "@models";
+import {AppState} from "@consts";
 
 const loadMovies = () => (dispatch, getState, api) => {
-  return api.get(`/films`)
-    .then((response) => {
-      dispatch(ActionCreator.loadMovies(Movie.parseMovies(response.data)));
+  return api.loadMovies()
+    .then((data) => dispatch(ActionCreator.loadMovies(Movie.parseMovies(data))))
+    .then(() => api.loadPromoMovie())
+    .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
+    .then(() => dispatch(ActionCreator.changeAppState(AppState.MAIN)))
+    .catch((err) => {
+      console.log(err); // TODO: dispatch error state
     });
 };
 

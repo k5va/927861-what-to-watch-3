@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import App from "./app";
-import {getAppState, getSelectedMovie, loadMovies, loadPromoMovie} from "@store";
+import {getAppState, getSelectedMovie, loadMovies} from "@store";
 
 const mapStateToProps = (state) => ({
   appState: getAppState(state),
@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   init: () => {
     dispatch(loadMovies());
-    dispatch(loadPromoMovie());
   }
 });
 
