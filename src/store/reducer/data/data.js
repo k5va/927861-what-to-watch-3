@@ -3,7 +3,7 @@ import ActionType from "./actions/action-type";
 
 const initialState = {
   movies: [],
-  promoMovie: {title: ``, genre: ``, year: ``, cover: ``, poster: ``}
+  promoMovie: {title: ``, genre: ``, year: 0, cover: ``, poster: ``}
 };
 
 const reducer = (state = initialState, {type, payload}) => {
