@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
 import VideoPlayerFull from "./video-player-full";
-import {ActionCreator} from "@store";
+import {ActionCreator, getPromoMovie, getSelectedMovie} from "@store";
 
-const mapStateToProps = ({selectedMovie, promoMovie}) => {
-  const {title, duration, src, poster} = selectedMovie ? selectedMovie : promoMovie;
+const mapStateToProps = (state) => {
+  const {title, duration, src, poster} = getSelectedMovie(state) ?
+    getSelectedMovie(state) :
+    getPromoMovie(state);
   return {title, duration, src, poster};
 };
 
