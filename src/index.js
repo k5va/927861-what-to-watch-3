@@ -3,7 +3,7 @@ import {App} from "@components";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import {reducer, loadMovies, loadPromoMovie} from "@store";
-import createAPI from "./api/api";
+import createAPI from "@api";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 
