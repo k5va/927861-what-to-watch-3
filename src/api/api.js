@@ -7,28 +7,43 @@ const Error = {
   UNAUTHORIZED: 401
 };
 
-const createAPI = (onUnauthorized) => {
-  const api = axios.create({
-    baseURL: BASE_URL,
-    timeout: DEFAULT_TIMEOUT,
-    withCredentials: true,
-  });
+export default class Api {
 
-  const onSuccess = (response) => response;
+  constructor(onUnauthorized) {
+    this._api = this._createAPI(onUnauthorized);
+  }
 
-  const onFail = (err) => {
-    const {response} = err;
+  loadMovies() {
+    return this._api.get(`/films`)
+      .then((response) => response.data);
+  }
 
-    if (response.status === Error.UNAUTHORIZED) {
-      onUnauthorized();
-    }
+  loadPromoMovie() {
+    return this._api.get(`/films/promo`)
+      .then((response) => response.data);
+  }
 
-    throw err;
-  };
+  _createAPI(onUnauthorized) {
+    const api = axios.create({
+      baseURL: BASE_URL,
+      timeout: DEFAULT_TIMEOUT,
+      withCredentials: true,
+    });
 
-  api.interceptors.response.use(onSuccess, onFail);
+    const onSuccess = (response) => response;
 
-  return api;
-};
+    const onFail = (err) => {
+      const {response} = err;
 
-export default createAPI;
+      if (response.status === Error.UNAUTHORIZED) {
+        onUnauthorized();
+      }
+
+      throw err;
+    };
+
+    api.interceptors.response.use(onSuccess, onFail);
+
+    return api;
+  }
+}
