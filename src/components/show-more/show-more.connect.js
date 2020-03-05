@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "@store";
+import {ActionCreator, getMoviesByGenre, getShownMoviesNumber} from "@store";
 import ShowMore from "./show-more";
 
-const mapStateToProps = ({filteredMovies, shownMoviesNumber}) => ({
-  isVisible: filteredMovies.length > shownMoviesNumber
+const mapStateToProps = (state) => ({
+  isVisible: getMoviesByGenre(state).length > getShownMoviesNumber(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
