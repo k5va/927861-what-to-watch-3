@@ -1,9 +1,9 @@
 import {extend} from "@utils";
-import {Genre, DEFAULT_SHOWN_MOVIES_NUMBER, GameScreen} from "@consts";
+import {Genre, DEFAULT_SHOWN_MOVIES_NUMBER, AppState} from "@consts";
 import ActionType from "./actions/action-type";
 
 const initialState = {
-  gameScreen: GameScreen.MAIN,
+  appState: AppState.MAIN,
   history: [],
   selectedGenre: Genre.ALL,
   selectedMovie: null,
@@ -14,8 +14,8 @@ const reducer = (state = initialState, {type, payload}) => {
   state.history.push({type, payload});
 
   switch (type) {
-    case ActionType.CHANGE_GAME_SCREEN:
-      return extend(state, {gameScreen: payload});
+    case ActionType.CHANGE_APP_STATE:
+      return extend(state, {appState: payload});
     case ActionType.CHANGE_GENRE:
       return extend(state, {selectedGenre: payload});
     case ActionType.SELECT_MOVIE:
@@ -29,7 +29,7 @@ const reducer = (state = initialState, {type, payload}) => {
       state.history.pop();
       return reducer(state, state.history.pop());
     default:
-      return reducer(state, {type: ActionType.CHANGE_GAME_SCREEN, payload: GameScreen.MAIN});
+      return reducer(state, {type: ActionType.CHANGE_APP_STATE, payload: AppState.MAIN});
   }
 };
 

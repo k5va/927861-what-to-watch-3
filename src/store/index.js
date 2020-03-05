@@ -1,6 +1,6 @@
 export {default as reducer} from "./reducer/reducer";
 export {default as ActionCreator} from "./reducer/actions-creator";
-export {default as getAppScreen} from "./reducer/app/selectors/get-game-screen";
+export {default as getAppState} from "./reducer/app/selectors/get-app-state";
 export {default as getSelectedGenre} from "./reducer/app/selectors/get-selected-genre";
 export {default as getSelectedMovie} from "./reducer/app/selectors/get-selected-movie";
 export {default as getShownMoviesNumber} from "./reducer/app/selectors/get-shown-movies-number";

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import MovieDetails from "./movie-details";
 import {ActionCreator} from "@store";
-import {GameScreen} from "@consts";
+import {AppState} from "@consts";
 
 const mapStateToProps = ({selectedMovie}) => ({
   movie: selectedMovie
@@ -9,7 +9,7 @@ const mapStateToProps = ({selectedMovie}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayMovie() {
-    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+    dispatch(ActionCreator.changeAppState(AppState.VIDEO_PLAYER));
   }
 });
 
