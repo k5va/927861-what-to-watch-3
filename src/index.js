@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import {App} from "@components";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import {reducer, loadMovies, loadPromoMovie} from "@store";
+import {reducer} from "@store";
 import createAPI from "@api";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
@@ -17,9 +17,6 @@ const store = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
-
-store.dispatch(loadMovies());
-store.dispatch(loadPromoMovie());
 
 ReactDOM.render(
     <Provider store={store}>

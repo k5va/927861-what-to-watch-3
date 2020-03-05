@@ -1,8 +1,13 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull} from "@components";
-import {GameScreen} from "@consts";
+import {AppState} from "@consts";
 
 class App extends React.PureComponent {
+
+  componentDidMount() {
+    const {init} = this.props;
+    init();
+  }
 
   render() {
     return (
@@ -23,14 +28,14 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    const {gameScreen} = this.props;
+    const {appState} = this.props;
 
-    switch (gameScreen) {
-      case GameScreen.MOVIE_DETAILS:
+    switch (appState) {
+      case AppState.MOVIE_DETAILS:
         return <MovieDetails />;
-      case GameScreen.VIDEO_PLAYER:
+      case AppState.VIDEO_PLAYER:
         return <VideoPlayerFull />;
-      case GameScreen.MAIN:
+      case AppState.MAIN:
       default:
         return <Main />;
     }
@@ -38,7 +43,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
-  gameScreen: PropTypes.string.isRequired,
+  appState: PropTypes.string.isRequired,
   selectedMovie: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
