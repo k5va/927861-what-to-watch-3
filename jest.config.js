@@ -6,7 +6,6 @@ module.exports = {
     "@consts": `<rootDir>/src/consts/`,
     "@utils": `<rootDir>/src/utils/`,
     "@hocs": `<rootDir>/src/hocs/`,
-    "@store": `<rootDir>/src/store/`,
-    "@mocks": `<rootDir>/src/mocks/`
+    "@store": `<rootDir>/src/store/`
   }
 };
