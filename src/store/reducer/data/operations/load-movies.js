@@ -1,10 +1,10 @@
 import ActionCreator from "../actions/action-creator";
-import {movies} from "@mocks";
+import {Movie} from "@models";
 
 const loadMovies = () => (dispatch, getState, api) => {
   return api.get(`/films`)
     .then((response) => {
-      dispatch(ActionCreator.loadMovies(movies)); // TODO: change to response.data with adapter
+      dispatch(ActionCreator.loadMovies(Movie.parseMovies(response.data)));
     });
 };
 
