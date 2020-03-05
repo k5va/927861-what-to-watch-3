@@ -3,7 +3,7 @@ import {Genre, DEFAULT_SHOWN_MOVIES_NUMBER, AppState} from "@consts";
 import ActionType from "./actions/action-type";
 
 const initialState = {
-  appState: AppState.MAIN,
+  appState: AppState.PENDING,
   history: [],
   selectedGenre: Genre.ALL,
   selectedMovie: null,
@@ -29,7 +29,7 @@ const reducer = (state = initialState, {type, payload}) => {
       state.history.pop();
       return reducer(state, state.history.pop());
     default:
-      return reducer(state, {type: ActionType.CHANGE_APP_STATE, payload: AppState.MAIN});
+      return state;
   }
 };
 

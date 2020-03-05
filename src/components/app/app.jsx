@@ -31,6 +31,8 @@ class App extends React.PureComponent {
     const {appState} = this.props;
 
     switch (appState) {
+      case AppState.PENDING:
+        return null;
       case AppState.MOVIE_DETAILS:
         return <MovieDetails />;
       case AppState.VIDEO_PLAYER:
