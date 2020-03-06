@@ -45,6 +45,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  init: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
   selectedMovie: PropTypes.shape({
     id: PropTypes.string.isRequired,
