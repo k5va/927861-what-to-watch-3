@@ -1,7 +1,7 @@
 export default class Movie {
 
   constructor(data) {
-    this.id = data[`id`];
+    this.id = `` + data[`id`];
     this.title = data[`name`];
     this.genre = data[`genre`];
     this.year = data[`released`];
