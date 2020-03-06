@@ -7,9 +7,7 @@ import Api from "@api";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 
-const onUnauthorized = () => {
-  console.log(`onUnauthorized`);
-};
+const onUnauthorized = () => {};
 
 const api = new Api(onUnauthorized);
 
