@@ -1,5 +1,6 @@
-import {reducer, ActionCreator} from "@store";
-import {Genre} from "@consts";
+import reducer from "./app";
+import ActionCreator from "./actions/action-creator";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER} from "@consts";
 
 const movies = [
   {
@@ -60,15 +61,17 @@ const movies = [
 
 it(`Reducer should change genre`, () => {
   const initialState = {
+    appState: AppState.MAIN,
     selectedGenre: Genre.ALL,
-    movies,
     selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
     history: []
   };
   const targetState = {
+    appState: AppState.MAIN,
     selectedGenre: `Comedy`,
-    movies,
     selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
     history: [ActionCreator.changeGenre(`Comedy`)]
   };
 
@@ -78,15 +81,17 @@ it(`Reducer should change genre`, () => {
 
 it(`Reducer should select movie`, () => {
   const initialState = {
+    appState: AppState.MAIN,
     selectedGenre: Genre.ALL,
-    movies,
     selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
     history: []
   };
   const targetState = {
+    appState: AppState.MAIN,
     selectedGenre: Genre.ALL,
-    movies,
     selectedMovie: movies[0],
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
     history: [ActionCreator.selectMovie(movies[0])]
   };
 
