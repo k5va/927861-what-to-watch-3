@@ -16,9 +16,7 @@ const loadMovies = () => (dispatch, getState, api) => {
     .then(() => api.loadPromoMovie())
     .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
     .then(() => dispatch(ActionCreator.changeAppState(AppState.MAIN)))
-    .catch((err) => {
-      console.log(err); // TODO: dispatch error state
-    });
+    .catch(() => dispatch(ActionCreator.changeAppState(AppState.ERROR)));
 };
 
 export default loadMovies;

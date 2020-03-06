@@ -33,6 +33,8 @@ class App extends React.PureComponent {
     switch (appState) {
       case AppState.PENDING:
         return null;
+      case AppState.ERROR:
+        return <h1>Something bad just happend!</h1>;
       case AppState.MOVIE_DETAILS:
         return <MovieDetails />;
       case AppState.VIDEO_PLAYER:
