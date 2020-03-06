@@ -1,10 +1,11 @@
 import {Main} from "@components";
 import {generateId} from "@utils";
-import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "@store";
+import {ActionCreator, NameSpace} from "@store";
+import configureStore from "redux-mock-store";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER} from "@consts";
 
-const MOVIES_IN_STORE_COUNT = 8;
+const MOVIES_IN_STORE_COUNT = 1;
 
 const promoMovie = {
   id: generateId(),
@@ -56,13 +57,26 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const store = createStore(reducer);
+const mockStore = configureStore([]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    promoMovie,
+    movies: [promoMovie]
+  },
+  [NameSpace.APP]: {
+    appState: AppState.MAIN,
+    selectedGenre: Genre.ALL,
+    history: [],
+    selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  }
+});
 
 it(`Should movies title be clicked`, () => {
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const mainScreen = mount(
       <Provider store={store}>
-        <Main promoMovie={promoMovie} />
+        <Main />
       </Provider>
   );
 
