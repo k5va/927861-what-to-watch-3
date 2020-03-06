@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import MovieDetails from "./movie-details";
-import {ActionCreator} from "@store";
+import {ActionCreator, getSelectedMovie} from "@store";
 import {AppState} from "@consts";
 
-const mapStateToProps = ({selectedMovie}) => ({
-  movie: selectedMovie
+const mapStateToProps = (state) => ({
+  movie: getSelectedMovie(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
