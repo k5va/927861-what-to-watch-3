@@ -5,7 +5,7 @@ export default class Comment {
     this.text = data[`comment`];
     this.authorId = data[`user`][`id`];
     this.author = data[`user`][`name`];
-    this.date = data[`date`];
+    this.date = new Date(data[`date`]);
     this.rating = data[`rating`];
   }
 
