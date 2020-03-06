@@ -10,5 +10,6 @@ export {default as getPromoMovie} from "./reducer/data/selectors/get-promo-movie
 export {default as getSimilarMovies} from "./reducer/data/selectors/get-similar-movies";
 export {default as getUniqueGenres} from "./reducer/data/selectors/get-unique-genres";
 export {default as loadMovies} from "./reducer/data/operations/load-movies";
+export {default as NameSpace} from "./reducer/name-space";
 
 
