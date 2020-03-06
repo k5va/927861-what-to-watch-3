@@ -6,6 +6,8 @@ module.exports = {
     "@consts": `<rootDir>/src/consts/`,
     "@utils": `<rootDir>/src/utils/`,
     "@hocs": `<rootDir>/src/hocs/`,
-    "@store": `<rootDir>/src/store/`
+    "@store": `<rootDir>/src/store/`,
+    "@api": `<rootDir>/src/api/api`,
+    "@models": `<rootDir>/src/models/`
   }
 };
