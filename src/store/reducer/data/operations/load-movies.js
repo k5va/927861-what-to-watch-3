@@ -1,10 +1,18 @@
 import {ActionCreator} from "@store";
-import {Movie} from "@models";
+import {Movie, Comment} from "@models";
 import {AppState} from "@consts";
 
 const loadMovies = () => (dispatch, getState, api) => {
   return api.loadMovies()
-    .then((data) => dispatch(ActionCreator.loadMovies(Movie.parseMovies(data))))
+    .then(Movie.parseMovies)
+    .then((movies) => Promise.all(
+        movies.map((movie) => api
+          .loadComments(movie.id)
+          .then(Comment.parseComments)
+          .then((comments) => movie.setComments(comments))
+        )
+    ))
+    .then((movies) => dispatch(ActionCreator.loadMovies(movies)))
     .then(() => api.loadPromoMovie())
     .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
     .then(() => dispatch(ActionCreator.changeAppState(AppState.MAIN)))

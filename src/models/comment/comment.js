@@ -1,7 +1,7 @@
 export default class Comment {
 
   constructor(data) {
-    this.id = data[`id`];
+    this.id = `` + data[`id`];
     this.text = data[`comment`];
     this.authorId = data[`user`][`id`];
     this.author = data[`user`][`name`];

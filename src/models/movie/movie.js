@@ -18,7 +18,11 @@ export default class Movie {
     this.rating = {score: data[`rating`], count: data[`scores_count`]};
     this.isFavorite = data[`is_favorite`];
     this.comments = [];
-    // this.comments = data[`comments`] ? data[`comments`].map((item) => Comment.parseComment(item)) : [];
+  }
+
+  setComments(comments) {
+    this.comments = comments;
+    return this;
   }
 
   static parseMovie(data) {

@@ -26,7 +26,7 @@ const movie = {
     score: 8.9,
     count: 240
   },
-  reviews: [
+  comments: [
     {
       id: generateId(),
       text: `Bla Bla Bla`,

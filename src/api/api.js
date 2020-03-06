@@ -23,6 +23,11 @@ export default class Api {
       .then((response) => response.data);
   }
 
+  loadComments(movieId) {
+    return this._api.get(`/comments/${movieId}`)
+      .then((response) => response.data);
+  }
+
   _createAPI(onUnauthorized) {
     const api = axios.create({
       baseURL: BASE_URL,

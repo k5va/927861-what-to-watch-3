@@ -18,7 +18,7 @@ const movies = [
       score: 8.9,
       count: 240
     },
-    reviews: []
+    comments: []
   },
   {
     id: `2`,
@@ -36,7 +36,7 @@ const movies = [
       score: 8.9,
       count: 240
     },
-    reviews: []
+    comments: []
   },
   {
     id: `3`,
@@ -54,7 +54,7 @@ const movies = [
       score: 8.9,
       count: 240
     },
-    reviews: []
+    comments: []
   }
 ];
 
