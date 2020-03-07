@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn} from "@components";
-import {AppState, AuthorizationStatus} from "@consts";
+import {AppState} from "@consts";
 
 class App extends React.PureComponent {
 

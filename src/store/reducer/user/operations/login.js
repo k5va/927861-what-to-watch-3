@@ -1,4 +1,4 @@
-import {ActionCreator} from "@store";
+import {ActionCreator, handleError} from "@store";
 import {AppState, AuthorizationStatus} from "@consts";
 import {User} from "@models";
 
@@ -10,7 +10,7 @@ const login = (authData) => (dispatch, getState, api) => {
       dispatch(ActionCreator.setUser(user));
       dispatch(ActionCreator.changeAppState(AppState.MAIN));
     })
-    .catch((err) => console.log(err));
+    .catch((err) => dispatch(handleError(err)));
 };
 
 export default login;
