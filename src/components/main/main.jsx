@@ -1,4 +1,4 @@
-import {MoviesList, GenresList, ShowMore} from "@components";
+import {MoviesList, GenresList, ShowMore, UserBlock} from "@components";
 
 const Main = ({promoMovie, onPlayMovie}) => {
   const {title, genre, year, cover, poster} = promoMovie;
@@ -20,11 +20,7 @@ const Main = ({promoMovie, onPlayMovie}) => {
             </a>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
         </header>
 
         <div className="movie-card__wrap">
