@@ -3,14 +3,10 @@ import axios from "axios";
 const BASE_URL = `https://htmlacademy-react-3.appspot.com/wtw`;
 const DEFAULT_TIMEOUT = 5000;
 
-const Error = {
-  UNAUTHORIZED: 401
-};
-
 export default class Api {
 
-  constructor(onUnauthorized) {
-    this._api = this._createAPI(onUnauthorized);
+  constructor(onError) {
+    this._api = this._createAPI(onError);
   }
 
   loadMovies() {
@@ -28,26 +24,25 @@ export default class Api {
       .then((response) => response.data);
   }
 
-  _createAPI(onUnauthorized) {
+  login({login, password}) {
+    return this._api.post(`/login`, {
+      email: login,
+      password
+    })
+    .then((response) => response.data);
+  }
+
+  checkAuthorizationStatus() {
+    return this._api.get(`/login`)
+      .then((response) => response.data);
+  }
+
+  _createAPI() {
     const api = axios.create({
       baseURL: BASE_URL,
       timeout: DEFAULT_TIMEOUT,
       withCredentials: true,
     });
-
-    const onSuccess = (response) => response;
-
-    const onFail = (err) => {
-      const {response} = err;
-
-      if (response.status === Error.UNAUTHORIZED) {
-        onUnauthorized();
-      }
-
-      throw err;
-    };
-
-    api.interceptors.response.use(onSuccess, onFail);
 
     return api;
   }
