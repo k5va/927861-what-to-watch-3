@@ -3,7 +3,7 @@ import {generateId} from "@utils";
 import {Provider} from "react-redux";
 import {NameSpace} from "@store";
 import configureStore from "redux-mock-store";
-import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER} from "@consts";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
 import thunk from "redux-thunk";
 
 
@@ -56,6 +56,14 @@ const promoMovie = {
 const mockApi = {
   loadMovies() {
     return Promise.resolve([promoMovie]);
+  },
+  checkAuthorizationStatus() {
+    return Promise.resolve({
+      "id": 1,
+      "email": `Oliver.conner@gmail.com`,
+      "name": `Oliver.conner`,
+      "avatar_url": `img/1.png`
+    });
   }
 };
 const mockStore = configureStore([thunk.withExtraArgument(mockApi)]);
@@ -70,6 +78,10 @@ const store = mockStore({
     history: [],
     selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
   }
 });
 

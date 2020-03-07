@@ -3,7 +3,7 @@ import {generateId} from "@utils";
 import {Provider} from "react-redux";
 import {NameSpace} from "@store";
 import configureStore from "redux-mock-store";
-import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER} from "@consts";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
 
 const promoMovie = {
   id: generateId(),
@@ -40,6 +40,10 @@ const store = mockStore({
     history: [],
     selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
   }
 });
 
