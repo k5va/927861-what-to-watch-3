@@ -9,3 +9,5 @@ export {default as Tab} from "./tab/tab";
 export {default as GenresList} from "./genres-list/genres-list.connect";
 export {default as ShowMore} from "./show-more/show-more.connect";
 export {default as VideoPlayerFull} from "./video-player-full/video-player-full.connect";
+export {default as SignIn} from "./sign-in/sign-in";
+export {default as UserBlock} from "./user-block/user-block.connect";

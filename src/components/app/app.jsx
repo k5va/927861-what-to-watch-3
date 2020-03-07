@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails, VideoPlayerFull} from "@components";
-import {AppState} from "@consts";
+import {Main, MovieDetails, VideoPlayerFull, SignIn} from "@components";
+import {AppState, AuthorizationStatus} from "@consts";
 
 class App extends React.PureComponent {
 
@@ -10,6 +10,8 @@ class App extends React.PureComponent {
   }
 
   render() {
+    const {login} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -22,13 +24,16 @@ class App extends React.PureComponent {
           <Route exact path="/dev-player">
             <VideoPlayerFull />
           </Route>
+          <Route exact path="/dev-auth">
+            <SignIn onSubmit={login} />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 
   _renderApp() {
-    const {appState} = this.props;
+    const {appState, login} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -39,6 +44,8 @@ class App extends React.PureComponent {
         return <MovieDetails />;
       case AppState.VIDEO_PLAYER:
         return <VideoPlayerFull />;
+      case AppState.SIGN_IN:
+        return <SignIn onSubmit={login} />;
       case AppState.MAIN:
       default:
         return <Main />;
@@ -48,6 +55,7 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   init: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
   selectedMovie: PropTypes.shape({
     id: PropTypes.string.isRequired,

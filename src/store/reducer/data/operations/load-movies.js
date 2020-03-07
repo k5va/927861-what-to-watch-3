@@ -1,4 +1,4 @@
-import {ActionCreator} from "@store";
+import {ActionCreator, handleError} from "@store";
 import {Movie, Comment} from "@models";
 import {AppState} from "@consts";
 
@@ -16,7 +16,7 @@ const loadMovies = () => (dispatch, getState, api) => {
     .then(() => api.loadPromoMovie())
     .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
     .then(() => dispatch(ActionCreator.changeAppState(AppState.MAIN)))
-    .catch(() => dispatch(ActionCreator.changeAppState(AppState.ERROR)));
+    .catch((err) => dispatch(handleError(err)));
 };
 
 export default loadMovies;
