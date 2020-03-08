@@ -8,6 +8,7 @@ module.exports = {
     "@hocs": `<rootDir>/src/hocs/`,
     "@store": `<rootDir>/src/store/`,
     "@api": `<rootDir>/src/api/api`,
-    "@models": `<rootDir>/src/models/`
+    "@models": `<rootDir>/src/models/`,
+    "@routes": `<rootDir>/src/routes/`
   }
 };
