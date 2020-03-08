@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
-import {ActionCreator, getAuthorizationStatus, getUser} from "@store";
-import {AppState, AuthorizationStatus} from "@consts";
+import {getAuthorizationStatus, getUser} from "@store";
+import {AuthorizationStatus} from "@consts";
+import {AppRoute, history} from "@routes";
 import UserBlock from "./user-block";
 
 const mapStateToProps = (state) => ({
@@ -8,9 +9,9 @@ const mapStateToProps = (state) => ({
   avatar: getAuthorizationStatus(state) === AuthorizationStatus.AUTH ? getUser(state).avatar : null
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onSignInClick() {
-    dispatch(ActionCreator.changeAppState(AppState.SIGN_IN));
+    history.push(AppRoute.SIGN_IN);
   }
 });
 

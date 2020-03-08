@@ -1,6 +1,7 @@
 import {ActionCreator, handleError} from "@store";
-import {AppState, AuthorizationStatus} from "@consts";
+import {AuthorizationStatus} from "@consts";
 import {User} from "@models";
+import {history, AppRoute} from "@routes";
 
 const login = (authData) => (dispatch, getState, api) => {
   return api.login(authData)
@@ -8,7 +9,7 @@ const login = (authData) => (dispatch, getState, api) => {
     .then((user) => {
       dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setUser(user));
-      dispatch(ActionCreator.changeAppState(AppState.MAIN));
+      history.push(AppRoute.MAIN);
     })
     .catch((err) => dispatch(handleError(err)));
 };

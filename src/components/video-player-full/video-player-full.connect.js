@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import VideoPlayerFull from "./video-player-full";
-import {ActionCreator, getPromoMovie, getSelectedMovie} from "@store";
+import {getPromoMovie, getSelectedMovie} from "@store";
+import {history} from "@routes";
 
 const mapStateToProps = (state) => {
   const {title, duration, src, poster} = getSelectedMovie(state) ?
@@ -9,9 +10,9 @@ const mapStateToProps = (state) => {
   return {title, duration, src, poster};
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onExit() {
-    dispatch(ActionCreator.rollback());
+    history.goBack();
   }
 });
 

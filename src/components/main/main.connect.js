@@ -1,15 +1,15 @@
 import {connect} from "react-redux";
 import Main from "./main";
-import {ActionCreator, getPromoMovie} from "@store";
-import {AppState} from "@consts";
+import {getPromoMovie} from "@store";
+import {history, AppRoute} from "@routes";
 
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onPlayMovie() {
-    dispatch(ActionCreator.changeAppState(AppState.VIDEO_PLAYER));
+    history.push(AppRoute.PLAYER);
   }
 });
 

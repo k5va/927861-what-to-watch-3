@@ -15,7 +15,7 @@ const loadMovies = () => (dispatch, getState, api) => {
     .then((movies) => dispatch(ActionCreator.loadMovies(movies)))
     .then(() => api.loadPromoMovie())
     .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
-    .then(() => dispatch(ActionCreator.changeAppState(AppState.MAIN)))
+    .then(() => dispatch(ActionCreator.changeAppState(AppState.READY)))
     .catch((err) => dispatch(handleError(err)));
 };
 
