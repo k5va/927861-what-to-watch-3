@@ -11,3 +11,4 @@ export {default as ShowMore} from "./show-more/show-more.connect";
 export {default as VideoPlayerFull} from "./video-player-full/video-player-full.connect";
 export {default as SignIn} from "./sign-in/sign-in";
 export {default as UserBlock} from "./user-block/user-block.connect";
+export {default as PrivateRoute} from "./private-route/private-route.connect";
