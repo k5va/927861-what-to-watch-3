@@ -4,6 +4,8 @@ import {Provider} from "react-redux";
 import {ActionCreator, NameSpace} from "@store";
 import configureStore from "redux-mock-store";
 import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import {Router} from "react-router-dom";
+import {history} from "@routes";
 
 const MOVIES_IN_STORE_COUNT = 1;
 
@@ -64,9 +66,8 @@ const store = mockStore({
     movies: [promoMovie]
   },
   [NameSpace.APP]: {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: Genre.ALL,
-    history: [],
     selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   },
@@ -80,7 +81,9 @@ it(`Should movies title be clicked`, () => {
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const mainScreen = mount(
       <Provider store={store}>
-        <Main />
+        <Router history={history}>
+          <Main />
+        </Router>
       </Provider>
   );
 

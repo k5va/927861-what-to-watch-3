@@ -61,18 +61,16 @@ const movies = [
 
 it(`Reducer should change genre`, () => {
   const initialState = {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: Genre.ALL,
     selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
-    history: []
   };
   const targetState = {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: `Comedy`,
     selectedMovie: null,
-    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
-    history: [ActionCreator.changeGenre(`Comedy`)]
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   };
 
   expect(reducer(initialState, ActionCreator.changeGenre(`Comedy`)))
@@ -81,18 +79,16 @@ it(`Reducer should change genre`, () => {
 
 it(`Reducer should select movie`, () => {
   const initialState = {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: Genre.ALL,
     selectedMovie: null,
-    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
-    history: []
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   };
   const targetState = {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: Genre.ALL,
     selectedMovie: movies[0],
-    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER,
-    history: [ActionCreator.selectMovie(movies[0])]
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   };
 
   expect(reducer(initialState, ActionCreator.selectMovie(movies[0])))

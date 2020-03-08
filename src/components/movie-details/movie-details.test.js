@@ -3,6 +3,8 @@ import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer, ActionCreator} from "@store";
+import {Router} from "react-router-dom";
+import {history} from "@routes";
 
 
 const movie = {
@@ -58,7 +60,9 @@ it(`MovieDetails should render correctly`, () => {
   const renderedTree = renderer
     .create(
         <Provider store={store}>
-          <MovieDetails />
+          <Router history={history}>
+            <MovieDetails />
+          </Router>
         </Provider>,
         {
           createNodeMock: () => ({})

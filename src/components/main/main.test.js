@@ -4,6 +4,9 @@ import {Provider} from "react-redux";
 import {NameSpace} from "@store";
 import configureStore from "redux-mock-store";
 import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import {Router} from "react-router-dom";
+import {history} from "@routes";
+
 
 const promoMovie = {
   id: generateId(),
@@ -35,9 +38,8 @@ const store = mockStore({
     movies: []
   },
   [NameSpace.APP]: {
-    appState: AppState.MAIN,
+    appState: AppState.READY,
     selectedGenre: Genre.ALL,
-    history: [],
     selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   },
@@ -51,7 +53,9 @@ it(`Main should render correctly`, () => {
   const wrapper = renderer
     .create(
         <Provider store={store}>
-          <Main />
+          <Router history={history}>
+            <Main />
+          </Router>
         </Provider>,
         {
           createNodeMock: () => ({})
