@@ -1,10 +1,12 @@
-import {Tabs, Tab, MoviesList} from "@components";
+import {Tabs, Tab, MoviesList, UserBlock} from "@components";
 import {convertScoreToText} from "@utils";
+import {Link} from "react-router-dom";
+import {AppRoute} from "@routes";
 
 const MovieDetails = (props) => {
   const {movie, onPlayMovie} = props;
   const {title, genre, year, cover, poster, rating,
-    description, director, actors, reviews, duration} = movie;
+    description, director, actors, comments, duration} = movie;
   const {score, count: ratingCount} = rating;
 
   return (
@@ -19,18 +21,14 @@ const MovieDetails = (props) => {
 
         <header className="page-header movie-card__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to={AppRoute.MAIN} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
         </header>
 
         <div className="movie-card__wrap">
@@ -117,7 +115,7 @@ const MovieDetails = (props) => {
             <Tab name="Reviews">
               <div className="movie-card__reviews movie-card__row">
                 <div className="movie-card__reviews-col">
-                  {reviews.map((review) => (
+                  {comments.map((review) => (
                     <div className="review" key={review.id}>
                       <blockquote className="review__quote">
                         <p className="review__text">{review.text}</p>
@@ -177,7 +175,7 @@ MovieDetails.propTypes = {
       score: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired
     }).isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
+    comments: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,

@@ -1,64 +1,42 @@
 import {VideoPlayer} from "@components";
-import {withActiveState} from "@hocs";
+import {withActiveState, withTimer} from "@hocs";
 
-class MovieCard extends React.PureComponent {
-  render() {
-    const {movie, onClick, isActive} = this.props;
-    const {title, cover, src} = movie;
+const VIDEO_PLAY_DELAY = 1000;
 
-    return (
-      <article
-        className="small-movie-card catalog__movies-card"
-        onClick={() => onClick(movie)}
-        onMouseEnter={() => this._handleMouseEnter()}
-        onMouseLeave={() => this._handleMouseLeave()}
-      >
-        <VideoPlayer
-          src={src}
-          poster={cover}
-          isPlaying={isActive}
-        />
-        <h3 className="small-movie-card__title">
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-            onClick={(evt) => evt.preventDefault()}
-          >
-            {title}
-          </a>
-        </h3>
-      </article>
-    );
-  }
+const MovieCard = (props) => {
+  const {movie, onClick, isActive, onActiveChange, setTimeout, clearTimeout} = props;
+  const {title, cover, src} = movie;
 
-  // TODO: How to make this component functional with componentWillUnmount?
-  componentWillUnmount() {
-    this._clearTimer();
-  }
-
-  _handleMouseEnter() {
-    const {onActiveChange} = this.props;
-
-    this._timerId = setTimeout(() => {
-      onActiveChange(true);
-    }, MovieCard.VIDEO_PLAY_DELAY);
-  }
-
-  _handleMouseLeave() {
-    const {onActiveChange} = this.props;
-
-    this._clearTimer();
+  const _handleMouseEnter = () => setTimeout(() => onActiveChange(true), VIDEO_PLAY_DELAY);
+  const _handleMouseLeave = () => {
+    clearTimeout();
     onActiveChange(false);
-  }
+  };
 
-  _clearTimer() {
-    if (this._timerId) {
-      clearTimeout(this._timerId);
-    }
-  }
-}
-
-MovieCard.VIDEO_PLAY_DELAY = 1000;
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={() => onClick(movie)}
+      onMouseEnter={() => _handleMouseEnter()}
+      onMouseLeave={() => _handleMouseLeave()}
+    >
+      <VideoPlayer
+        src={src}
+        poster={cover}
+        isPlaying={isActive}
+      />
+      <h3 className="small-movie-card__title">
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+          onClick={(evt) => evt.preventDefault()}
+        >
+          {title}
+        </a>
+      </h3>
+    </article>
+  );
+};
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -68,7 +46,9 @@ MovieCard.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
-  onActiveChange: PropTypes.func.isRequired
+  onActiveChange: PropTypes.func.isRequired,
+  setTimeout: PropTypes.func.isRequired,
+  clearTimeout: PropTypes.func.isRequired
 };
 
-export default withActiveState(MovieCard);
+export default withTimer(withActiveState(MovieCard));

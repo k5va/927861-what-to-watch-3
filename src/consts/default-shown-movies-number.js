@@ -1,1 +1,3 @@
-export default 8;
+const DEFAULT_SHOWN_MOVIES_NUMBER = 8;
+
+export default DEFAULT_SHOWN_MOVIES_NUMBER;

@@ -1,10 +1,13 @@
 import {Main} from "@components";
 import {generateId} from "@utils";
-import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "@store";
+import {ActionCreator, NameSpace} from "@store";
+import configureStore from "redux-mock-store";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import {Router} from "react-router-dom";
+import {history} from "@routes";
 
-const MOVIES_IN_STORE_COUNT = 8;
+const MOVIES_IN_STORE_COUNT = 1;
 
 const promoMovie = {
   id: generateId(),
@@ -27,7 +30,7 @@ const promoMovie = {
     score: 8.9,
     count: 240
   },
-  reviews: [
+  comments: [
     {
       id: generateId(),
       text: `Bla Bla Bla`,
@@ -56,13 +59,31 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const store = createStore(reducer);
+const mockStore = configureStore([]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    promoMovie,
+    movies: [promoMovie]
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: Genre.ALL,
+    selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
 it(`Should movies title be clicked`, () => {
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const mainScreen = mount(
       <Provider store={store}>
-        <Main promoMovie={promoMovie} />
+        <Router history={history}>
+          <Main />
+        </Router>
       </Provider>
   );
 

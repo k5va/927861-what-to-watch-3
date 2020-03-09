@@ -1,17 +1,15 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "@store";
+import {ActionCreator, getUniqueGenres, getSelectedGenre} from "@store";
 import GenresList from "./genres-list";
-import getUniqueGenres from "./selectors/get-unique-genres";
 
-const mapStateToProps = ({movies, selectedGenre}) => ({
-  genres: getUniqueGenres(movies), // TODO: How to prevent GenresList from extra rerendering?
-  selectedGenre
+const mapStateToProps = (state) => ({
+  genres: getUniqueGenres(state),
+  selectedGenre: getSelectedGenre(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.filterMoviesByGenre());
     dispatch(ActionCreator.resetShowMoreMovies());
   }
 });

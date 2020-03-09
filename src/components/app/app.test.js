@@ -1,8 +1,11 @@
 import {App} from "@components";
 import {generateId} from "@utils";
-import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "@store";
+import {NameSpace} from "@store";
+import configureStore from "redux-mock-store";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import thunk from "redux-thunk";
+
 
 const promoMovie = {
   id: generateId(),
@@ -25,7 +28,7 @@ const promoMovie = {
     score: 8.9,
     count: 240
   },
-  reviews: [
+  comments: [
     {
       id: generateId(),
       text: `Bla Bla Bla`,
@@ -50,14 +53,42 @@ const promoMovie = {
   ]
 };
 
-const selectedMovie = promoMovie;
-const store = createStore(reducer);
+const mockApi = {
+  loadMovies() {
+    return Promise.resolve([promoMovie]);
+  },
+  checkAuthorizationStatus() {
+    return Promise.resolve({
+      "id": 1,
+      "email": `Oliver.conner@gmail.com`,
+      "name": `Oliver.conner`,
+      "avatar_url": `img/1.png`
+    });
+  }
+};
+const mockStore = configureStore([thunk.withExtraArgument(mockApi)]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    promoMovie,
+    movies: []
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: Genre.ALL,
+    selectedMovie: null,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
 it(`App should render correctly`, () => {
   const renderedTree = renderer
     .create(
         <Provider store={store}>
-          <App promoMovie={promoMovie} selectedMovie={selectedMovie} />
+          <App />
         </Provider>,
         {
           createNodeMock: () => ({})

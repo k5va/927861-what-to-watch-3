@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
 import MoviesList from "./movies-list";
-import getSimilarMovies from "./selectors/get-similar-movies";
+import {getMoviesByGenre, getSimilarMovies, getSelectedMovie, getShownMoviesNumber} from "@store";
 
-const mapStateToProps = ({selectedMovie, movies, filteredMovies, shownMoviesNumber}) => ({
-  movies: selectedMovie ?
-    getSimilarMovies(selectedMovie, movies) :
-    filteredMovies.slice(0, shownMoviesNumber)
+const mapStateToProps = (state) => ({
+  movies: getSelectedMovie(state) ?
+    getSimilarMovies(state) :
+    getMoviesByGenre(state).slice(0, getShownMoviesNumber(state))
 });
 
 const mapDispatchToProps = () => ({

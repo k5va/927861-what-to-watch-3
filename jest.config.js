@@ -7,6 +7,8 @@ module.exports = {
     "@utils": `<rootDir>/src/utils/`,
     "@hocs": `<rootDir>/src/hocs/`,
     "@store": `<rootDir>/src/store/`,
-    "@mocks": `<rootDir>/src/mocks/`
+    "@api": `<rootDir>/src/api/api`,
+    "@models": `<rootDir>/src/models/`,
+    "@routes": `<rootDir>/src/routes/`
   }
 };

@@ -1,15 +1,15 @@
 import {connect} from "react-redux";
 import MovieDetails from "./movie-details";
-import {ActionCreator} from "@store";
-import {GameScreen} from "@consts";
+import {getSelectedMovie} from "@store";
+import {history, AppRoute} from "@routes";
 
-const mapStateToProps = ({selectedMovie}) => ({
-  movie: selectedMovie
+const mapStateToProps = (state) => ({
+  movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onPlayMovie() {
-    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+    history.push(AppRoute.PLAYER);
   }
 });
 
