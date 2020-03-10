@@ -1,15 +1,13 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "@store";
-import {AppRoute, history} from "@routes";
+import {AppRoute, history, createRoute} from "@routes";
 import MovieCard from "./movie-card";
 
 const mapStateToProps = () => ({
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onClick(movie) {
-    dispatch(ActionCreator.selectMovie(movie));
-    history.push(AppRoute.FILM);
+    history.push(createRoute(AppRoute.FILM, movie.id)); // TODO: no need to connect to store anymore
   }
 });
 
