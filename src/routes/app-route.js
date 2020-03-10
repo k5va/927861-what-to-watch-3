@@ -1,8 +1,8 @@
 const AppRoute = {
   SIGN_IN: `/login`,
   MAIN: `/`,
-  PLAYER: `/player`,
-  FILM: `/film`,
+  PLAYER: `/player/:id`,
+  FILM: `/films/:id`,
   MY_LIST: `/mylist`
 };
 
