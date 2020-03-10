@@ -70,7 +70,8 @@ App.propTypes = {
   getMovie: PropTypes.func.isRequired,
   onPlayMovie: PropTypes.func.isRequired,
   onVideoPlayerExit: PropTypes.func.isRequired,
-  getSimilarMovies: PropTypes.func.isRequired
+  getSimilarMovies: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default App;

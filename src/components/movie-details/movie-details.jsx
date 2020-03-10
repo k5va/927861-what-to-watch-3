@@ -184,7 +184,12 @@ MovieDetails.propTypes = {
     })).isRequired,
   }).isRequired,
   onPlayMovie: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  onMovieCardClick: PropTypes.func.isRequired,
+  similarMovies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default MovieDetails;

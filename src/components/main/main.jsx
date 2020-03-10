@@ -94,7 +94,13 @@ Main.propTypes = {
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired
+  })).isRequired,
+  onPlayMovie: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default Main;
