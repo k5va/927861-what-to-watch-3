@@ -1,11 +1,7 @@
 import {VideoPlayerFull} from "@components";
 import {generateId} from "@utils";
-import {Provider} from "react-redux";
-import {NameSpace} from "@store";
-import configureStore from "redux-mock-store";
-import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER} from "@consts";
 
-const promoMovie = {
+const movie = {
   id: generateId(),
   title: `Die hard`,
   genre: `Drama`,
@@ -28,26 +24,13 @@ const promoMovie = {
   }
 };
 
-const mockStore = configureStore([]);
-const store = mockStore({
-  [NameSpace.DATA]: {
-    promoMovie,
-    movies: []
-  },
-  [NameSpace.APP]: {
-    appState: AppState.READY,
-    selectedGenre: Genre.ALL,
-    selectedMovie: null,
-    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
-  }
-});
-
 it(`VideoPlayerFull should render correctly`, () => {
   const wrapper = renderer
     .create(
-        <Provider store={store}>
-          <VideoPlayerFull isPlaying={true} />
-        </Provider>,
+        <VideoPlayerFull
+          title={movie.title} duration={movie.duration} src={movie.src} poster={movie.poster}
+          onExit={() => {}}
+        />,
         {
           createNodeMock: () => ({play: () => {}}) // mocking video ref
         }

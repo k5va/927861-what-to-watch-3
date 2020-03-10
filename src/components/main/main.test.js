@@ -40,7 +40,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: Genre.ALL,
-    selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {
@@ -54,7 +53,10 @@ it(`Main should render correctly`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Main />
+            <Main
+              onPlayMovie={() => {}}
+              onMovieCardClick={() => {}}
+            />
           </Router>
         </Provider>,
         {

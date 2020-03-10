@@ -1,7 +1,7 @@
 import {Main} from "@components";
 import {generateId} from "@utils";
 import {Provider} from "react-redux";
-import {ActionCreator, NameSpace} from "@store";
+import {NameSpace} from "@store";
 import configureStore from "redux-mock-store";
 import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
 import {Router} from "react-router-dom";
@@ -68,7 +68,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: Genre.ALL,
-    selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {
@@ -77,17 +76,20 @@ const store = mockStore({
   }
 });
 
-it(`Should movies title be clicked`, () => {
-  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
+it(`Should movies be clicked`, () => {
+  const onMovieCardClick = jest.fn();
   const mainScreen = mount(
       <Provider store={store}>
         <Router history={history}>
-          <Main />
+          <Main
+            onPlayMovie={() => { }}
+            onMovieCardClick={onMovieCardClick}
+          />
         </Router>
       </Provider>
   );
 
   const movieTitles = mainScreen.find(`.small-movie-card__link`);
   movieTitles.forEach((title) => title.simulate(`click`, mockEvent));
-  expect(ActionCreator.selectMovie.mock.calls.length).toBe(MOVIES_IN_STORE_COUNT);
+  expect(onMovieCardClick.mock.calls.length).toBe(MOVIES_IN_STORE_COUNT);
 });

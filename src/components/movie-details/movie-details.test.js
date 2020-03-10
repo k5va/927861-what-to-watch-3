@@ -2,7 +2,7 @@ import {MovieDetails} from "@components";
 import {generateId} from "@utils";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "@store";
+import {reducer} from "@store";
 import {Router} from "react-router-dom";
 import {history} from "@routes";
 
@@ -54,14 +54,18 @@ const movie = {
 };
 
 const store = createStore(reducer);
-store.dispatch(ActionCreator.selectMovie(movie));
 
 it(`MovieDetails should render correctly`, () => {
   const renderedTree = renderer
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <MovieDetails />
+            <MovieDetails
+              movie={movie}
+              onPlayMovie={() => {}}
+              onMovieCardClick={() => {}}
+              similarMovies={[]}
+            />
           </Router>
         </Provider>,
         {

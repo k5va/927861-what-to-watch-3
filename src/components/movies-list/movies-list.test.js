@@ -1,8 +1,5 @@
 import {MoviesList} from "@components";
 import {generateId} from "@utils";
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import {reducer} from "@store";
 
 const movies = [
   {
@@ -144,14 +141,10 @@ const movies = [
 
 const handleMovieClick = () => {};
 
-const store = createStore(reducer);
-
 it(`MoviesList should render correctly`, () => {
   const wrapper = renderer
     .create(
-        <Provider store={store}>
-          <MoviesList movies={movies} onMovieClick={handleMovieClick} />
-        </Provider>,
+        <MoviesList movies={movies} onMovieCardClick={handleMovieClick} />,
         {
           createNodeMock: () => ({})
         }
