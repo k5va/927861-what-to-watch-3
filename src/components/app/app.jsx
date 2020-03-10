@@ -11,8 +11,8 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState, getMovie,
-      onPlayMovie, onVideoPlayerExit, getSimilarMovies} = this.props;
+    const {login, appState, getMovie, onPlayMovie,
+      onVideoPlayerExit, getSimilarMovies, onMovieCardClick} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -25,7 +25,10 @@ class App extends React.PureComponent {
           <Router history={history}>
             <Switch>
               <Route exact path={AppRoute.MAIN} render={() => {
-                return <Main onPlayMovie={onPlayMovie} />;
+                return <Main
+                  onPlayMovie={onPlayMovie}
+                  onMovieCardClick={onMovieCardClick}
+                />;
               }} />
               <Route exact path={AppRoute.SIGN_IN}>
                 <SignIn onSubmit={login} />
@@ -38,6 +41,7 @@ class App extends React.PureComponent {
                     movie={movie}
                     similarMovies={getSimilarMovies(movie)}
                     onPlayMovie={() => onPlayMovie(movieId)}
+                    onMovieCardClick={onMovieCardClick}
                   />;
                 }}
               />

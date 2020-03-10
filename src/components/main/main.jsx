@@ -2,7 +2,7 @@ import {MoviesList, GenresList, ShowMore, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute} from "@routes";
 
-const Main = ({promoMovie, movies, onPlayMovie}) => {
+const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
   const {id, title, genre, year, cover, poster} = promoMovie;
   return (
     <>
@@ -63,7 +63,7 @@ const Main = ({promoMovie, movies, onPlayMovie}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList />
-          <MoviesList movies={movies} />
+          <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
           <ShowMore />
         </section>
 
