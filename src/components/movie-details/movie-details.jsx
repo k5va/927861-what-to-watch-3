@@ -1,9 +1,11 @@
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo} from "@components";
 import {convertScoreToText} from "@utils";
+import {Link} from "react-router-dom";
+import {AppRoute, createRoute} from "@routes";
 
 const MovieDetails = (props) => {
-  const {movie, onPlayMovie, similarMovies, onMovieCardClick} = props;
-  const {title, genre, year, cover, poster, rating,
+  const {movie, onPlayMovie, similarMovies, onMovieCardClick, isAuthenticated} = props;
+  const {id, title, genre, year, cover, poster, rating,
     description, director, actors, comments, duration} = movie;
   const {score, count: ratingCount} = rating;
 
@@ -43,7 +45,10 @@ const MovieDetails = (props) => {
                 </svg>
                 <span>My list</span>
               </button>
-              <a href="add-review.html" className="btn movie-card__button">Add review</a>
+              {
+                isAuthenticated &&
+                <Link to={createRoute(AppRoute.ADD_REVIEW, id)} className="btn movie-card__button">Add review</Link>
+              }
             </div>
           </div>
         </div>
@@ -153,6 +158,7 @@ MovieDetails.TAB_NAMES = [`Overview`, `Details`, `Reviews`];
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
@@ -180,7 +186,8 @@ MovieDetails.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired
-  })).isRequired
+  })).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default MovieDetails;
