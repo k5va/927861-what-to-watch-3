@@ -3,7 +3,8 @@ const AppRoute = {
   MAIN: `/`,
   PLAYER: `/player/:id`,
   FILM: `/films/:id`,
-  MY_LIST: `/mylist`
+  MY_LIST: `/mylist`,
+  ADD_REVIEW: `/films/:id/review`
 };
 
 export default AppRoute;
