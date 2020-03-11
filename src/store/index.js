@@ -16,5 +16,4 @@ export {default as login} from "./reducer/user/operations/login";
 export {default as getUser} from "./reducer/user/selectors/get-user";
 export {default as getAuthorizationStatus} from "./reducer/user/selectors/get-authorization-status";
 export {default as handleError} from "./reducer/app/operations/handle-error";
-
-
+export {default as addComment} from "./reducer/data/operations/add-comment";
