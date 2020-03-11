@@ -12,3 +12,5 @@ export {default as VideoPlayerFull} from "./video-player-full/video-player-full"
 export {default as SignIn} from "./sign-in/sign-in";
 export {default as UserBlock} from "./user-block/user-block.connect";
 export {default as PrivateRoute} from "./private-route/private-route.connect";
+export {default as AppLogo} from "./app-logo/app-logo";
+export {default as AddReview} from "./add-review/add-review";

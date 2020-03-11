@@ -1,7 +1,5 @@
-import {Tabs, Tab, MoviesList, UserBlock} from "@components";
+import {Tabs, Tab, MoviesList, UserBlock, AppLogo} from "@components";
 import {convertScoreToText} from "@utils";
-import {Link} from "react-router-dom";
-import {AppRoute} from "@routes";
 
 const MovieDetails = (props) => {
   const {movie, onPlayMovie, similarMovies, onMovieCardClick} = props;
@@ -20,14 +18,7 @@ const MovieDetails = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header movie-card__head">
-          <div className="logo">
-            <Link to={AppRoute.MAIN} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
+          <AppLogo />
           <UserBlock />
         </header>
 

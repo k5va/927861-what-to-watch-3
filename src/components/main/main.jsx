@@ -1,6 +1,4 @@
-import {MoviesList, GenresList, ShowMore, UserBlock} from "@components";
-import {Link} from "react-router-dom";
-import {AppRoute} from "@routes";
+import {MoviesList, GenresList, ShowMore, UserBlock, AppLogo} from "@components";
 
 const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
   const {id, title, genre, year, cover, poster} = promoMovie;
@@ -14,14 +12,7 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header movie-card__head">
-          <div className="logo">
-            <Link to={AppRoute.MAIN} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
+          <AppLogo />
           <UserBlock />
         </header>
 
