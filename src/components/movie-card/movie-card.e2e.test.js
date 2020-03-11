@@ -1,8 +1,5 @@
 import {MovieCard} from "@components";
 import {generateId} from "@utils";
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import {reducer, ActionCreator} from "@store";
 
 const HANDLE_CLICK_CALL_COUNT = 1;
 
@@ -33,20 +30,16 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const store = createStore(reducer);
-
 it(`Movie click passes movie object to callback`, () => {
-  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
+  const onMovieCardClick = jest.fn();
 
   const screen = mount(
-      <Provider store={store}>
-        <MovieCard movie={movie} />
-      </Provider>
+      <MovieCard movie={movie} onClick={onMovieCardClick} />
   );
 
   const movieImage = screen.find(`.small-movie-card`);
   movieImage.simulate(`click`, mockEvent);
 
-  expect(ActionCreator.selectMovie).toHaveBeenCalledTimes(HANDLE_CLICK_CALL_COUNT);
-  expect(ActionCreator.selectMovie.mock.calls[0][0]).toMatchObject(movie);
+  expect(onMovieCardClick).toHaveBeenCalledTimes(HANDLE_CLICK_CALL_COUNT);
+  expect(onMovieCardClick.mock.calls[0][0]).toMatchObject(movie);
 });

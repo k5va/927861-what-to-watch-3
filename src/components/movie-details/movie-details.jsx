@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "@routes";
 
 const MovieDetails = (props) => {
-  const {movie, onPlayMovie} = props;
+  const {movie, onPlayMovie, similarMovies, onMovieCardClick} = props;
   const {title, genre, year, cover, poster, rating,
     description, director, actors, comments, duration} = movie;
   const {score, count: ratingCount} = rating;
@@ -138,7 +138,7 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList />
+        <MoviesList movies={similarMovies} onMovieCardClick={onMovieCardClick}/>
       </section>
       <footer className="page-footer">
         <div className="logo">
@@ -183,7 +183,13 @@ MovieDetails.propTypes = {
       rating: PropTypes.number.isRequired,
     })).isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  onPlayMovie: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
+  similarMovies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default MovieDetails;

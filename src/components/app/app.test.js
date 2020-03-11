@@ -75,7 +75,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: Genre.ALL,
-    selectedMovie: null,
     shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {

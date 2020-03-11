@@ -11,7 +11,8 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState} = this.props;
+    const {login, appState, getMovie, onPlayMovie,
+      onVideoPlayerExit, getSimilarMovies, onMovieCardClick} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -23,18 +24,35 @@ class App extends React.PureComponent {
         return (
           <Router history={history}>
             <Switch>
-              <Route exact path={AppRoute.MAIN}>
-                <Main />
-              </Route>
+              <Route exact path={AppRoute.MAIN} render={() => {
+                return <Main
+                  onPlayMovie={onPlayMovie}
+                  onMovieCardClick={onMovieCardClick}
+                />;
+              }} />
               <Route exact path={AppRoute.SIGN_IN}>
                 <SignIn onSubmit={login} />
               </Route>
-              <Route exact path={AppRoute.FILM}>
-                <MovieDetails />
-              </Route>
-              <Route exact path={AppRoute.PLAYER}>
-                <VideoPlayerFull />
-              </Route>
+              <Route exact path={AppRoute.FILM}
+                render={(props) => {
+                  const {id: movieId} = props.match.params;
+                  const movie = getMovie(movieId);
+                  return <MovieDetails
+                    movie={movie}
+                    similarMovies={getSimilarMovies(movie)}
+                    onPlayMovie={() => onPlayMovie(movieId)}
+                    onMovieCardClick={onMovieCardClick}
+                  />;
+                }}
+              />
+              <Route exact path={AppRoute.PLAYER} render={(props) => {
+                const {id: movieId} = props.match.params;
+                const {title, duration, src, poster} = getMovie(movieId);
+                return <VideoPlayerFull
+                  title={title} duration={duration} src={src} poster={poster}
+                  onExit={onVideoPlayerExit}
+                />;
+              }}/>
               <PrivateRoute exact path={AppRoute.MY_LIST}
                 render={() => <h1>My secret list!</h1>}
               />
@@ -49,12 +67,11 @@ App.propTypes = {
   init: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
-  selectedMovie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  })
+  getMovie: PropTypes.func.isRequired,
+  onPlayMovie: PropTypes.func.isRequired,
+  onVideoPlayerExit: PropTypes.func.isRequired,
+  getSimilarMovies: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default App;

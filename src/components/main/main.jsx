@@ -2,8 +2,8 @@ import {MoviesList, GenresList, ShowMore, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute} from "@routes";
 
-const Main = ({promoMovie, onPlayMovie}) => {
-  const {title, genre, year, cover, poster} = promoMovie;
+const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
+  const {id, title, genre, year, cover, poster} = promoMovie;
   return (
     <>
       <section className="movie-card">
@@ -39,7 +39,8 @@ const Main = ({promoMovie, onPlayMovie}) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
+                <button className="btn btn--play movie-card__button" type="button"
+                  onClick={() => onPlayMovie(id)}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -62,7 +63,7 @@ const Main = ({promoMovie, onPlayMovie}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList />
-          <MoviesList />
+          <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
           <ShowMore />
         </section>
 
@@ -86,13 +87,20 @@ const Main = ({promoMovie, onPlayMovie}) => {
 
 Main.propTypes = {
   promoMovie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired
+  })).isRequired,
+  onPlayMovie: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default Main;
