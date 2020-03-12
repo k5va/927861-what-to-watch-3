@@ -19,7 +19,6 @@ class App extends React.PureComponent {
       default:
         return null;
       case AppState.ERROR:
-        return <h1>Something bad just happend!</h1>;
       case AppState.READY:
         return (
           <Router history={history}>

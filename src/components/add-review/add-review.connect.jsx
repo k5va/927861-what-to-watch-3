@@ -1,8 +1,10 @@
 import {connect} from "react-redux";
 import AddReview from "./add-review";
-import {addComment} from "@store";
+import {addComment, getAppState} from "@store";
+import {AppState} from "@consts";
 
 const mapStateToProps = (state) => ({
+  isError: getAppState(state) === AppState.ERROR
 });
 
 const mapDispatchToProps = (dispatch) => ({

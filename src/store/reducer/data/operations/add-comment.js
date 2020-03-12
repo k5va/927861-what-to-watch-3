@@ -1,8 +1,9 @@
-import {ActionCreator, handleError} from "@store";
+import {ActionCreator, handleError, resetError} from "@store";
 import {Comment} from "@models";
 import {history, AppRoute, createRoute} from "@routes";
 
 const addComment = (rating, comment, movieId) => (dispatch, getState, api) => {
+  resetError();
   return api.addComment(rating, comment, movieId)
     .then(Comment.parseComments)
     .then((comments) => dispatch(ActionCreator.setMovieComments(movieId, comments)))

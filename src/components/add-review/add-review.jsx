@@ -4,7 +4,7 @@ import {AppRoute, createRoute} from "@routes";
 import {isFormValid, isReviewTextValid, ReviewTextSize} from "./helpers";
 
 const AddReview = (props) => {
-  const {movie, addReview} = props;
+  const {movie, addReview, isError} = props;
   const {id, title, backgroundImage, poster} = movie;
   const reviewForm = React.createRef();
   const submitButton = React.createRef();
@@ -15,7 +15,6 @@ const AddReview = (props) => {
     const formData = new FormData(reviewForm.current);
     if (isFormValid(formData)) {
       addReview(formData.get(`rating`), formData.get(`review-text`), id);
-      reviewForm.current.disabled = true;
     }
   };
 
@@ -55,6 +54,7 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
+        {isError && <p>Something bad happened. Please try again!</p>}
         <form action="#" className="add-review__form" ref={reviewForm} onSubmit={handleSubmit}>
           <div className="rating">
             <div className="rating__stars">
@@ -107,7 +107,8 @@ AddReview.propTypes = {
     backgroundImage: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired
   }).isRequired,
-  addReview: PropTypes.func.isRequired
+  addReview: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired
 };
 
 export default AddReview;
