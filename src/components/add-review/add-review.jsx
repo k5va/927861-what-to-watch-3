@@ -2,16 +2,45 @@ import {AppLogo, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
 
+const ReviewTextSize = {
+  MIN: 50,
+  MAX: 400
+};
+
+const RatingValues = [1, 2, 3, 4, 5];
+
 const AddReview = (props) => {
   const {movie, addReview} = props;
   const {id, title, backgroundImage, poster} = movie;
   const reviewForm = React.createRef();
+  const submitButton = React.createRef();
 
   const _handleSubmit = (evt) => {
     evt.preventDefault();
 
     const formData = new FormData(reviewForm.current);
-    addReview(formData.get(`rating`), formData.get(`review-text`), id);
+    if (_isFormValid(formData)) {
+      addReview(formData.get(`rating`), formData.get(`review-text`), id);
+    }
+  };
+
+  const _isFormValid = (formData) => {
+    const reviewText = formData.get(`review-text`);
+    const rating = formData.get(`rating`);
+
+    return reviewText &&
+      reviewText.length >= ReviewTextSize.MIN &&
+      reviewText.length <= ReviewTextSize.MAX &&
+      rating &&
+      RatingValues.includes(+rating);
+  };
+
+  const _handleReviewTextChange = (evt) => {
+    const reviewText = evt.target.value;
+
+    submitButton.current.disabled =
+      reviewText.length < ReviewTextSize.MIN ||
+      reviewText.length > ReviewTextSize.MAX;
   };
 
   return (
@@ -55,7 +84,8 @@ const AddReview = (props) => {
               <input className="rating__input" id="star-2" type="radio" name="rating" value="2" />
               <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked />
+              <input className="rating__input" id="star-3" type="radio" name="rating" value="3"
+                defaultChecked />
               <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
               <input className="rating__input" id="star-4" type="radio" name="rating" value="4" />
@@ -67,9 +97,19 @@ const AddReview = (props) => {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+            <textarea
+              className="add-review__textarea" name="review-text"
+              id="review-text" placeholder="Review text"
+              required minLength={ReviewTextSize.MIN} maxLength={ReviewTextSize.MAX}
+              onChange={_handleReviewTextChange}
+            ></textarea>
             <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
+              <button
+                className="add-review__btn"
+                type="submit"
+                disabled={true}
+                ref={submitButton}
+              >Post</button>
             </div>
 
           </div>
