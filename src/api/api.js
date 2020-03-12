@@ -37,6 +37,11 @@ export default class Api {
       .then((response) => response.data);
   }
 
+  addComment(rating, comment, movieId) {
+    return this._api.post(`/comments/${movieId}`, {rating, comment})
+      .then((response) => response.data);
+  }
+
   _createAPI() {
     const api = axios.create({
       baseURL: BASE_URL,

@@ -1,5 +1,5 @@
 import {Router, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails, VideoPlayerFull, SignIn, PrivateRoute} from "@components";
+import {Main, MovieDetails, VideoPlayerFull, SignIn, PrivateRoute, AddReview} from "@components";
 import {AppState} from "@consts";
 import {history, AppRoute} from "@routes";
 
@@ -19,20 +19,22 @@ class App extends React.PureComponent {
       default:
         return null;
       case AppState.ERROR:
-        return <h1>Something bad just happend!</h1>;
       case AppState.READY:
         return (
           <Router history={history}>
             <Switch>
+
               <Route exact path={AppRoute.MAIN} render={() => {
                 return <Main
                   onPlayMovie={onPlayMovie}
                   onMovieCardClick={onMovieCardClick}
                 />;
               }} />
+
               <Route exact path={AppRoute.SIGN_IN}>
                 <SignIn onSubmit={login} />
               </Route>
+
               <Route exact path={AppRoute.FILM}
                 render={(props) => {
                   const {id: movieId} = props.match.params;
@@ -45,6 +47,7 @@ class App extends React.PureComponent {
                   />;
                 }}
               />
+
               <Route exact path={AppRoute.PLAYER} render={(props) => {
                 const {id: movieId} = props.match.params;
                 const {title, duration, src, poster} = getMovie(movieId);
@@ -53,8 +56,12 @@ class App extends React.PureComponent {
                   onExit={onVideoPlayerExit}
                 />;
               }}/>
-              <PrivateRoute exact path={AppRoute.MY_LIST}
-                render={() => <h1>My secret list!</h1>}
+
+              <PrivateRoute exact path={AppRoute.ADD_REVIEW}
+                render={(props) => {
+                  const {id: movieId} = props.match.params;
+                  return <AddReview movie={getMovie(movieId)} />;
+                }}
               />
             </Switch>
           </Router>
