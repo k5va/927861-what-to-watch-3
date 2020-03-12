@@ -1,5 +1,4 @@
 import {AddReview} from "@components";
-import {generateId} from "@utils";
 import {Provider} from "react-redux";
 import {NameSpace} from "@store";
 import configureStore from "redux-mock-store";
@@ -9,7 +8,7 @@ import {Router} from "react-router-dom";
 import {history} from "@routes";
 
 const movie = {
-  id: generateId(),
+  id: `1`,
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,
@@ -32,21 +31,21 @@ const movie = {
   },
   comments: [
     {
-      id: generateId(),
+      id: `1`,
       text: `Bla Bla Bla`,
       author: `John Doe`,
       date: new Date(),
       rating: 9.0
     },
     {
-      id: generateId(),
+      id: `2`,
       text: `Foo Foo Foo`,
       author: `Duffy Duck`,
       date: new Date(),
       rating: 2.0
     },
     {
-      id: generateId(),
+      id: `3`,
       text: `Bark Bark Bark`,
       author: `Pluto`,
       date: new Date(),
