@@ -80,4 +80,14 @@ const AddReview = (props) => {
   );
 };
 
+AddReview.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  }).isRequired,
+  addReview: PropTypes.func.isRequired
+};
+
 export default AddReview;
