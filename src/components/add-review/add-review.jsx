@@ -1,13 +1,7 @@
 import {AppLogo, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
-
-const ReviewTextSize = {
-  MIN: 50,
-  MAX: 400
-};
-
-const RatingValues = [1, 2, 3, 4, 5];
+import {isFormValid, isReviewTextValid, ReviewTextSize} from "./helpers";
 
 const AddReview = (props) => {
   const {movie, addReview} = props;
@@ -15,32 +9,18 @@ const AddReview = (props) => {
   const reviewForm = React.createRef();
   const submitButton = React.createRef();
 
-  const _handleSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
 
     const formData = new FormData(reviewForm.current);
-    if (_isFormValid(formData)) {
+    if (isFormValid(formData)) {
       addReview(formData.get(`rating`), formData.get(`review-text`), id);
+      reviewForm.current.disabled = true;
     }
   };
 
-  const _isFormValid = (formData) => {
-    const reviewText = formData.get(`review-text`);
-    const rating = formData.get(`rating`);
-
-    return reviewText &&
-      reviewText.length >= ReviewTextSize.MIN &&
-      reviewText.length <= ReviewTextSize.MAX &&
-      rating &&
-      RatingValues.includes(+rating);
-  };
-
-  const _handleReviewTextChange = (evt) => {
-    const reviewText = evt.target.value;
-
-    submitButton.current.disabled =
-      reviewText.length < ReviewTextSize.MIN ||
-      reviewText.length > ReviewTextSize.MAX;
+  const handleReviewTextChange = (evt) => {
+    submitButton.current.disabled = !isReviewTextValid(evt.target.value);
   };
 
   return (
@@ -75,7 +55,7 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <form action="#" className="add-review__form" ref={reviewForm} onSubmit={_handleSubmit}>
+        <form action="#" className="add-review__form" ref={reviewForm} onSubmit={handleSubmit}>
           <div className="rating">
             <div className="rating__stars">
               <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
@@ -101,7 +81,7 @@ const AddReview = (props) => {
               className="add-review__textarea" name="review-text"
               id="review-text" placeholder="Review text"
               required minLength={ReviewTextSize.MIN} maxLength={ReviewTextSize.MAX}
-              onChange={_handleReviewTextChange}
+              onChange={handleReviewTextChange}
             ></textarea>
             <div className="add-review__submit">
               <button
