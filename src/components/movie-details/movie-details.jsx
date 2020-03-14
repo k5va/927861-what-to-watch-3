@@ -1,12 +1,12 @@
-import {Tabs, Tab, MoviesList, UserBlock, AppLogo} from "@components";
+import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
 import {convertScoreToText} from "@utils";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
 
 const MovieDetails = (props) => {
   const {movie, onPlayMovie, similarMovies, onMovieCardClick, isAuthenticated} = props;
-  const {id, title, genre, year, cover, poster, rating,
-    description, director, actors, comments, duration} = movie;
+  const {id, title, genre, year, cover, poster, rating, backgroundImage,
+    description, director, actors, comments, duration, isFavorite} = movie;
   const {score, count: ratingCount} = rating;
 
   return (
@@ -14,7 +14,7 @@ const MovieDetails = (props) => {
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
         <div className="movie-card__bg">
-          <img src={poster} alt={title} />
+          <img src={backgroundImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -39,12 +39,7 @@ const MovieDetails = (props) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <MyListButton movieId={id} isFavoriteMovie={isFavorite} />
               {
                 isAuthenticated &&
                 <Link to={createRoute(AppRoute.ADD_REVIEW, id)} className="btn movie-card__button">Add review</Link>
@@ -57,7 +52,7 @@ const MovieDetails = (props) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src={cover}
+            <img src={poster}
               alt={title} width="218" height="327" />
           </div>
 
