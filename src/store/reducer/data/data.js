@@ -1,5 +1,6 @@
 import {extend} from "@utils";
 import ActionType from "./actions/action-type";
+import {handleSetMovieCommentsAction, handleSetFavoriteMovieStatusAction} from "./helpers";
 
 const initialState = {
   movies: [],
@@ -13,15 +14,9 @@ const reducer = (state = initialState, {type, payload}) => {
     case ActionType.LOAD_PROMO_MOVIE:
       return extend(state, {promoMovie: payload});
     case ActionType.SET_MOVIE_COMMENTS:
-      const {movieId, comments} = payload;
-      const {movies} = state;
-      const movieIndex = movies.findIndex(({id}) => id === movieId);
-      const updatedMovie = movies[movieIndex];
-      updatedMovie.comments = comments;
-      return extend(
-          state,
-          {movies: [...movies.slice(0, movieIndex), updatedMovie, ...movies.slice(movieIndex + 1)]}
-      );
+      return handleSetMovieCommentsAction(state, payload);
+    case ActionType.SET_FAVORITE_MOVIE_STATUS:
+      return handleSetFavoriteMovieStatusAction(state, payload);
     default:
       return state;
   }
