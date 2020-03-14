@@ -34,4 +34,15 @@ const MyList = (props) => {
   );
 };
 
+MyList.propTypes = {
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired
+      })
+  ).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
+};
+
 export default MyList;

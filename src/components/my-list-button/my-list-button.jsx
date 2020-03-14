@@ -24,4 +24,11 @@ const MyListButton = ({isAuthenticated, movieId, isFavoriteMovie, onClick}) => {
   );
 };
 
+MyListButton.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isFavoriteMovie: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
 export default MyListButton;

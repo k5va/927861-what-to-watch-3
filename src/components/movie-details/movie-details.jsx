@@ -5,7 +5,7 @@ import {AppRoute, createRoute} from "@routes";
 
 const MovieDetails = (props) => {
   const {movie, onPlayMovie, similarMovies, onMovieCardClick, isAuthenticated} = props;
-  const {id, title, genre, year, cover, poster, rating, backgroundImage,
+  const {id, title, genre, year, poster, rating, backgroundImage,
     description, director, actors, comments, duration, isFavorite} = movie;
   const {score, count: ratingCount} = rating;
 
@@ -159,6 +159,8 @@ MovieDetails.propTypes = {
     year: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
     poster: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
