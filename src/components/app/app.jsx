@@ -1,5 +1,6 @@
 import {Router, Route, Switch} from "react-router-dom";
-import {Main, MovieDetails, VideoPlayerFull, SignIn, PrivateRoute, AddReview} from "@components";
+import {Main, MovieDetails, VideoPlayerFull, SignIn,
+  PrivateRoute, AddReview, MyList} from "@components";
 import {AppState} from "@consts";
 import {history, AppRoute} from "@routes";
 
@@ -61,6 +62,12 @@ class App extends React.PureComponent {
                 render={(props) => {
                   const {id: movieId} = props.match.params;
                   return <AddReview movie={getMovie(movieId)} />;
+                }}
+              />
+
+              <PrivateRoute exact path={AppRoute.MY_LIST}
+                render={() => {
+                  return <MyList onMovieCardClick={onMovieCardClick} />;
                 }}
               />
             </Switch>
