@@ -9,7 +9,7 @@ const initialState = {
 
 const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case ActionType.LOAD_MOVIES:
+    case ActionType.SET_MOVIES:
       return extend(state, {movies: payload});
     case ActionType.SET_PROMO_MOVIE_ID:
       return extend(state, {promoMovieId: payload});
