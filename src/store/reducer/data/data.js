@@ -4,15 +4,15 @@ import {handleSetMovieCommentsAction, handleSetFavoriteMovieStatusAction} from "
 
 const initialState = {
   movies: [],
-  promoMovie: null
+  promoMovieId: null
 };
 
 const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case ActionType.LOAD_MOVIES:
       return extend(state, {movies: payload});
-    case ActionType.LOAD_PROMO_MOVIE:
-      return extend(state, {promoMovie: payload});
+    case ActionType.SET_PROMO_MOVIE_ID:
+      return extend(state, {promoMovieId: payload});
     case ActionType.SET_MOVIE_COMMENTS:
       return handleSetMovieCommentsAction(state, payload);
     case ActionType.SET_FAVORITE_MOVIE_STATUS:
