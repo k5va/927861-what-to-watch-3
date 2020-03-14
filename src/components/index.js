@@ -14,3 +14,5 @@ export {default as UserBlock} from "./user-block/user-block.connect";
 export {default as PrivateRoute} from "./private-route/private-route.connect";
 export {default as AppLogo} from "./app-logo/app-logo";
 export {default as AddReview} from "./add-review/add-review.connect";
+export {default as MyList} from "./my-list/my-list.connect";
+export {default as MyListButton} from "./my-list-button/my-list-button.connect";
