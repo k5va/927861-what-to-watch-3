@@ -1,8 +1,7 @@
 import {VideoPlayerFull} from "@components";
-import {generateId} from "@utils";
 
 const movie = {
-  id: generateId(),
+  id: `1`,
   title: `Die hard`,
   genre: `Drama`,
   year: 2019,
