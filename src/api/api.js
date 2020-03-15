@@ -42,6 +42,11 @@ export default class Api {
       .then((response) => response.data);
   }
 
+  setFavoriteMovieStatus(movieId, status) {
+    return this._api.post(`/favorite/${movieId}/${status}`)
+      .then((response) => response.data);
+  }
+
   _createAPI() {
     const api = axios.create({
       baseURL: BASE_URL,

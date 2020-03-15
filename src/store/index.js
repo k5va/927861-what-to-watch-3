@@ -18,3 +18,5 @@ export {default as getAuthorizationStatus} from "./reducer/user/selectors/get-au
 export {default as handleError} from "./reducer/app/operations/handle-error";
 export {default as resetError} from "./reducer/app/operations/reset-error";
 export {default as addComment} from "./reducer/data/operations/add-comment";
+export {default as getFavoriteMovies} from "./reducer/data/selectors/get-favorite-movies";
+export {default as setFavoriteMovieStatus} from "./reducer/data/operations/set-favorite-movie-status";

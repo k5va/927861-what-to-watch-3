@@ -1,12 +1,15 @@
-import {MoviesList, GenresList, ShowMore, UserBlock, AppLogo} from "@components";
+import {
+  MoviesList, GenresList, ShowMore,
+  UserBlock, AppLogo, MyListButton
+} from "@components";
 
 const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
-  const {id, title, genre, year, cover, poster} = promoMovie;
+  const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;
   return (
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={poster} alt={title} />
+          <img src={backgroundImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -19,7 +22,7 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={cover} alt={title} width="218" height="327" />
+              <img src={poster} alt={title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -37,12 +40,7 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <MyListButton movieId={id} isFavoriteMovie={isFavorite} />
               </div>
             </div>
           </div>
@@ -82,8 +80,9 @@ Main.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,

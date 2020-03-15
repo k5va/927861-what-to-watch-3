@@ -12,9 +12,9 @@ const loadMovies = () => (dispatch, getState, api) => {
           .then((comments) => movie.setComments(comments))
         )
     ))
-    .then((movies) => dispatch(ActionCreator.loadMovies(movies)))
+    .then((movies) => dispatch(ActionCreator.setMovies(movies)))
     .then(() => api.loadPromoMovie())
-    .then((data) => dispatch(ActionCreator.loadPromoMovie(Movie.parseMovie(data))))
+    .then((data) => dispatch(ActionCreator.setPromoMovieId(`` + data.id)))
     .then(() => dispatch(ActionCreator.changeAppState(AppState.READY)))
     .catch((err) => dispatch(handleError(err)));
 };

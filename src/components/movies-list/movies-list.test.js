@@ -1,9 +1,8 @@
 import {MoviesList} from "@components";
-import {generateId} from "@utils";
 
 const movies = [
   {
-    id: generateId(),
+    id: `1`,
     title: `Die hard`,
     genre: `Drama`,
     year: 2019,
@@ -25,21 +24,21 @@ const movies = [
     },
     comments: [
       {
-        id: generateId(),
+        id: `1`,
         text: `Bla Bla Bla`,
         author: `John Doe`,
         date: new Date(),
         rating: 9.0
       },
       {
-        id: generateId(),
+        id: `2`,
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
         date: new Date(),
         rating: 2.0
       },
       {
-        id: generateId(),
+        id: `3`,
         text: `Bark Bark Bark`,
         author: `Pluto`,
         date: new Date(),
@@ -48,7 +47,7 @@ const movies = [
     ]
   },
   {
-    id: generateId(),
+    id: `2`,
     title: `Die hard 2`,
     genre: `Drama`,
     year: 2019,
@@ -70,21 +69,21 @@ const movies = [
     },
     comments: [
       {
-        id: generateId(),
+        id: `1`,
         text: `Bla Bla Bla`,
         author: `John Doe`,
         date: new Date(),
         rating: 9.0
       },
       {
-        id: generateId(),
+        id: `2`,
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
         date: new Date(),
         rating: 2.0
       },
       {
-        id: generateId(),
+        id: `3`,
         text: `Bark Bark Bark`,
         author: `Pluto`,
         date: new Date(),
@@ -93,7 +92,7 @@ const movies = [
     ]
   },
   {
-    id: generateId(),
+    id: `3`,
     title: `Die hard 3`,
     genre: `Drama`,
     year: 2019,
@@ -115,21 +114,21 @@ const movies = [
     },
     comments: [
       {
-        id: generateId(),
+        id: `1`,
         text: `Bla Bla Bla`,
         author: `John Doe`,
         date: new Date(),
         rating: 9.0
       },
       {
-        id: generateId(),
+        id: `2`,
         text: `Foo Foo Foo`,
         author: `Duffy Duck`,
         date: new Date(),
         rating: 2.0
       },
       {
-        id: generateId(),
+        id: `3`,
         text: `Bark Bark Bark`,
         author: `Pluto`,
         date: new Date(),

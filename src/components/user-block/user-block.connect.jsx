@@ -12,6 +12,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = () => ({
   onSignInClick() {
     history.push(AppRoute.SIGN_IN);
+  },
+  onAvatarClick() {
+    history.push(AppRoute.MY_LIST);
   }
 });
 

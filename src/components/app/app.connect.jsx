@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
   onPlayMovie: (id) => history.push(createRoute(AppRoute.PLAYER, id)),
   onVideoPlayerExit: () => history.goBack(),
   getSimilarMovies: (movie) => getSimilarMovies(state, movie), // TODO: move to movie-details.connect
-  onMovieCardClick: ({id}) => history.push(createRoute(AppRoute.FILM, id))
+  onMovieCardClick: ({id}) => history.push(createRoute(AppRoute.FILM, id)) // why here?
 });
 
 const mapDispatchToProps = (dispatch) => ({
