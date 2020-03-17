@@ -13,7 +13,7 @@ class App extends React.PureComponent {
 
   render() {
     const {login, appState, getMovie, onPlayMovie,
-      onVideoPlayerExit, getSimilarMovies, onMovieCardClick} = this.props;
+      onVideoPlayerExit, onMovieCardClick} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -42,7 +42,6 @@ class App extends React.PureComponent {
                   const movie = getMovie(movieId);
                   return <MovieDetails
                     movie={movie}
-                    similarMovies={getSimilarMovies(movie)}
                     onPlayMovie={() => onPlayMovie(movieId)}
                     onMovieCardClick={onMovieCardClick}
                   />;
@@ -84,7 +83,6 @@ App.propTypes = {
   getMovie: PropTypes.func.isRequired,
   onPlayMovie: PropTypes.func.isRequired,
   onVideoPlayerExit: PropTypes.func.isRequired,
-  getSimilarMovies: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired
 };
 
