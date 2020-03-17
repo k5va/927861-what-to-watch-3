@@ -2,8 +2,9 @@ import {
   MoviesList, GenresList, ShowMore,
   UserBlock, AppLogo, MyListButton
 } from "@components";
+import {openVideoPlayer} from "@routes";
 
-const Main = ({promoMovie, movies, onPlayMovie}) => {
+const Main = ({promoMovie, movies}) => {
   const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;
   return (
     <>
@@ -34,7 +35,7 @@ const Main = ({promoMovie, movies, onPlayMovie}) => {
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button"
-                  onClick={() => onPlayMovie(id)}>
+                  onClick={() => openVideoPlayer(id)}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -88,8 +89,7 @@ Main.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired
-  })).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  })).isRequired
 };
 
 export default Main;

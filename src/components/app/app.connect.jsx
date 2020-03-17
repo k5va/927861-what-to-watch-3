@@ -1,12 +1,10 @@
 import {connect} from "react-redux";
 import App from "./app";
 import {getAppState, getMovie, loadMovies, checkAuthStatus, login} from "@store";
-import {history, AppRoute, createRoute} from "@routes";
 
 const mapStateToProps = (state) => ({
   appState: getAppState(state),
   getMovie: (id) => getMovie(state, id),
-  onPlayMovie: (id) => history.push(createRoute(AppRoute.PLAYER, id)),
   onVideoPlayerExit: () => history.goBack()
 });
 

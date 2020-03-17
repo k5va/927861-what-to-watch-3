@@ -12,8 +12,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState, getMovie, onPlayMovie,
-      onVideoPlayerExit} = this.props;
+    const {login, appState, getMovie, onVideoPlayerExit} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -26,9 +25,7 @@ class App extends React.PureComponent {
             <Switch>
 
               <Route exact path={AppRoute.MAIN} render={() => {
-                return <Main
-                  onPlayMovie={onPlayMovie}
-                />;
+                return <Main />;
               }} />
 
               <Route exact path={AppRoute.SIGN_IN}>
@@ -39,10 +36,7 @@ class App extends React.PureComponent {
                 render={(props) => {
                   const {id: movieId} = props.match.params;
                   const movie = getMovie(movieId);
-                  return <MovieDetails
-                    movie={movie}
-                    onPlayMovie={() => onPlayMovie(movieId)}
-                  />;
+                  return <MovieDetails movie={movie} />;
                 }}
               />
 
@@ -79,7 +73,6 @@ App.propTypes = {
   login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
   getMovie: PropTypes.func.isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
   onVideoPlayerExit: PropTypes.func.isRequired
 };
 

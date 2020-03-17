@@ -1,10 +1,10 @@
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
 import {convertScoreToText} from "@utils";
 import {Link} from "react-router-dom";
-import {AppRoute, createRoute} from "@routes";
+import {AppRoute, createRoute, openVideoPlayer} from "@routes";
 
 const MovieDetails = (props) => {
-  const {movie, onPlayMovie, getSimilarMovies, isAuthenticated} = props;
+  const {movie, getSimilarMovies, isAuthenticated} = props;
   const {id, title, genre, year, poster, rating, backgroundImage,
     description, director, actors, comments, duration, isFavorite} = movie;
   const {score, count: ratingCount} = rating;
@@ -33,7 +33,9 @@ const MovieDetails = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
+              <button className="btn btn--play movie-card__button" type="button"
+                onClick={() => openVideoPlayer(id)}
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -177,7 +179,6 @@ MovieDetails.propTypes = {
       rating: PropTypes.number.isRequired,
     })).isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
   getSimilarMovies: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 };
