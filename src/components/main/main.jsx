@@ -3,7 +3,7 @@ import {
   UserBlock, AppLogo, MyListButton
 } from "@components";
 
-const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
+const Main = ({promoMovie, movies, onPlayMovie}) => {
   const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;
   return (
     <>
@@ -52,7 +52,7 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList />
-          <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
+          <MoviesList movies={movies} />
           <ShowMore />
         </section>
 
@@ -89,8 +89,7 @@ Main.propTypes = {
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired
   })).isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  onPlayMovie: PropTypes.func.isRequired
 };
 
 export default Main;

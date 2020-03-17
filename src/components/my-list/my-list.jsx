@@ -1,7 +1,7 @@
 import {AppLogo, UserBlock, MoviesList} from "@components";
 
 const MyList = (props) => {
-  const {movies, onMovieCardClick} = props;
+  const {movies} = props;
 
   return (
     <div className="user-page">
@@ -13,7 +13,7 @@ const MyList = (props) => {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
+        <MoviesList movies={movies} />
       </section>
 
       {/* TODO: make footer a component */}
@@ -41,8 +41,7 @@ MyList.propTypes = {
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired
       })
-  ).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  ).isRequired
 };
 
 export default MyList;

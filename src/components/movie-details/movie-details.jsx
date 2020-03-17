@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
 
 const MovieDetails = (props) => {
-  const {movie, onPlayMovie, getSimilarMovies, onMovieCardClick, isAuthenticated} = props;
+  const {movie, onPlayMovie, getSimilarMovies, isAuthenticated} = props;
   const {id, title, genre, year, poster, rating, backgroundImage,
     description, director, actors, comments, duration, isFavorite} = movie;
   const {score, count: ratingCount} = rating;
@@ -129,7 +129,7 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList movies={getSimilarMovies(movie)} onMovieCardClick={onMovieCardClick}/>
+        <MoviesList movies={getSimilarMovies(movie)} />
       </section>
       <footer className="page-footer">
         <div className="logo">
@@ -178,7 +178,6 @@ MovieDetails.propTypes = {
     })).isRequired,
   }).isRequired,
   onPlayMovie: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
   getSimilarMovies: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 };

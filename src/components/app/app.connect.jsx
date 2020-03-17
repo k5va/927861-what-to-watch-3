@@ -7,8 +7,7 @@ const mapStateToProps = (state) => ({
   appState: getAppState(state),
   getMovie: (id) => getMovie(state, id),
   onPlayMovie: (id) => history.push(createRoute(AppRoute.PLAYER, id)),
-  onVideoPlayerExit: () => history.goBack(),
-  onMovieCardClick: ({id}) => history.push(createRoute(AppRoute.FILM, id)) // why here?
+  onVideoPlayerExit: () => history.goBack()
 });
 
 const mapDispatchToProps = (dispatch) => ({
