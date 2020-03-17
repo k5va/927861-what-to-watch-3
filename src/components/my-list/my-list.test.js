@@ -1,4 +1,10 @@
-import {MoviesList} from "@components";
+import {MyList} from "@components";
+import {Provider} from "react-redux";
+import {NameSpace} from "@store";
+import configureStore from "redux-mock-store";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import {Router} from "react-router-dom";
+import {history} from "@routes";
 
 const movies = [
   {
@@ -138,13 +144,31 @@ const movies = [
   }
 ];
 
-it(`MoviesList should render correctly`, () => {
+const mockStore = configureStore([]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    promoMovieId: `1`,
+    movies
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: Genre.ALL,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
+
+it(`MyList should render correctly`, () => {
   const wrapper = renderer
     .create(
-        <MoviesList movies={movies} />,
-        {
-          createNodeMock: () => ({})
-        }
+        <Provider store={store}>
+          <Router history={history}>
+            <MyList movies={movies} />
+          </Router>
+        </Provider>
     )
     .toJSON();
   expect(wrapper).toMatchSnapshot();

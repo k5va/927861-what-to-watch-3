@@ -64,8 +64,6 @@ it(`MovieDetails should render correctly`, () => {
             <MovieDetails
               movie={movie}
               onPlayMovie={() => {}}
-              onMovieCardClick={() => {}}
-              similarMovies={[]}
             />
           </Router>
         </Provider>,

@@ -55,7 +55,6 @@ it(`Main should render correctly`, () => {
           <Router history={history}>
             <Main
               onPlayMovie={() => {}}
-              onMovieCardClick={() => {}}
             />
           </Router>
         </Provider>,
