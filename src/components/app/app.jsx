@@ -2,7 +2,7 @@ import {Router, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn,
   PrivateRoute, AddReview, MyList} from "@components";
 import {AppState} from "@consts";
-import {history, AppRoute} from "@routes";
+import {history, AppRoute, goBack} from "@routes";
 
 class App extends React.PureComponent {
 
@@ -12,7 +12,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState, getMovie, onVideoPlayerExit} = this.props;
+    const {login, appState, getMovie} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -45,7 +45,7 @@ class App extends React.PureComponent {
                 const {title, duration, src, poster} = getMovie(movieId);
                 return <VideoPlayerFull
                   title={title} duration={duration} src={src} poster={poster}
-                  onExit={onVideoPlayerExit}
+                  onExit={goBack}
                 />;
               }}/>
 
@@ -72,8 +72,7 @@ App.propTypes = {
   init: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
-  getMovie: PropTypes.func.isRequired,
-  onVideoPlayerExit: PropTypes.func.isRequired
+  getMovie: PropTypes.func.isRequired
 };
 
 export default App;

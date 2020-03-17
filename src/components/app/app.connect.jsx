@@ -4,8 +4,7 @@ import {getAppState, getMovie, loadMovies, checkAuthStatus, login} from "@store"
 
 const mapStateToProps = (state) => ({
   appState: getAppState(state),
-  getMovie: (id) => getMovie(state, id),
-  onVideoPlayerExit: () => history.goBack()
+  getMovie: (id) => getMovie(state, id)
 });
 
 const mapDispatchToProps = (dispatch) => ({
