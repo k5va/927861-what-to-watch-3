@@ -1,7 +1,8 @@
 import {AppLogo, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
-import {isFormValid, isReviewTextValid, ReviewTextSize} from "./helpers";
+import {isFormValid, isReviewTextValid} from "./helpers";
+import {ReviewTextSize} from "@consts";
 
 const AddReview = (props) => {
   const {movie, addReview, isError} = props;
