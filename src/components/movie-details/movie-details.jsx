@@ -1,5 +1,5 @@
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
-import {convertScoreToText} from "@utils";
+import {convertScoreToText, formatTime} from "@utils";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute, openVideoPlayer} from "@routes";
 
@@ -92,7 +92,7 @@ const MovieDetails = (props) => {
                 <div className="movie-card__text-col">
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Run Time</strong>
-                    <span className="movie-card__details-value">{duration}</span>
+                    <span className="movie-card__details-value">{formatTime(duration)}</span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Genre</strong>
