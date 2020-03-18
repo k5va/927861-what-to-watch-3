@@ -2,7 +2,7 @@ import {Router, Route, Switch} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn,
   PrivateRoute, AddReview, MyList} from "@components";
 import {AppState} from "@consts";
-import {history, AppRoute} from "@routes";
+import {history, AppRoute, goBack} from "@routes";
 
 class App extends React.PureComponent {
 
@@ -12,8 +12,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState, getMovie, onPlayMovie,
-      onVideoPlayerExit, getSimilarMovies, onMovieCardClick} = this.props;
+    const {login, appState, getMovie} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -26,10 +25,7 @@ class App extends React.PureComponent {
             <Switch>
 
               <Route exact path={AppRoute.MAIN} render={() => {
-                return <Main
-                  onPlayMovie={onPlayMovie}
-                  onMovieCardClick={onMovieCardClick}
-                />;
+                return <Main />;
               }} />
 
               <Route exact path={AppRoute.SIGN_IN}>
@@ -40,12 +36,7 @@ class App extends React.PureComponent {
                 render={(props) => {
                   const {id: movieId} = props.match.params;
                   const movie = getMovie(movieId);
-                  return <MovieDetails
-                    movie={movie}
-                    similarMovies={getSimilarMovies(movie)}
-                    onPlayMovie={() => onPlayMovie(movieId)}
-                    onMovieCardClick={onMovieCardClick}
-                  />;
+                  return <MovieDetails movie={movie} />;
                 }}
               />
 
@@ -54,7 +45,7 @@ class App extends React.PureComponent {
                 const {title, duration, src, poster} = getMovie(movieId);
                 return <VideoPlayerFull
                   title={title} duration={duration} src={src} poster={poster}
-                  onExit={onVideoPlayerExit}
+                  onExit={goBack}
                 />;
               }}/>
 
@@ -67,7 +58,7 @@ class App extends React.PureComponent {
 
               <PrivateRoute exact path={AppRoute.MY_LIST}
                 render={() => {
-                  return <MyList onMovieCardClick={onMovieCardClick} />;
+                  return <MyList />;
                 }}
               />
             </Switch>
@@ -81,11 +72,7 @@ App.propTypes = {
   init: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
-  getMovie: PropTypes.func.isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
-  onVideoPlayerExit: PropTypes.func.isRequired,
-  getSimilarMovies: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  getMovie: PropTypes.func.isRequired
 };
 
 export default App;

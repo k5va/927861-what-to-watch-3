@@ -1,10 +1,10 @@
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
 import {convertScoreToText} from "@utils";
 import {Link} from "react-router-dom";
-import {AppRoute, createRoute} from "@routes";
+import {AppRoute, createRoute, openVideoPlayer} from "@routes";
 
 const MovieDetails = (props) => {
-  const {movie, onPlayMovie, similarMovies, onMovieCardClick, isAuthenticated} = props;
+  const {movie, getSimilarMovies, isAuthenticated} = props;
   const {id, title, genre, year, poster, rating, backgroundImage,
     description, director, actors, comments, duration, isFavorite} = movie;
   const {score, count: ratingCount} = rating;
@@ -33,7 +33,9 @@ const MovieDetails = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
+              <button className="btn btn--play movie-card__button" type="button"
+                onClick={() => openVideoPlayer(id)}
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -129,17 +131,10 @@ const MovieDetails = (props) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList movies={similarMovies} onMovieCardClick={onMovieCardClick}/>
+        <MoviesList movies={getSimilarMovies(movie)} />
       </section>
       <footer className="page-footer">
-        <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
-
+        <AppLogo isLight={true} />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
@@ -177,13 +172,7 @@ MovieDetails.propTypes = {
       rating: PropTypes.number.isRequired,
     })).isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  similarMovies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired
-  })).isRequired,
+  getSimilarMovies: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 };
 

@@ -2,8 +2,9 @@ import {
   MoviesList, GenresList, ShowMore,
   UserBlock, AppLogo, MyListButton
 } from "@components";
+import {openVideoPlayer} from "@routes";
 
-const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
+const Main = ({promoMovie, movies}) => {
   const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;
   return (
     <>
@@ -34,7 +35,7 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button"
-                  onClick={() => onPlayMovie(id)}>
+                  onClick={() => openVideoPlayer(id)}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -52,19 +53,12 @@ const Main = ({promoMovie, movies, onPlayMovie, onMovieCardClick}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList />
-          <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
+          <MoviesList movies={movies} />
           <ShowMore />
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
+          <AppLogo isLight={true} />
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
           </div>
@@ -88,9 +82,7 @@ Main.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired
-  })).isRequired,
-  onPlayMovie: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  })).isRequired
 };
 
 export default Main;
