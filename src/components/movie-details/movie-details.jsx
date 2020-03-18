@@ -70,7 +70,7 @@ const MovieDetails = (props) => {
               <div className="movie-card__text">
                 <p>{description}</p>
                 <p className="movie-card__director"><strong>Director: {director}</strong></p>
-                <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {actors.join(`, `)}</strong></p>
               </div>
             </Tab>
             <Tab name="Details">
