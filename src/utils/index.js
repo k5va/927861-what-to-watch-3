@@ -1,3 +1,4 @@
 export {default as convertScoreToText} from "./convert-score-to-text";
 export {default as extend} from "./extend";
-export {default as formatTime} from "./format-time";
+export {default as formatMinutes} from "./format-minutes";
+export {default as formatSeconds} from "./format-seconds";

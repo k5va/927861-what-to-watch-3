@@ -1,4 +1,5 @@
 import {withVideo} from "@hocs";
+import {formatSeconds} from "@utils";
 
 const VideoPlayerFull = (props) => {
   const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
@@ -13,7 +14,7 @@ const VideoPlayerFull = (props) => {
             <progress className="player__progress" value={progress} max="100"></progress>
             <div className="player__toggler" style={{left: `${progress}%`}}>Toggler</div>
           </div>
-          <div className="player__time-value">{time}</div>
+          <div className="player__time-value">{formatSeconds(time)}</div>
         </div>
         <div className="player__controls-row">
           <button type="button" className="player__play" onClick={onPlay}>
