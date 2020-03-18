@@ -1,10 +1,12 @@
 import {connect} from "react-redux";
 import App from "./app";
-import {getAppState, getMovie, loadMovies, checkAuthStatus, login} from "@store";
+import {AuthorizationStatus} from "@consts";
+import {getAppState, getMovie, loadMovies, checkAuthStatus, login, getAuthorizationStatus} from "@store";
 
 const mapStateToProps = (state) => ({
   appState: getAppState(state),
-  getMovie: (id) => getMovie(state, id)
+  getMovie: (id) => getMovie(state, id),
+  isAuthenticated: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
 });
 
 const mapDispatchToProps = (dispatch) => ({

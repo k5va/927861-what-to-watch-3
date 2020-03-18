@@ -1,4 +1,4 @@
-import {Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch, Redirect} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn,
   PrivateRoute, AddReview, MyList} from "@components";
 import {AppState} from "@consts";
@@ -12,7 +12,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {login, appState, getMovie} = this.props;
+    const {login, appState, getMovie, isAuthenticated} = this.props;
 
     switch (appState) {
       case AppState.PENDING:
@@ -28,9 +28,9 @@ class App extends React.PureComponent {
                 return <Main />;
               }} />
 
-              <Route exact path={AppRoute.SIGN_IN}>
-                <SignIn onSubmit={login} />
-              </Route>
+              <Route exact path={AppRoute.SIGN_IN} render={() => {
+                return isAuthenticated ? <Redirect to={AppRoute.MAIN} /> : <SignIn onSubmit={login} />;
+              }} />
 
               <Route exact path={AppRoute.FILM}
                 render={(props) => {
@@ -72,7 +72,8 @@ App.propTypes = {
   init: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   appState: PropTypes.string.isRequired,
-  getMovie: PropTypes.func.isRequired
+  getMovie: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default App;
