@@ -1,5 +1,5 @@
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
-import {convertScoreToText, formatMinutes} from "@utils";
+import {convertScoreToText, formatMinutes, formatDate} from "@utils";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute, openVideoPlayer} from "@routes";
 
@@ -114,7 +114,7 @@ const MovieDetails = (props) => {
                         <p className="review__text">{review.text}</p>
                         <footer className="review__details">
                           <cite className="review__author">{review.author}</cite>
-                          <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
+                          <time className="review__date" dateTime={review.date}>{formatDate(review.date)}</time>
                         </footer>
                       </blockquote>
                       <div className="review__rating">{review.rating}</div>
