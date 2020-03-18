@@ -1,6 +1,6 @@
 import {MovieScore} from "@consts";
 
-export default (score) => {
+const convertScoreToText = (score) => {
 
   if (score < 0) {
     throw new Error(`Score can't be negative`);
@@ -24,3 +24,5 @@ export default (score) => {
 
   return MovieScore.AWESOME;
 };
+
+export default convertScoreToText;
