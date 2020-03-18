@@ -7,8 +7,8 @@ const login = (authData) => (dispatch, getState, api) => {
   return api.login(authData)
     .then(User.parseUser)
     .then((user) => {
-      dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setUser(user));
+      dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
       history.push(AppRoute.MAIN);
     })
     .catch((err) => dispatch(handleError(err)));
