@@ -1,5 +1,14 @@
+import * as React from "react";
+
+interface Props {
+}
+
+interface State {
+  isActive: boolean;
+}
+
 export default (Component) => {
-  return class Wrapper extends React.PureComponent {
+  return class Wrapper extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 

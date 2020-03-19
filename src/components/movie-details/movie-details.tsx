@@ -1,9 +1,17 @@
+import * as React from "react";
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
 import {convertScoreToText, formatMinutes, formatDate} from "@utils";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute, openVideoPlayer} from "@routes";
+import {Movie} from "@types";
 
-const MovieDetails = (props) => {
+interface Props {
+  movie: Movie,
+  getSimilarMovies: (movie: Movie) => Array<Movie>,
+  isAuthenticated: boolean
+};
+
+const MovieDetails: React.FunctionComponent<Props> = (props: Props) => {
   const {movie, getSimilarMovies, isAuthenticated} = props;
   const {id, title, genre, year, poster, rating, backgroundImage,
     description, director, actors, comments, duration, isFavorite} = movie;
@@ -114,7 +122,9 @@ const MovieDetails = (props) => {
                         <p className="review__text">{review.text}</p>
                         <footer className="review__details">
                           <cite className="review__author">{review.author}</cite>
-                          <time className="review__date" dateTime={review.date}>{formatDate(review.date)}</time>
+                          <time className="review__date" dateTime={review.date.toString()}>
+                            {formatDate(review.date)}
+                          </time>
                         </footer>
                       </blockquote>
                       <div className="review__rating">{review.rating}</div>
@@ -142,38 +152,6 @@ const MovieDetails = (props) => {
     </div>
     </>
   );
-};
-
-MovieDetails.TAB_NAMES = [`Overview`, `Details`, `Reviews`];
-
-MovieDetails.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    poster: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      count: PropTypes.number.isRequired
-    }).isRequired,
-    comments: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.instanceOf(Date).isRequired,
-      rating: PropTypes.number.isRequired,
-    })).isRequired,
-  }).isRequired,
-  getSimilarMovies: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default MovieDetails;

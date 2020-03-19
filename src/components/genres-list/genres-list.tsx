@@ -1,6 +1,13 @@
+import * as React from "react";
 import {Genre} from "@consts";
 
-const GenresList = (props) => {
+interface Props {
+  genres: Array<string>,
+  selectedGenre: string,
+  onGenreSelect: (genre: string) => void
+};
+
+const GenresList: React.FunctionComponent<Props> = (props: Props) => {
   const {genres, selectedGenre, onGenreSelect} = props;
 
   const handleGenreClick = (evt, genre) => {
@@ -29,12 +36,6 @@ const GenresList = (props) => {
       ))}
     </ul>
   );
-};
-
-GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedGenre: PropTypes.string.isRequired,
-  onGenreSelect: PropTypes.func.isRequired
 };
 
 export default GenresList;

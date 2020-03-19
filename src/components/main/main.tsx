@@ -1,10 +1,14 @@
-import {
-  MoviesList, GenresList, ShowMore,
-  UserBlock, AppLogo, MyListButton
-} from "@components";
+import * as React from "react";
+import {MoviesList, GenresList, ShowMore, UserBlock, AppLogo, MyListButton} from "@components";
 import {openVideoPlayer} from "@routes";
+import {Movie} from "@types";
 
-const Main = ({promoMovie, movies}) => {
+interface Props {
+  promoMovie: Movie,
+  movies: Array<Movie>
+};
+
+const Main: React.FunctionComponent<Props> = ({promoMovie, movies}: Props) => {
   const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;
   return (
     <>
@@ -66,23 +70,6 @@ const Main = ({promoMovie, movies}) => {
       </div>
     </>
   );
-};
-
-Main.propTypes = {
-  promoMovie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired
-  })).isRequired
 };
 
 export default Main;

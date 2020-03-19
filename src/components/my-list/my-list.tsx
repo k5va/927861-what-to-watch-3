@@ -1,4 +1,10 @@
+import * as React from "react";
 import {AppLogo, UserBlock, MoviesList} from "@components";
+import {Movie} from "@types";
+
+interface Props {
+  movies: Array<Movie>
+};
 
 const MyList = (props) => {
   const {movies} = props;
@@ -24,16 +30,6 @@ const MyList = (props) => {
       </footer>
     </div>
   );
-};
-
-MyList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired
-      })
-  ).isRequired
 };
 
 export default MyList;

@@ -1,10 +1,16 @@
+import * as React from "react";
 import {AppLogo} from "@components";
+import {AuthData} from "@types";
 
-const SignIn = (props) => {
+interface Props {
+  onSubmit: (authData: AuthData) => void
+};
+
+const SignIn: React.FunctionComponent<Props> = (props: Props) => {
   const {onSubmit} = props;
 
-  const loginRef = React.createRef();
-  const passwordRef = React.createRef();
+  const loginRef: React.RefObject<HTMLInputElement> = React.createRef();
+  const passwordRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   return (
     <div className="user-page">
@@ -46,10 +52,6 @@ const SignIn = (props) => {
       </footer>
     </div>
   );
-};
-
-SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired
 };
 
 export default SignIn;

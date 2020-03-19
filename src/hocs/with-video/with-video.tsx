@@ -1,8 +1,29 @@
+import * as React from "react";
+
+interface Props {
+    title?: string,
+    duration?: number,
+    src: string,
+    poster: string,
+    onExit?: () => void,
+    isPlaying: boolean
+}
+
+interface State {
+  time: number,
+  isLoading: boolean,
+  isPlaying: boolean
+}
+
 export default (Component) => {
-  class WithVideo extends React.Component {
+  class WithVideo extends React.PureComponent<Props, State> {
+
+    private _videoRef: React.RefObject<HTMLVideoElement>;
+
     constructor(props) {
       super(props);
-      const {isPlaying} = this.props;
+
+      const {isPlaying = true} = this.props;
 
       this.state = {
         time: 0,
@@ -96,19 +117,6 @@ export default (Component) => {
       return Math.floor(100 * time / duration);
     }
   }
-
-  WithVideo.propTypes = {
-    title: PropTypes.string,
-    duration: PropTypes.number,
-    src: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    isPlaying: PropTypes.bool.isRequired,
-    onExit: PropTypes.func
-  };
-
-  WithVideo.defaultProps = {
-    isPlaying: true
-  };
 
   return WithVideo;
 };

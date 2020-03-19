@@ -1,12 +1,13 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 const BASE_URL = `https://htmlacademy-react-3.appspot.com/wtw`;
 const DEFAULT_TIMEOUT = 5000;
 
 export default class Api {
+  private _api: AxiosInstance;
 
-  constructor(onError) {
-    this._api = this._createAPI(onError);
+  constructor() {
+    this._api = this._createAPI();
   }
 
   loadMovies() {

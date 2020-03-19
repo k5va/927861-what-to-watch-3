@@ -14,9 +14,10 @@
       "@hocs": ["src/hocs/"],
       "@utils": ["src/utils/"],
       "@store": ["src/store/"],
-      "@api": ["src/api/"],
+      "@api": ["src/api/api"],
       "@models": ["src/models/"],
-      "@routes": ["src/routes/"]
+      "@routes": ["src/routes/"],
+      "@types": ["src/types/"]
     }
   },
   "exclude": [

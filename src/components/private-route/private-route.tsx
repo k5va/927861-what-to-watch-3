@@ -1,8 +1,15 @@
-
+import * as React from "react";
 import {Route, Redirect} from "react-router-dom";
 import {AppRoute} from "@routes";
 
-const PrivateRoute = (props) => {
+interface Props {
+  render: (props: any) => React.ReactNode,
+  path: string,
+  exact: boolean,
+  isAuthenticated: boolean
+};
+
+const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
   const {render, path, exact, isAuthenticated} = props;
 
   return (
@@ -18,13 +25,6 @@ const PrivateRoute = (props) => {
       }}
     />
   );
-};
-
-PrivateRoute.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  exact: PropTypes.bool.isRequired,
-  path: PropTypes.string.isRequired,
-  render: PropTypes.func.isRequired,
 };
 
 export default PrivateRoute;

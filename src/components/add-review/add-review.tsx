@@ -1,21 +1,29 @@
+import * as React from "react";
 import {AppLogo, UserBlock} from "@components";
 import {Link} from "react-router-dom";
 import {AppRoute, createRoute} from "@routes";
 import {isFormValid, isReviewTextValid} from "./helpers";
 import {ReviewTextSize} from "@consts";
+import {Movie} from "@types";
 
-const AddReview = (props) => {
+interface Props {
+  movie: Movie,
+  addReview: (rating: number, comment: string, movieId: string) => void,
+  isError: boolean
+}
+
+const AddReview: React.FunctionComponent<Props> = (props: Props) => {
   const {movie, addReview, isError} = props;
   const {id, title, backgroundImage, poster} = movie;
-  const reviewForm = React.createRef();
-  const submitButton = React.createRef();
+  const reviewForm: React.RefObject<HTMLFormElement> = React.createRef();
+  const submitButton: React.RefObject<HTMLButtonElement> = React.createRef();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
     const formData = new FormData(reviewForm.current);
     if (isFormValid(formData)) {
-      addReview(formData.get(`rating`), formData.get(`review-text`), id);
+      addReview(+formData.get(`rating`), ``+ formData.get(`review-text`), id);
     }
   };
 
@@ -99,17 +107,6 @@ const AddReview = (props) => {
 
     </section>
   );
-};
-
-AddReview.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  }).isRequired,
-  addReview: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired
 };
 
 export default AddReview;

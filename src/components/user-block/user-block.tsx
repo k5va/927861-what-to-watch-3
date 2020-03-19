@@ -1,4 +1,13 @@
-const UserBlock = (props) => {
+import * as React from "react";
+
+interface Props {
+  isAuthenticated: boolean,
+  avatar?: string,
+  onSignInClick?: () => void,
+  onAvatarClick?: () => void,
+};
+
+const UserBlock: React.FC<Props> = (props: Props) => {
   const {isAuthenticated, avatar, onSignInClick, onAvatarClick} = props;
 
   return (
@@ -19,13 +28,6 @@ const UserBlock = (props) => {
       }
     </div>
   );
-};
-
-UserBlock.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  avatar: PropTypes.string,
-  onSignInClick: PropTypes.func,
-  onAvatarClick: PropTypes.func
 };
 
 export default UserBlock;

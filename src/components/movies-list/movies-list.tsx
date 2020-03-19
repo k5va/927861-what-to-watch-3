@@ -1,6 +1,12 @@
+import * as React from "react";
 import {MovieCard} from "@components";
+import {Movie} from "@types";
 
-const MoviesList = (props) => {
+interface Props {
+  movies: Array<Movie>
+};
+
+const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
   const {movies} = props;
 
   return (
@@ -11,16 +17,6 @@ const MoviesList = (props) => {
       />)}
     </div>
   );
-};
-
-MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired
-      })
-  ).isRequired
 };
 
 export default MoviesList;

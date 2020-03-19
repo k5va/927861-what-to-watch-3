@@ -1,11 +1,10 @@
-const Tab = (props) => props.children;
+import * as React from "react";
 
-Tab.propTypes = {
-  name: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node.isRequired
-  ]).isRequired
+interface Props {
+  name: string,
+  children: Array<React.ReactNode> | React.ReactNode
 };
+
+const Tab: React.FunctionComponent<Props> = (props: Props) => <>{props.children}</>;
 
 export default Tab;

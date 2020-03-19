@@ -39,7 +39,8 @@ module.exports = {
       "@store": path.resolve(__dirname, `./src/store/`),
       "@api": path.resolve(__dirname, `./src/api/api`),
       "@models": path.resolve(__dirname, `./src/models/`),
-      "@routes": path.resolve(__dirname, `./src/routes`)
+      "@routes": path.resolve(__dirname, `./src/routes`),
+      "@types": path.resolve(__dirname, `./src/types`)
     }
   },
   plugins: [

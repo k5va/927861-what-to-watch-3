@@ -1,10 +1,20 @@
+import * as React from "react";
 import {Router, Route, Switch, Redirect} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn,
   PrivateRoute, AddReview, MyList} from "@components";
 import {AppState} from "@consts";
 import {history, AppRoute, goBack} from "@routes";
+import {AuthData, Movie} from "@types";
 
-const App = (props) => {
+interface Props {
+  init: () => void,
+  login: (AuthData: AuthData) => void,
+  appState: string,
+  getMovie: (id: string) => Movie,
+  isAuthenticated: boolean
+};
+
+const App: React.FunctionComponent<Props> = (props: Props) => {
   const {login, appState, getMovie, isAuthenticated, init} = props;
 
   React.useEffect(() => init(), []);
@@ -60,14 +70,6 @@ const App = (props) => {
         </Router>
       );
   }
-};
-
-App.propTypes = {
-  init: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  appState: PropTypes.string.isRequired,
-  getMovie: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default App;

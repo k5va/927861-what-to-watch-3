@@ -1,4 +1,11 @@
-const ShowMore = (props) => {
+import * as React from "react";
+
+interface Props {
+  isVisible: boolean,
+  onClick: () => void
+};
+
+const ShowMore: React.FunctionComponent<Props> = (props: Props) => {
   const {onClick, isVisible} = props;
   return (
     <div className="catalog__more">
@@ -8,11 +15,6 @@ const ShowMore = (props) => {
       }
     </div>
   );
-};
-
-ShowMore.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
 };
 
 export default ShowMore;

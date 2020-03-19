@@ -1,10 +1,20 @@
+import * as React from "react";
 import {VideoPlayer} from "@components";
 import {withActiveState, withTimer} from "@hocs";
 import handleMovieCardClick from "./helpers/handle-movie-card-click";
+import {Movie} from "@types";
 
 const VIDEO_PLAY_DELAY = 1000;
 
-const MovieCard = (props) => {
+interface Props {
+  movie: Movie,
+  isActive: boolean,
+  onActiveChange: (isActive: boolean) => void,
+  setTimeout: (callback: () => void, time: number) => void,
+  clearTimeout: () => void
+};
+
+const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
   const {movie, isActive, onActiveChange, setTimeout, clearTimeout} = props;
   const {id, title, cover, src} = movie;
 
@@ -37,19 +47,6 @@ const MovieCard = (props) => {
       </h3>
     </article>
   );
-};
-
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
-  }).isRequired,
-  isActive: PropTypes.bool.isRequired,
-  onActiveChange: PropTypes.func.isRequired,
-  setTimeout: PropTypes.func.isRequired,
-  clearTimeout: PropTypes.func.isRequired
 };
 
 export default withTimer(withActiveState(MovieCard));

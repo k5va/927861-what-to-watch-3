@@ -1,5 +1,17 @@
+import * as React from "react";
 import {withVideo} from "@hocs";
 import {formatSeconds} from "@utils";
+
+interface Props {
+  videoRef: React.RefObject<HTMLMediaElement>,
+  title: string,
+  time: number,
+  progress: number,
+  isPlaying: boolean,
+  onPlay: () => void,
+  onFullScreen: () => void,
+  onExit: () => void
+};
 
 const VideoPlayerFull = (props) => {
   const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
@@ -34,17 +46,6 @@ const VideoPlayerFull = (props) => {
       </div>
     </div>
   );
-};
-
-VideoPlayerFull.propTypes = {
-  videoRef: PropTypes.shape({current: PropTypes.instanceOf(HTMLMediaElement)}).isRequired,
-  title: PropTypes.string.isRequired,
-  time: PropTypes.number.isRequired,
-  progress: PropTypes.number.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  onPlay: PropTypes.func.isRequired,
-  onFullScreen: PropTypes.func.isRequired,
-  onExit: PropTypes.func.isRequired
 };
 
 export default withVideo(VideoPlayerFull);

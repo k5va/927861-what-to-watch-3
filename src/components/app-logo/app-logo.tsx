@@ -1,7 +1,12 @@
+import * as React from "react";
 import {Link} from "react-router-dom";
 import {AppRoute} from "@routes";
 
-const AppLogo = (props) => {
+interface Props {
+  isLight: boolean
+};
+
+const AppLogo: React.FunctionComponent<Props> = (props: Props) => {
   const {isLight} = props;
 
   return (
@@ -13,10 +18,6 @@ const AppLogo = (props) => {
       </Link>
     </div>
   );
-};
-
-AppLogo.propTypes = {
-  isLight: PropTypes.bool
 };
 
 export default AppLogo;

@@ -1,4 +1,16 @@
-const MyListButton = ({isAuthenticated, movieId, isFavoriteMovie, onClick}) => {
+import * as React from "react";
+
+interface Props {
+  isAuthenticated: boolean,
+  movieId: string,
+  isFavoriteMovie: boolean,
+  onClick: (movieId: string, isFavorite: boolean) => void
+};
+
+const MyListButton: React.FunctionComponent<Props> = (props: Props) => {
+
+  const {isAuthenticated, movieId, isFavoriteMovie, onClick} = props;
+
   if (!isAuthenticated) {
     return null;
   }
@@ -22,13 +34,6 @@ const MyListButton = ({isAuthenticated, movieId, isFavoriteMovie, onClick}) => {
       <span>My list</span>
     </button>
   );
-};
-
-MyListButton.propTypes = {
-  movieId: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isFavoriteMovie: PropTypes.bool.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default MyListButton;

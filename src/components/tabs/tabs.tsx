@@ -1,4 +1,11 @@
+import * as React from "react";
 import {withActiveItem} from "@hocs";
+
+interface Props {
+  children: Array<React.ReactNode>
+  activeItem: number,
+  onActiveItemChange: (item: number) => void
+};
 
 const Tabs = (props) => {
   const {children, activeItem, onActiveItemChange} = props;
@@ -24,15 +31,5 @@ const Tabs = (props) => {
     </div>
   );
 };
-
-Tabs.propTypes = {
-  activeItem: PropTypes.number.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node.isRequired
-  ]).isRequired
-};
-
 
 export default withActiveItem(Tabs);

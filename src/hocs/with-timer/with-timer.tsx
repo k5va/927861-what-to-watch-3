@@ -1,9 +1,20 @@
+import * as React from "react";
+
+interface Props {
+}
+
+interface State {
+}
+
 export default (Component) => {
-  return class WithTimer extends React.PureComponent {
+  return class WithTimer extends React.PureComponent<Props, State> {
+
+    private _timerId: number;
+
     constructor(props) {
       super(props);
 
-      this._timerdId = null;
+      this._timerId = null;
 
       this._setTimeout = this._setTimeout.bind(this);
       this._clearTimeout = this._clearTimeout.bind(this);
@@ -24,13 +35,13 @@ export default (Component) => {
     }
 
     _setTimeout(callback, time) {
-      this._timerdId = setTimeout(callback, time);
+      this._timerId = window.setTimeout(callback, time);
     }
 
     _clearTimeout() {
-      if (this._timerdId) {
-        clearTimeout(this._timerdId);
-        this._timerdId = null;
+      if (this._timerId) {
+        clearTimeout(this._timerId);
+        this._timerId = null;
       }
     }
   };
