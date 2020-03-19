@@ -1,4 +1,9 @@
+import * as React from "react";
+import {configure, mount} from "enzyme";
+import * as Adapter from 'enzyme-adapter-react-16';
 import {VideoPlayer} from "@components";
+
+configure({adapter: new Adapter()});
 
 const movie = {
   cover: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -8,7 +13,7 @@ const movie = {
 it(`VideoPlayer should have Playing state`, () => {
   jest
     .spyOn(HTMLMediaElement.prototype, `play`)
-    .mockImplementationOnce(() => {});
+    .mockImplementationOnce(() => Promise.resolve());
 
   const wrapperPlaying = mount(
       <VideoPlayer src={movie.src} poster={movie.cover} isPlaying={true} />

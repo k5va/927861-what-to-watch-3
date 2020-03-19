@@ -1,3 +1,5 @@
+import * as React from "react";
+import * as renderer from "react-test-renderer";
 import {MoviesList} from "@components";
 
 const movies = [

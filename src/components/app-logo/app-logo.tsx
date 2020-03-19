@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "@routes";
 
 interface Props {
-  isLight: boolean
+  isLight?: boolean
 };
 
 const AppLogo: React.FunctionComponent<Props> = (props: Props) => {
-  const {isLight} = props;
+  const {isLight = false} = props;
 
   return (
     <div className="logo">

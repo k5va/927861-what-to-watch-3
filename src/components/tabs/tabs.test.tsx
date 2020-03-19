@@ -1,3 +1,5 @@
+import * as React from "react";
+import * as renderer from "react-test-renderer";
 import {Tabs, Tab} from "@components";
 
 const TAB_NAMES = [`Tab1`, `Tab2`, `Tab3`];

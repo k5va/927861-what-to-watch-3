@@ -1,10 +1,11 @@
-import {MovieDetails} from "@components";
-import {createStore} from "redux";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import {App} from "@components";
 import {Provider} from "react-redux";
-import {reducer} from "@store";
-import {Router} from "react-router-dom";
-import {history} from "@routes";
-
+import {NameSpace} from "@store";
+import configureStore from "redux-mock-store";
+import {Genre, AppState, DEFAULT_SHOWN_MOVIES_NUMBER, AuthorizationStatus} from "@consts";
+import thunk from "redux-thunk";
 
 const movie = {
   id: `1`,
@@ -28,48 +29,49 @@ const movie = {
     score: 8.9,
     count: 240
   },
-  isFavorite: true,
-  comments: [
-    {
-      id: `1`,
-      text: `Bla Bla Bla`,
-      author: `John Doe`,
-      date: new Date(),
-      rating: 9.0
-    },
-    {
-      id: `2`,
-      text: `Foo Foo Foo`,
-      author: `Duffy Duck`,
-      date: new Date(),
-      rating: 2.0
-    },
-    {
-      id: `3`,
-      text: `Bark Bark Bark`,
-      author: `Pluto`,
-      date: new Date(),
-      rating: 5.0
-    },
-  ]
+  isFavorite: true
 };
 
-const store = createStore(reducer);
+const mockApi = {
+  loadMovies() {
+    return Promise.resolve([movie]);
+  },
+  checkAuthorizationStatus() {
+    return Promise.resolve({
+      "id": 1,
+      "email": `Oliver.conner@gmail.com`,
+      "name": `Oliver.conner`,
+      "avatar_url": `img/1.png`
+    });
+  }
+};
+const mockStore = configureStore([thunk.withExtraArgument(mockApi)]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    promoMovieId: `1`,
+    movies: [movie]
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: Genre.ALL,
+    shownMoviesNumber: DEFAULT_SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
-it(`MovieDetails should render correctly`, () => {
+it(`App should render correctly`, () => {
   const renderedTree = renderer
     .create(
         <Provider store={store}>
-          <Router history={history}>
-            <MovieDetails
-              movie={movie}
-              onPlayMovie={() => {}}
-            />
-          </Router>
+          <App />
         </Provider>,
         {
           createNodeMock: () => ({})
-        })
+        }
+    )
     .toJSON();
   expect(renderedTree).toMatchSnapshot();
 });
