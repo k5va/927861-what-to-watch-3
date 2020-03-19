@@ -2,12 +2,12 @@ import * as React from "react";
 import {withActiveItem} from "@hocs";
 
 interface Props {
-  children: Array<React.ReactNode>
-  activeItem: number,
-  onActiveItemChange: (item: number) => void
-};
+  children: Array<React.ReactNode & {props: {name: string}}>;
+  activeItem: number;
+  onActiveItemChange: (item: number) => void;
+}
 
-const Tabs = (props) => {
+const Tabs: React.FC<Props> = (props: Props) => {
   const {children, activeItem, onActiveItemChange} = props;
   return (
     <div className="movie-card__desc">

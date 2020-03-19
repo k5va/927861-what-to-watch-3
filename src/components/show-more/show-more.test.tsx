@@ -2,7 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import ShowMore from "./show-more";
 
-const handleClick = () => { };
+const handleClick = jest.fn;
 
 it(`ShowMore should render correctly`, () => {
   const wrapper = renderer

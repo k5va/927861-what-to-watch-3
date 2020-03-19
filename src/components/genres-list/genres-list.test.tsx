@@ -6,7 +6,7 @@ const genres = [`Action`, `Comedy`, `Drama`, `Thriller`];
 
 const selectedGenre = `Drama`;
 
-const onGenreSelect = () => { };
+const onGenreSelect = jest.fn();
 
 it(`GenresList should render correctly`, () => {
   const wrapper = renderer

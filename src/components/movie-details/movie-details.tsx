@@ -6,10 +6,10 @@ import {AppRoute, createRoute, openVideoPlayer} from "@routes";
 import {Movie} from "@types";
 
 interface Props {
-  movie: Movie,
-  getSimilarMovies: (movie: Movie) => Array<Movie>,
-  isAuthenticated: boolean
-};
+  movie: Movie;
+  getSimilarMovies: (movie: Movie) => Array<Movie>;
+  isAuthenticated: boolean;
+}
 
 const MovieDetails: React.FunctionComponent<Props> = (props: Props) => {
   const {movie, getSimilarMovies, isAuthenticated} = props;

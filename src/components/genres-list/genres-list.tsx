@@ -2,10 +2,10 @@ import * as React from "react";
 import {Genre} from "@consts";
 
 interface Props {
-  genres: Array<string>,
-  selectedGenre: string,
-  onGenreSelect: (genre: string) => void
-};
+  genres: Array<string>;
+  selectedGenre: string;
+  onGenreSelect: (genre: string) => void;
+}
 
 const GenresList: React.FunctionComponent<Props> = (props: Props) => {
   const {genres, selectedGenre, onGenreSelect} = props;

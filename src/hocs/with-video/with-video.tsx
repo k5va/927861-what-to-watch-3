@@ -1,18 +1,18 @@
 import * as React from "react";
 
 interface Props {
-    title?: string,
-    duration?: number,
-    src: string,
-    poster: string,
-    onExit?: () => void,
-    isPlaying: boolean
+    title?: string;
+    duration?: number;
+    src: string;
+    poster: string;
+    onExit?: () => void;
+    isPlaying: boolean;
 }
 
 interface State {
-  time: number,
-  isLoading: boolean,
-  isPlaying: boolean
+  time: number;
+  isLoading: boolean;
+  isPlaying: boolean;
 }
 
 export default (Component) => {

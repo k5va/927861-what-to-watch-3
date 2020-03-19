@@ -4,9 +4,9 @@ import {openVideoPlayer} from "@routes";
 import {Movie} from "@types";
 
 interface Props {
-  promoMovie: Movie,
-  movies: Array<Movie>
-};
+  promoMovie: Movie;
+  movies: Array<Movie>;
+}
 
 const Main: React.FunctionComponent<Props> = ({promoMovie, movies}: Props) => {
   const {id, title, genre, year, poster, backgroundImage, isFavorite} = promoMovie;

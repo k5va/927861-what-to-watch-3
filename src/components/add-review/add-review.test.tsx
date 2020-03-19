@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {AddReview} from "@components";
 import {Provider} from "react-redux";
 import {NameSpace} from "@store";

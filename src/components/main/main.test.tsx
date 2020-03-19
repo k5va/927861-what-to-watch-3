@@ -55,9 +55,7 @@ it(`Main should render correctly`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Main
-              onPlayMovie={() => {}}
-            />
+            <Main />
           </Router>
         </Provider>,
         {

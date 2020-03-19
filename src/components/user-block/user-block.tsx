@@ -1,11 +1,11 @@
 import * as React from "react";
 
 interface Props {
-  isAuthenticated: boolean,
-  avatar?: string,
-  onSignInClick?: () => void,
-  onAvatarClick?: () => void,
-};
+  isAuthenticated: boolean;
+  avatar?: string;
+  onSignInClick?: () => void;
+  onAvatarClick?: () => void;
+}
 
 const UserBlock: React.FC<Props> = (props: Props) => {
   const {isAuthenticated, avatar, onSignInClick, onAvatarClick} = props;

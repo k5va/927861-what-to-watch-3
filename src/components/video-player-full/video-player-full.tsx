@@ -3,17 +3,17 @@ import {withVideo} from "@hocs";
 import {formatSeconds} from "@utils";
 
 interface Props {
-  videoRef: React.RefObject<HTMLMediaElement>,
-  title: string,
-  time: number,
-  progress: number,
-  isPlaying: boolean,
-  onPlay: () => void,
-  onFullScreen: () => void,
-  onExit: () => void
-};
+  videoRef: React.RefObject<HTMLVideoElement>;
+  title: string;
+  time: number;
+  progress: number;
+  isPlaying: boolean;
+  onPlay: () => void;
+  onFullScreen: () => void;
+  onExit: () => void;
+}
 
-const VideoPlayerFull = (props) => {
+const VideoPlayerFull: React.FC<Props> = (props: Props) => {
   const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
 
   return (

@@ -3,8 +3,8 @@ import {AppLogo} from "@components";
 import {AuthData} from "@types";
 
 interface Props {
-  onSubmit: (authData: AuthData) => void
-};
+  onSubmit: (authData: AuthData) => void;
+}
 
 const SignIn: React.FunctionComponent<Props> = (props: Props) => {
   const {onSubmit} = props;

@@ -28,7 +28,7 @@ const movie = {
 it(`MovieCard should render correctly`, () => {
   const renderedTree = renderer
     .create(
-        <MovieCard movie={movie} onClick={() => {}} />,
+        <MovieCard movie={movie} />,
         {
           createNodeMock: () => ({})
         }

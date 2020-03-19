@@ -10,7 +10,7 @@ it(`VideoPlayer should render correctly`, () => {
     .create(
         <VideoPlayer src={VIDEO_SRC} poster={MOVIE_COVER} isPlaying={true} />,
         {
-          createNodeMock: () => ({play: () => {}}) // mocking video ref
+          createNodeMock: () => ({play: jest.fn}) // mocking video ref
         }
     )
     .toJSON();

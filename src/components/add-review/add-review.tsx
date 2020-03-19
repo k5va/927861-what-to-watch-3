@@ -7,9 +7,9 @@ import {ReviewTextSize} from "@consts";
 import {Movie} from "@types";
 
 interface Props {
-  movie: Movie,
-  addReview: (rating: number, comment: string, movieId: string) => void,
-  isError: boolean
+  movie: Movie;
+  addReview: (rating: number, comment: string, movieId: string) => void;
+  isError: boolean;
 }
 
 const AddReview: React.FunctionComponent<Props> = (props: Props) => {
@@ -23,7 +23,7 @@ const AddReview: React.FunctionComponent<Props> = (props: Props) => {
 
     const formData = new FormData(reviewForm.current);
     if (isFormValid(formData)) {
-      addReview(+formData.get(`rating`), ``+ formData.get(`review-text`), id);
+      addReview(+formData.get(`rating`), `` + formData.get(`review-text`), id);
     }
   };
 

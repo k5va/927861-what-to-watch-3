@@ -6,7 +6,7 @@ import MyListButton from "./my-list-button";
 configure({adapter: new Adapter()});
 
 const mockEvent = {
-  preventDefault() {},
+  preventDefault: jest.fn
 };
 
 it(`Should my list button be clicked`, () => {

@@ -7,12 +7,12 @@ import {history, AppRoute, goBack} from "@routes";
 import {AuthData, Movie} from "@types";
 
 interface Props {
-  init: () => void,
-  login: (AuthData: AuthData) => void,
-  appState: string,
-  getMovie: (id: string) => Movie,
-  isAuthenticated: boolean
-};
+  init: () => void;
+  login: (AuthData: AuthData) => void;
+  appState: string;
+  getMovie: (id: string) => Movie;
+  isAuthenticated: boolean;
+}
 
 const App: React.FunctionComponent<Props> = (props: Props) => {
   const {login, appState, getMovie, isAuthenticated, init} = props;

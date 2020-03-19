@@ -1,11 +1,11 @@
 import * as React from "react";
 
 interface Props {
-  isAuthenticated: boolean,
-  movieId: string,
-  isFavoriteMovie: boolean,
-  onClick: (movieId: string, isFavorite: boolean) => void
-};
+  isAuthenticated: boolean;
+  movieId: string;
+  isFavoriteMovie: boolean;
+  onClick: (movieId: string, isFavorite: boolean) => void;
+}
 
 const MyListButton: React.FunctionComponent<Props> = (props: Props) => {
 

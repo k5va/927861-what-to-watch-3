@@ -3,8 +3,8 @@ import {MovieCard} from "@components";
 import {Movie} from "@types";
 
 interface Props {
-  movies: Array<Movie>
-};
+  movies: Array<Movie>;
+}
 
 const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
   const {movies} = props;

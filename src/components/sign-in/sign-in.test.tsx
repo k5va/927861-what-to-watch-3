@@ -8,7 +8,7 @@ it(`SignIn should render correctly`, () => {
   const wrapper = renderer
     .create(
         <Router history={history}>
-          <SignIn onSubmit={() => {}} />
+          <SignIn onSubmit={jest.fn} />
         </Router>
     )
     .toJSON();

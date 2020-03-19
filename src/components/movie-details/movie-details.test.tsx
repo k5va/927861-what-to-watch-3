@@ -62,10 +62,7 @@ it(`MovieDetails should render correctly`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <MovieDetails
-              movie={movie}
-              onPlayMovie={() => {}}
-            />
+            <MovieDetails movie={movie} />
           </Router>
         </Provider>,
         {

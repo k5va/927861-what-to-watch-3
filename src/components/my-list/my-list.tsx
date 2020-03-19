@@ -3,10 +3,10 @@ import {AppLogo, UserBlock, MoviesList} from "@components";
 import {Movie} from "@types";
 
 interface Props {
-  movies: Array<Movie>
-};
+  movies: Array<Movie>;
+}
 
-const MyList = (props) => {
+const MyList: React.FC<Props> = (props: Props) => {
   const {movies} = props;
 
   return (

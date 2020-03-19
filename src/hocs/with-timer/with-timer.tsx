@@ -1,13 +1,7 @@
 import * as React from "react";
 
-interface Props {
-}
-
-interface State {
-}
-
 export default (Component) => {
-  return class WithTimer extends React.PureComponent<Props, State> {
+  return class WithTimer extends React.PureComponent<{}, {}> {
 
     private _timerId: number;
 

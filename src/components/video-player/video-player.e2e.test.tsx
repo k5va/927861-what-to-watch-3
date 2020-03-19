@@ -24,7 +24,7 @@ it(`VideoPlayer should have Playing state`, () => {
 it(`VideoPlayer should have Paused state`, () => {
   jest
     .spyOn(HTMLMediaElement.prototype, `pause`)
-    .mockImplementationOnce(() => { });
+    .mockImplementationOnce(jest.fn);
 
   const wrapperPaused = mount(
       <VideoPlayer src={movie.src} poster={movie.cover} isPlaying={false} />

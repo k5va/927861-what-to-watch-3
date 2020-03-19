@@ -7,12 +7,12 @@ import {Movie} from "@types";
 const VIDEO_PLAY_DELAY = 1000;
 
 interface Props {
-  movie: Movie,
-  isActive: boolean,
-  onActiveChange: (isActive: boolean) => void,
-  setTimeout: (callback: () => void, time: number) => void,
-  clearTimeout: () => void
-};
+  movie: Movie;
+  isActive: boolean;
+  onActiveChange: (isActive: boolean) => void;
+  setTimeout: (callback: () => void, time: number) => void;
+  clearTimeout: () => void;
+}
 
 const MovieCard: React.FunctionComponent<Props> = (props: Props) => {
   const {movie, isActive, onActiveChange, setTimeout, clearTimeout} = props;

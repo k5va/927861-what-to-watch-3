@@ -30,10 +30,10 @@ it(`VideoPlayerFull should render correctly`, () => {
     .create(
         <VideoPlayerFull
           title={movie.title} duration={movie.duration} src={movie.src} poster={movie.poster}
-          onExit={() => {}}
+          onExit={jest.fn}
         />,
         {
-          createNodeMock: () => ({play: () => {}}) // mocking video ref
+          createNodeMock: () => ({play: jest.fn}) // mocking video ref
         }
     )
     .toJSON();

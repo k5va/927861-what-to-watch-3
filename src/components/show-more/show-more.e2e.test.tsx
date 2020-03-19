@@ -6,7 +6,7 @@ import ShowMore from "./show-more";
 configure({adapter: new Adapter()});
 
 const mockEvent = {
-  preventDefault() {},
+  preventDefault: jest.fn,
 };
 
 it(`Should show more be clicked`, () => {
