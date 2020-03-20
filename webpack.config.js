@@ -2,7 +2,7 @@ const path = require(`path`);
 const webpack = require(`webpack`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)
@@ -21,12 +21,16 @@ module.exports = {
         use: {
           loader: `babel-loader`,
         },
+      },
+      {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
       }
     ],
   },
   devtool: `source-map`,
   resolve: {
-    extensions: [`.js`, `.jsx`],
+    extensions: [`.ts`, `.tsx`, `.js`, `json`],
     alias: {
       "@components": path.resolve(__dirname, `./src/components/`),
       "@consts": path.resolve(__dirname, `./src/consts/`),
@@ -35,7 +39,8 @@ module.exports = {
       "@store": path.resolve(__dirname, `./src/store/`),
       "@api": path.resolve(__dirname, `./src/api/api`),
       "@models": path.resolve(__dirname, `./src/models/`),
-      "@routes": path.resolve(__dirname, `./src/routes`)
+      "@routes": path.resolve(__dirname, `./src/routes`),
+      "@types": path.resolve(__dirname, `./src/types`)
     }
   },
   plugins: [

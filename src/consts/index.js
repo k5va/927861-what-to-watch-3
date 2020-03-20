@@ -4,3 +4,4 @@ export {default as DEFAULT_SHOWN_MOVIES_NUMBER} from "./default-shown-movies-num
 export {default as AppState} from "./app-state";
 export {default as AuthorizationStatus} from "./authorization-status";
 export {default as ErrorCode} from "./error-code";
+export {default as ReviewTextSize} from "./review-text-size";

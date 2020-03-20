@@ -1,4 +1,4 @@
-import ReviewTextSize from "./review-text-size";
+import {ReviewTextSize} from "@consts";
 
 const isReviewTextValid = (reviewText) => reviewText &&
   reviewText.length >= ReviewTextSize.MIN &&
