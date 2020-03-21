@@ -9,7 +9,7 @@ interface Props {
   isAuthenticated: boolean;
 }
 
-const PrivateRoute: React.FC<Props> = (props) => {
+const PrivateRoute: React.FC<Props> = (props: Props) => {
   const {render, path, exact, isAuthenticated} = props;
 
   return (
