@@ -1,15 +1,15 @@
 import * as React from "react";
-import {Route, Redirect} from "react-router-dom";
+import {Route, Redirect, RouteComponentProps} from "react-router-dom";
 import {AppRoute} from "@routes";
 
 interface Props {
-  render: (props: any) => React.ReactNode;
+  render: (props: RouteComponentProps) => React.ReactNode;
   path: string;
   exact: boolean;
   isAuthenticated: boolean;
 }
 
-const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
+const PrivateRoute: React.FC<Props> = (props) => {
   const {render, path, exact, isAuthenticated} = props;
 
   return (
