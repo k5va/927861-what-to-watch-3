@@ -1,4 +1,5 @@
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 module.exports = {
   entry: `./src/index.tsx`,
@@ -41,5 +42,11 @@ module.exports = {
       "@routes": path.resolve(__dirname, `./src/routes`),
       "@types": path.resolve(__dirname, `./src/types`)
     }
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'React': `react`,
+      'ReactDOM': `react-dom`
+    })
+  ]
 };

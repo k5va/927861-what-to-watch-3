@@ -1,4 +1,3 @@
-import * as React from "react";
 import {Tabs, Tab, MoviesList, UserBlock, AppLogo, MyListButton} from "@components";
 import {convertScoreToText, formatMinutes, formatDate} from "@utils";
 import {Link} from "react-router-dom";

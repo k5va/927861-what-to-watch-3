@@ -1,4 +1,3 @@
-import * as React from "react";
 import {withVideo} from "@hocs";
 import {formatSeconds} from "@utils";
 

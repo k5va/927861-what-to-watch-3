@@ -1,4 +1,3 @@
-import * as React from "react";
 import {withActiveItem} from "@hocs";
 
 interface Props {

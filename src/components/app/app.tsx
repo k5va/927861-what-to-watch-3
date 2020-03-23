@@ -1,4 +1,3 @@
-import * as React from "react";
 import {Router, Route, Switch, Redirect} from "react-router-dom";
 import {Main, MovieDetails, VideoPlayerFull, SignIn,
   PrivateRoute, AddReview, MyList} from "@components";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as renderer from "react-test-renderer";
 import AppLogo from "./app-logo";
 import {Router} from "react-router-dom";

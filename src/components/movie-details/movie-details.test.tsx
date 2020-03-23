@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {MovieDetails} from "@components";
 import {createStore} from "redux";

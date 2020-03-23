@@ -1,4 +1,3 @@
-import * as React from "react";
 import {Genre} from "@consts";
 
 interface Props {

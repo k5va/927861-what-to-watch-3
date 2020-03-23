@@ -1,5 +1,3 @@
-import * as React from "react";
-
 interface Props {
   isAuthenticated: boolean;
   movieId: string;

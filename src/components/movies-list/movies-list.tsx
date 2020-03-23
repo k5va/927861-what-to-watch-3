@@ -1,4 +1,3 @@
-import * as React from "react";
 import {MovieCard} from "@components";
 import {Movie} from "@types";
 

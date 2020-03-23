@@ -1,4 +1,3 @@
-import * as React from "react";
 import {AppLogo} from "@components";
 import {AuthData} from "@types";
 

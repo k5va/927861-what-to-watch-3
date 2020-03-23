@@ -1,5 +1,3 @@
-import * as React from "react";
-
 const DEFAULT_ACTIVE_ITEM = 0;
 
 interface State {

@@ -1,4 +1,3 @@
-import * as React from "react";
 import {AppLogo, UserBlock, MoviesList} from "@components";
 import {Movie} from "@types";
 

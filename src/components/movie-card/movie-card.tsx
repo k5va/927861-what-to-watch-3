@@ -1,4 +1,3 @@
-import * as React from "react";
 import {VideoPlayer} from "@components";
 import {withActiveState, withTimer} from "@hocs";
 import handleMovieCardClick from "./helpers/handle-movie-card-click";

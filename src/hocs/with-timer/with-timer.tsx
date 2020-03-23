@@ -1,5 +1,3 @@
-import * as React from "react";
-
 export default (Component) => {
   return class WithTimer extends React.PureComponent<{}, {}> {
 

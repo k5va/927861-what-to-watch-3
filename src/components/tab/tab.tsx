@@ -1,5 +1,3 @@
-import * as React from "react";
-
 interface Props {
   name: string;
   children: Array<React.ReactNode> | React.ReactNode;

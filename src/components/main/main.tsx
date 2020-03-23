@@ -1,4 +1,3 @@
-import * as React from "react";
 import {MoviesList, GenresList, ShowMore, UserBlock, AppLogo, MyListButton} from "@components";
 import {openVideoPlayer} from "@routes";
 import {Movie} from "@types";

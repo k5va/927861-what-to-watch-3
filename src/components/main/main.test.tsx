@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {Main} from "@components";
 import {Provider} from "react-redux";
